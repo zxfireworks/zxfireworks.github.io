@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="奇怪的TTL字段TTL是 Time To Live的缩写，该字段指定IP包被路由器丢弃之前允许通过的最大网段数量。TTL是IPv4包头的一个8 bit字段。压缩包里面有个ttl.txt，发现里面只有四种值 1234TTL&#x3D;63TTL&#x3D;127TTL&#x3D;191TTL&#x3D;255">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安恒Misc">
+<meta property="og:url" content="http://yoursite.com/2019/12/15/AnHeng-Misc/index.html">
+<meta property="og:site_name" content="北辰">
+<meta property="og:description" content="奇怪的TTL字段TTL是 Time To Live的缩写，该字段指定IP包被路由器丢弃之前允许通过的最大网段数量。TTL是IPv4包头的一个8 bit字段。压缩包里面有个ttl.txt，发现里面只有四种值 1234TTL&#x3D;63TTL&#x3D;127TTL&#x3D;191TTL&#x3D;255">
+<meta property="article:published_time" content="2019-12-15T08:37:36.000Z">
+<meta property="article:modified_time" content="2020-03-12T14:40:39.672Z">
+<meta property="article:author" content="北辰">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/15/AnHeng-Misc/"/>
+
+
+
+
+
+  <title>安恒Misc | 北辰</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">北辰</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">生活就像海洋，只有意志坚强的人，才能到达彼岸。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/15/AnHeng-Misc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北辰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="北辰">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">安恒Misc</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-15T16:37:36+08:00">
+                2019-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-Misc/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF-Misc</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="奇怪的TTL字段"><a href="#奇怪的TTL字段" class="headerlink" title="奇怪的TTL字段"></a>奇怪的TTL字段</h2><p>TTL是 Time To Live的缩写，该字段指定IP包被路由器丢弃之前允许通过的最大网段数量。TTL是IPv4包头的一个8 bit字段。<br>压缩包里面有个ttl.txt，发现里面只有四种值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TTL=63</span><br><span class="line">TTL=127</span><br><span class="line">TTL=191</span><br><span class="line">TTL=255</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>对应的二进制为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">00111111   63</span><br><span class="line">01111111   127</span><br><span class="line">10111111   191</span><br><span class="line">11111111   255</span><br></pre></td></tr></table></figure>
+<p>只有前两位不同，就想着用它们二进制的前两位替换自身，然后转为16进制</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">63     --&gt;   00</span><br><span class="line">127    --&gt;   01</span><br><span class="line">191    --&gt;   10</span><br><span class="line">255    --&gt;   11</span><br></pre></td></tr></table></figure>
+<p>替换python代码如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">ttl1 = open(<span class="string">'ttl.txt'</span>,<span class="string">'r'</span>)</span><br><span class="line">a = ttl1.readlines()</span><br><span class="line">ttl2 = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    ttl2.append(int(i[4:]))<span class="comment">#除去每行前缀的TTL=</span></span><br><span class="line">s = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> ttl2:</span><br><span class="line">    <span class="keyword">if</span> i == 63:</span><br><span class="line">        a = <span class="string">'00'</span></span><br><span class="line">    <span class="keyword">elif</span> i == 127:</span><br><span class="line">        a = <span class="string">'01'</span></span><br><span class="line">    <span class="keyword">elif</span> i == 191:</span><br><span class="line">        a = <span class="string">'10'</span></span><br><span class="line">    <span class="keyword">elif</span> i == 255:</span><br><span class="line">        a = <span class="string">'11'</span></span><br><span class="line">    s += a</span><br><span class="line">binaryfile=open(<span class="string">"bin.txt"</span>,<span class="string">'w'</span>)<span class="comment">#将替换好的二进制数据写入bin.txt文件中</span></span><br><span class="line">binaryfile.write(s)</span><br><span class="line">binaryfile.close()</span><br></pre></td></tr></table></figure>
+<p>将二进制转为16进制</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">ttl1 = open(<span class="string">'ttl.txt'</span>,<span class="string">'r'</span>)</span><br><span class="line">a = ttl1.readlines()</span><br><span class="line">ttl2 = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    ttl2.append(int(i[4:]))</span><br><span class="line">s = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> ttl2:</span><br><span class="line">    <span class="keyword">if</span> i == 63:</span><br><span class="line">        a = <span class="string">'00'</span></span><br><span class="line">    <span class="keyword">elif</span> i == 127:</span><br><span class="line">        a = <span class="string">'01'</span></span><br><span class="line">    <span class="keyword">elif</span> i == 191:</span><br><span class="line">        a = <span class="string">'10'</span></span><br><span class="line">    <span class="keyword">elif</span> i == 255:</span><br><span class="line">        a = <span class="string">'11'</span></span><br><span class="line">    s += a</span><br><span class="line">import binascii</span><br><span class="line">hex1 = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(0,len(s),8):</span><br><span class="line">    hex1 += chr(int(s[i:i+8],2))</span><br><span class="line">hexfile=open(<span class="string">"hex.txt"</span>,<span class="string">'w'</span>)</span><br><span class="line">hexfile.write(hex1)</span><br><span class="line">hexfile.close()</span><br></pre></td></tr></table></figure>
+<p>发现hex.txt文件中转好的16进制数据流是以ffd8开头的，可以想到应该是一张图片</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ttl1 = open(<span class="string">'ttl.txt'</span>,<span class="string">'r'</span>)</span><br><span class="line">a = ttl1.readlines()</span><br><span class="line">ttl2 = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    ttl2.append(int(i[4:]))</span><br><span class="line">s = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> ttl2:</span><br><span class="line">    <span class="keyword">if</span> i == 63:</span><br><span class="line">        a = <span class="string">'00'</span></span><br><span class="line">    <span class="keyword">elif</span> i == 127:</span><br><span class="line">        a = <span class="string">'01'</span></span><br><span class="line">    <span class="keyword">elif</span> i == 191:</span><br><span class="line">        a = <span class="string">'10'</span></span><br><span class="line">    <span class="keyword">elif</span> i == 255:</span><br><span class="line">        a = <span class="string">'11'</span></span><br><span class="line">    s += a</span><br><span class="line">import binascii</span><br><span class="line">hex1 = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(0,len(s),8):</span><br><span class="line">    hex1 += chr(int(s[i:i+8],2))</span><br><span class="line">hex1 = binascii.unhexlify(hex1)</span><br><span class="line">picture = open(<span class="string">'zx.jpg'</span>,<span class="string">'wb'</span>)</span><br><span class="line">picture.write(hex1)</span><br><span class="line">picture.close()</span><br></pre></td></tr></table></figure>
+<p>得到zx.jpg，发现是一张残缺的二维码，上Kali，foremost一下，出来6张残缺的二维码照片，用P图软件将这六张照片拼接在一起，扫码得到一串字符</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">key:AutomaticKey cipher:fftu&#123;2028mb39927wn1f96o6e12z03j58002p&#125;</span><br></pre></td></tr></table></figure>
+<p>去谷歌搜了一下有个AUTOKEY<br>AUTOKEY解密地址：<a href="https://www.wishingstarmoye.com/ctf/autokey" target="_blank" rel="noopener">https://www.wishingstarmoye.com/ctf/autokey</a><br>解密后得到flag{2028ab39927df1d96e6a12b03e58002e}</p>
+<h2 id="派大星的烦恼"><a href="#派大星的烦恼" class="headerlink" title="派大星的烦恼"></a>派大星的烦恼</h2><p>题目叙述：派大星最近很苦恼，因为它的屁股上出现了一道疤痕！我们拍下了它屁股一张16位位图，0x22，0x44代表伤疤两种细胞，0xf0则是派大星的赘肉。还原伤疤，知道是谁打的派大星！(答案为32位的一串字符串)<br>将图片用winhex打开，在中间发现了22和44，剩下的几乎都是F0</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">22444422444422222222442244442222222222224444222222444422444422224422224444442222442244224444222222222222444422224422222222444422442244224444222222224422444422224422222244442222222222444444222222224422444422222244222222444422222244222244442244224422444422222244442222444422442244222244442222444422444422222244222222444422224444224444222244224422224444224422442244442222224422222244442222224422444422224444222222444422442244222244442222224422444422224444222244442222222222444444222244442222444422222244222244442222</span><br></pre></td></tr></table></figure>
+<p>题目中说22和44代表伤疤两种细胞，F0是派大星的赘肉，赘肉也就是多余的，应该没用，有用的就是22和44，应该是二进制。22对应0，44对应1</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">str1=<span class="string">'22444422444422222222442244442222222222224444222222444422444422224422224444442222442244224444222222222222444422224422222222444422442244224444222222224422444422224422222244442222222222444444222222224422444422222244222222444422222244222244442244224422444422222244442222444422442244222244442222444422444422222244222222444422224444224444222244224422224444224422442244442222224422222244442222224422444422224444222222444422442244222244442222224422444422224444222244442222222222444444222244442222444422222244222244442222'</span></span><br><span class="line">str1=str1.replace(<span class="string">'22'</span>,<span class="string">'0'</span>)</span><br><span class="line">str1=str1.replace(<span class="string">'44'</span>,<span class="string">'1'</span>)</span><br><span class="line">str3=<span class="string">""</span></span><br><span class="line">tmp=<span class="string">""</span></span><br><span class="line">count=0</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> str1:</span><br><span class="line">    tmp=tmp+i</span><br><span class="line">    count=count+1</span><br><span class="line">    <span class="keyword">if</span> count==8:</span><br><span class="line">        str3=str3+tmp[-1::-1]</span><br><span class="line">        tmp=<span class="string">""</span></span><br><span class="line">        count=0</span><br><span class="line"><span class="built_in">print</span>(str3)</span><br></pre></td></tr></table></figure>
+<p>刚开始将得到的二进制转为16进制，再转为ASCII码，发现是乱码，二进制的长度为256，而题目中说flag是32位的，256//32=8，所以可以猜想到每八位为一组，将每一组组内倒序，整体顺序不变，得到的二进制再转16进制，然后转ASCII码，拿到6406950a54184bd5fe6b6e5b4ce43832</p>
+<h2 id="间谍启示录"><a href="#间谍启示录" class="headerlink" title="间谍启示录"></a>间谍启示录</h2><p>一个镜像文件，用UltraISO打开后，里面有一个systemzx.exe，点击运行，没有啥反应，还有个压缩包，打开后里面还有个systemzx.exe，安装后文解却被自动销毁了，唉。用360压缩打开，里面又有个flag.exe文件，点击运行依然没有任何效果，继续用360压缩打开，打开后没有发现任何有用的，返回上一级后，发现生成了一个机密文件.txt文本文件，打开后Flag{379:7b758:g7dfe7f19:9464f:4g9231}</p>
+<h2 id="被偷走的文件"><a href="#被偷走的文件" class="headerlink" title="被偷走的文件"></a>被偷走的文件</h2><p>题目叙述：一黑客入侵了某公司盗取了重要的机密文件，还好管理员记录了文件被盗走时的流量，请分析该流量，分析出该黑客盗走了什么文件。<br>流量分析题，wireshark打开，在里面发现了flag.rar文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">49	1.588660	172.16.66.188	172.16.66.10	FTP	81	Request: RETR flag.rar</span><br><span class="line">55	1.601874	172.16.66.10	172.16.66.188	FTP-DATA	230	FTP Data: 164 bytes (PASV) (RETR flag.rar)</span><br></pre></td></tr></table></figure>
+<p>追踪TCP流</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Rar!.....s..</span><br><span class="line">........)..F.....\...V..D....U....0.zeq..oGH...i....:.A.D.J...C.ekm..D.......^+%...p..Q&#125;...K..:5.<span class="comment">#.:.........Q.%....gi$..~0..yg.)..F...:_+U.MQs..c..2W&lt;</span></span><br></pre></td></tr></table></figure>
+<p>看到Rar,显然是rar压缩文件，保存为16进制，用winhex打开，保存为rar文件，结果被加密了，直接爆破，密码为5790，拿到flag{6fe99a5d03fb01f833ec3caa80358fa3}</p>
+<h2 id="数据包中的线索"><a href="#数据包中的线索" class="headerlink" title="数据包中的线索"></a>数据包中的线索</h2><p>题目叙述：公安机关近期截获到某网络犯罪团伙在线交流的数据包，但无法分析出具体的交流内容，聪明的你能帮公安机关找到线索吗？<br>流量分析题，wireshark打开</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">63	10.084277	172.16.66.100	172.16.80.120	TCP	54	1883 → 80 [ACK] Seq=386 Ack=1461 Win=65700 Len=0</span><br></pre></td></tr></table></figure>
+<p>追踪TCP流，发现了一段base64编码,winhex打开,16进制开头是图片的文件头，把base64转图片即可拿到<br>flag{209acebf6324a09671abc31c869de72c}<br>base64转图片：<a href="http://tool.chinaz.com/tools/imgtobase/" target="_blank" rel="noopener">http://tool.chinaz.com/tools/imgtobase/</a><br>转之前要在base64编码前面加上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data:image/jpg;base64,</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/14/NewBugku-Misc/" rel="next" title="NewBugku_Misc">
+                <i class="fa fa-chevron-left"></i> NewBugku_Misc
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/26/Xss-labs/" rel="prev" title="Xss-labs">
+                Xss-labs <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="北辰" />
+            
+              <p class="site-author-name" itemprop="name">北辰</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#奇怪的TTL字段"><span class="nav-text">奇怪的TTL字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#派大星的烦恼"><span class="nav-text">派大星的烦恼</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#间谍启示录"><span class="nav-text">间谍启示录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#被偷走的文件"><span class="nav-text">被偷走的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据包中的线索"><span class="nav-text">数据包中的线索</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">北辰</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
