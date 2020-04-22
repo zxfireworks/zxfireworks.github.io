@@ -1829,7 +1829,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #629d78;
+  background: #5e9fc2;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3005,12 +3005,15 @@ body {
   background-position: 50% 50%;
 }
 * {
-  cursor: url("https://gitee.com/zxfireworks/BlogPic/raw/master/morse.png"), auto !important;
+  cursor: url("http://om8u46rmb.bkt.clouddn.com/sword2.ico"), auto !important;
+}
+:active {
+  cursor: url("http://om8u46rmb.bkt.clouddn.com/sword1.ico"), auto !important;
 }
 .main-inner {
   background: #fff;
-  opacity: 0.8;
+  opacity: 1;
 }
 .header-inner {
-  opacity: 0.8;
+  opacity: 1;
 }
