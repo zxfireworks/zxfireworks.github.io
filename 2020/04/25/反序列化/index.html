@@ -92,14 +92,12 @@
 
 
 
-<meta name="description" content="题目链接：http:&#x2F;&#x2F;web-labs.rinue.top&#x2F;xss-labs&#x2F; 第一关在控制台输入alert(“xss”),回车通关">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Xss-labs">
-<meta property="og:url" content="http://yoursite.com/2019/12/26/Xss-labs/index.html">
+<meta property="og:title" content="反序列化">
+<meta property="og:url" content="http://yoursite.com/2020/04/25/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
 <meta property="og:site_name" content="w1ndy">
-<meta property="og:description" content="题目链接：http:&#x2F;&#x2F;web-labs.rinue.top&#x2F;xss-labs&#x2F; 第一关在控制台输入alert(“xss”),回车通关">
-<meta property="article:published_time" content="2019-12-26T11:16:21.000Z">
-<meta property="article:modified_time" content="2020-03-23T07:06:05.480Z">
+<meta property="article:published_time" content="2020-04-25T14:47:19.000Z">
+<meta property="article:modified_time" content="2020-04-25T14:47:58.393Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 
@@ -131,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/12/26/Xss-labs/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/04/25/反序列化/"/>
 
 
 
 
 
-  <title>Xss-labs | w1ndy</title>
+  <title>反序列化 | w1ndy</title>
   
 
 
@@ -254,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/26/Xss-labs/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/25/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="w1ndy">
@@ -271,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Xss-labs</h1>
+          <h1 class="post-title" itemprop="name headline">反序列化</h1>
         
 
         <div class="post-meta">
@@ -283,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-26T19:16:21+08:00">
-                2019-12-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T22:47:19+08:00">
+                2020-04-25
               </time>
             
 
@@ -299,8 +297,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-23T15:06:05+08:00">
-                2020-03-23
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-25T22:47:58+08:00">
+                2020-04-25
               </time>
             
           </span>
@@ -360,13 +358,7 @@
       
 
       
-        <p>题目链接：<a href="http://web-labs.rinue.top/xss-labs/" target="_blank" rel="noopener">http://web-labs.rinue.top/xss-labs/</a></p>
-<h2 id="第一关"><a href="#第一关" class="headerlink" title="第一关"></a>第一关</h2><p>在控制台输入alert(“xss”),回车通关</p>
-<a id="more"></a>
-<h2 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h2><p>一个输入框<br>查看源代码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 align=center&gt;欢迎来到level2&lt;/h1&gt;</span><br><span class="line">&lt;h2 align=center&gt;没有找到和123456相关的结果.&lt;/h2&gt;&lt;center&gt;</span><br><span class="line">&lt;form action=level2.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=<span class="string">"123456"</span>&gt;</span><br><span class="line">&lt;input <span class="built_in">type</span>=submit name=submit value=<span class="string">"搜索"</span>/&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-<p>123456就是在输入框所输入的值，那么只需要闭合<input name=keyword  value="123456">中123456前面的语句即可，”&gt;<script>alert(123456)</script></p>
-
+        
       
     </div>
     
@@ -390,8 +382,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/15/AnHeng-Misc/" rel="next" title="安恒Misc">
-                <i class="fa fa-chevron-left"></i> 安恒Misc
+              <a href="/2020/04/03/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5SSTI/" rel="next" title="服务端模板注入(SSTI)">
+                <i class="fa fa-chevron-left"></i> 服务端模板注入(SSTI)
               </a>
             
           </div>
@@ -399,10 +391,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/27/C++/" rel="prev" title="C++">
-                C++ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -454,17 +442,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -523,22 +502,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一关"><span class="nav-text">第一关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二关"><span class="nav-text">第二关</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

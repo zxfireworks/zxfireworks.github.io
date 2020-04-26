@@ -92,14 +92,26 @@
 
 
 
+<meta name="description" content="[护网杯 2018]easy_tornado一道关于python模板框架tornado的SSTI漏洞题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="服务端模板注入(SSTI)">
 <meta property="og:url" content="http://yoursite.com/2020/04/03/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5SSTI/index.html">
-<meta property="og:site_name" content="北辰">
+<meta property="og:site_name" content="w1ndy">
+<meta property="og:description" content="[护网杯 2018]easy_tornado一道关于python模板框架tornado的SSTI漏洞题">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t0.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t1.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t2.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t3.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t4.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t5.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t6.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t7.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t8.PNG">
 <meta property="article:published_time" content="2020-04-03T08:04:15.000Z">
 <meta property="article:modified_time" content="2020-04-22T13:12:15.000Z">
-<meta property="article:author" content="北辰">
+<meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t0.PNG">
 
 
 
@@ -135,7 +147,7 @@
 
 
 
-  <title>服务端模板注入(SSTI) | 北辰</title>
+  <title>服务端模板注入(SSTI) | w1ndy</title>
   
 
 
@@ -165,7 +177,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">北辰</span>
+        <span class="site-title">w1ndy</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -255,13 +267,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/03/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5SSTI/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="北辰">
+      <meta itemprop="name" content="w1ndy">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/header.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="北辰">
+      <meta itemprop="name" content="w1ndy">
     </span>
 
     
@@ -358,7 +370,12 @@
       
 
       
-        
+        <h3 id="护网杯-2018-easy-tornado"><a href="#护网杯-2018-easy-tornado" class="headerlink" title="[护网杯 2018]easy_tornado"></a>[护网杯 2018]easy_tornado</h3><p>一道关于python模板框架tornado的SSTI漏洞题</p>
+<a id="more"></a>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t0.PNG" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t1.PNG" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t2.PNG" alt=""><br>看到渲染函数render，就能反应出这里可能存在SSTI<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t3.PNG" alt=""><br>filename应该就是/fllllllllllllag<br>此时的url为<a href="http://9d100937-275b-4b51-80bc-3a4e384f8d83.node3.buuoj.cn/file?filename=/hints.txt&amp;filehash=fa535effc38df8fb5ea22374d7564814" target="_blank" rel="noopener">http://9d100937-275b-4b51-80bc-3a4e384f8d83.node3.buuoj.cn/file?filename=/hints.txt&amp;filehash=fa535effc38df8fb5ea22374d7564814</a><br>md5(cookie_secret+md5(filename))的结果应该就是filehash的值，接下来就是要拿到cookie_secret的值<br>修改参数filename=/fllllllllllllag<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t4.PNG" alt=""><br>有回显，并且参数msg的值就是回显内容，这里可能存在SSTI漏洞，测试了一下<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t5.PNG" alt=""><br>返回ORZ,说明存在过滤<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t6.PNG" alt=""><br>测试1和2^3都正确回显，确定此处存在SSTI<br>在tornado模板中，存在一些可以访问的快速对象,这里用到的是handler.settings，handler 指向RequestHandler，而RequestHandler.settings又指向self.application.settings，所以handler.settings就指向RequestHandler.application.settings了<br>获取cookie_secret的payload:<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t7.PNG" alt=""><br>拿到了cookie_secret,接下来计算hash值md5(cookie_secret+md5(filename))=b3b51a763ef182a4f1066ce08df7b518<br>最终payload:?filename=/fllllllllllllag&amp;filehash=b3b51a763ef182a4f1066ce08df7b518<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t8.PNG" alt=""></p>
+<p>SSTI(服务端模板注入)是指服务端接收了用户的输入，将其作为 Web 应用模板内容的一部分，在进行目标编译渲染的过程中，执行了用户插入的恶意内容，因而可能导致了敏感信息泄露、代码执行、GetShell 等问题。</p>
+<p>主要框架<br>python：jinja2 mako tornado django<br>PHP：smarty twig<br>java：jade velocity</p>
+
       
     </div>
     
@@ -391,6 +408,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/25/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="prev" title="反序列化">
+                反序列化 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -442,16 +463,25 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
                 src="/images/header.jpg"
-                alt="北辰" />
+                alt="w1ndy" />
             
-              <p class="site-author-name" itemprop="name">北辰</p>
+              <p class="site-author-name" itemprop="name">w1ndy</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -462,7 +492,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -503,6 +533,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#护网杯-2018-easy-tornado"><span class="nav-text">[护网杯 2018]easy_tornado</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -527,7 +573,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">北辰</span>
+  <span class="author" itemprop="copyrightHolder">w1ndy</span>
 
   
 </div>
