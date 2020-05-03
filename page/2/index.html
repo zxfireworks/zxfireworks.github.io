@@ -298,7 +298,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-03T00:30:58+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-03T12:45:25+08:00">
                 2020-05-03
               </time>
             
@@ -365,12 +365,19 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PD9waHAgJGE9J2ZsYWd7dV9yX3JlYWxseV9hX3BocF9leHBlcnR9Jzs/Pg0K</span><br></pre></td></tr></table></figure>
 <p>解密后</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php <span class="variable">$a</span>=<span class="string">'flag&#123;u_r_really_a_php_expert&#125;'</span>;?&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h3><h4 id="签到题"><a href="#签到题" class="headerlink" title="签到题"></a>签到题</h4><p>吐槽一下：签到题还整个坑，出题人也是够了<br>一张图片，名字是high.png,第一反应修改图片高度，果然在图片底部隐藏有信息</p>
+<h3 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h3><h4 id="ISCC签到"><a href="#ISCC签到" class="headerlink" title="ISCC签到"></a>ISCC签到</h4><p>吐槽一下：签到题还整个坑，出题人也是够了<br>一张图片，名字是high.png,第一反应修改图片高度，果然在图片底部隐藏有信息</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ISCC&#123;D3tivtm_zv_Tq5I_Dygef&#125;</span><br></pre></td></tr></table></figure>
 <p>提交发现不对，去掉ISCC和括号也不对，变成小写iscc也不对，前缀改成flag还是不对，群里的大佬纷纷讨论，是不是题目有问题，客服来了句这道题有坑，直接了<br>一套子图片隐写工具下来没啥发现，就回到了隐藏信息上<br>想了好久，试了好几种加密方式，最后突发奇想可能是维吉尼亚密码，密钥也试了好几种，差点就觉得不是维吉尼亚密码了<br>突然想到high可能是密码，然后就解出来了</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BKWV&#123;W3lcome_to_Mi5C_Wryyy&#125;</span><br></pre></td></tr></table></figure>
 <p>把前缀换成ISCC就可了</p>
-
+<h3 id="是我DIO哒-擂台赛"><a href="#是我DIO哒-擂台赛" class="headerlink" title="是我DIO哒(擂台赛)"></a>是我DIO哒(擂台赛)</h3><p>winhex打开啥也没发现<br>用stegsolve打开发现了一段信息<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ISCC-2020/dio.jpg" alt=""></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Useful_Massage_2(fa09fTjBfRCUyMW9fZGFhYWElMjFfXyU3RA==)</span><br></pre></td></tr></table></figure>
+<p>base64解码后是乱码，因为这是第二部分，还缺一部分<br>在kali中用binwalk and foremost 分离出一张二维码，扫码后是第一部分</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Useful_Massage_1(SVNDQyU3QmZsQGdfaXN)</span><br></pre></td></tr></table></figure>
+<p>拼接后base64解码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SVNDQyU3QmZsQGdfaXNfa09fTjBfRCUyMW9fZGFhYWElMjFfXyU3RA==</span><br><span class="line">解码后为：ISCC%7Bfl@g_is_kO_N0_D%21o_daaaa%21__%7D</span><br></pre></td></tr></table></figure>
+<p>明显里面混有URL编码，解码后为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ISCC&#123;fl@g_is_kO_N0_D!o_daaaa!__&#125;</span><br></pre></td></tr></table></figure>
           
         
       
