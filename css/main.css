@@ -1829,7 +1829,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #8bfbff;
+  background: #393e63;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3005,10 +3005,10 @@ body {
   background-position: 50% 50%;
 }
 * {
-  cursor: url("https://s2.aconvert.com/convert/p3r68-cdx67/azr0m-p1kpo-001.ico"), auto !important;
+  cursor: url("https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@1.0/images/mouse.cur"), auto !important;
 }
 :active {
-  cursor: url("https://s2.aconvert.com/convert/p3r68-cdx67/azr0m-p1kpo-001.ico"), auto !important;
+  cursor: url("https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@1.0/images/mouse.cur"), auto !important;
 }
 .main-inner {
   background: #fff;
