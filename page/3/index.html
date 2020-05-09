@@ -251,6 +251,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/23/Bugku-Web/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="w1ndy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="w1ndy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/23/Bugku-Web/" itemprop="url">Bugku-Web</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-23T15:23:52+08:00">
+                2020-03-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-25T13:19:10+08:00">
+                2020-04-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF-Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="备份是个好习惯"><a href="#备份是个好习惯" class="headerlink" title="备份是个好习惯"></a>备份是个好习惯</h3><p>题目提到备份文件，即index.php.bak<br>访问一下，下载下来后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">/**</span><br><span class="line"> * Created by PhpStorm.</span><br><span class="line"> * User: Norse</span><br><span class="line"> * Date: 2017/8/6</span><br><span class="line"> * Time: 20:22</span><br><span class="line">*/</span><br><span class="line">include_once <span class="string">"flag.php"</span>;</span><br><span class="line">ini_set(<span class="string">"display_errors"</span>, 0);</span><br><span class="line"><span class="variable">$str</span> = strstr(<span class="variable">$_SERVER</span>[<span class="string">'REQUEST_URI'</span>], <span class="string">'?'</span>);</span><br><span class="line"><span class="variable">$str</span> = substr(<span class="variable">$str</span>,1);</span><br><span class="line"><span class="variable">$str</span> = str_replace(<span class="string">'key'</span>,<span class="string">''</span>,<span class="variable">$str</span>);</span><br><span class="line">parse_str(<span class="variable">$str</span>);</span><br><span class="line"><span class="built_in">echo</span> md5(<span class="variable">$key1</span>);</span><br><span class="line"><span class="built_in">echo</span> md5(<span class="variable">$key2</span>);</span><br><span class="line"><span class="keyword">if</span>(md5(<span class="variable">$key1</span>) == md5(<span class="variable">$key2</span>) &amp;&amp; <span class="variable">$key1</span> !== <span class="variable">$key2</span>)&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>.<span class="string">"取得flag"</span>;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/03/23/Bugku-Web/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/14/BUUCTF-Web/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -554,166 +713,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/02/SQL%E6%B3%A8%E5%85%A5%E5%89%8D%E5%AF%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="w1ndy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="w1ndy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/02/SQL%E6%B3%A8%E5%85%A5%E5%89%8D%E5%AF%BC/" itemprop="url">SQL注入前导</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-02T22:41:08+08:00">
-                2020-03-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-28T17:29:38+08:00">
-                2020-03-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF-Web/" itemprop="url" rel="index">
-                    <span itemprop="name">CTF-Web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="MySql数据库"><a href="#MySql数据库" class="headerlink" title="MySql数据库"></a>MySql数据库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">查询当前所有的数据库：show databases;</span><br><span class="line">创建一个新的数据库：create database DBName;</span><br><span class="line">选择DBName数据库：use DBName;</span><br><span class="line">进入DBName数据库后，查询该数据库中的所有表：show tables;</span><br><span class="line">显示users表的结构：describe users;    或者    show columns from users;</span><br><span class="line">单行注释有<span class="comment">#和--,在实际的操作中#一般用%23来代替，--用--+来代替。因为在URL中，如果在最后加上--，那么浏览器在发送请求的时候会把URL末尾的空格舍去，而用--+代替--，原因是+在URL被URL编码后会变成空格。</span></span><br><span class="line">group_concat() 字符串连接</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql数据库默认有一张名为：information_schema的数据库，主要查schema表和tables表，schema表是用来存储该用户创建的所有数据库的库名，tables是用来存储用户创建所有数据的库名和表名，字段分别为table_schema和table_name</span><br><span class="line">SCHEMA_NAME 表示数据库名称 </span><br><span class="line">table_schema 表示表所属的数据库名称</span><br><span class="line">table_name 表示表的名称</span><br></pre></td></tr></table></figure>
-<p>判断注入点：单引号，双引号，and 1=1，and 1=2</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">爆所有数据库名 </span><br><span class="line">(select group_concat(SCHEMA_NAME) from information_schema.schemata)</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">爆当前库的所有表 </span><br><span class="line">select group_concat(table_name) from information_schema.tables <span class="built_in">where</span> table_schema=database()</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">得到表中的字段名 将敏感的表进行16进制编码tablename=0x7461626C656E616D65 </span><br><span class="line">select group_concat(column_name) from information_schema.columns <span class="built_in">where</span> table_name=0x7461626C656E616D65</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">得到字段具体的值 </span><br><span class="line">select group_concat(id,fl4g) from secret_table</span><br></pre></td></tr></table></figure>
-<h3 id="攻击步骤"><a href="#攻击步骤" class="headerlink" title="攻击步骤"></a>攻击步骤</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.确定注入点后 order by 1 ，返回正常数字1换2，一次向上加，加到页面报错。</span><br><span class="line">2.如果order by 6错误，order by 5正常，即可确定字段数为5</span><br><span class="line">3.查看回显点 and 1=2 union select 1,2,3,4,5 在出现数字的位置进行查数据，如页面出现数字2</span><br><span class="line">4.查数据库名字：and 1=2 union select 1,database(),3,4,5 出现数字2的位置会出现数据库名字</span><br><span class="line">5.查表 and 1=2 union select 1,group_concat(table_name),3,4,5 from information_schema.tables <span class="built_in">where</span> table_schema=‘数据库名称’</span><br><span class="line">6.查列 and 1=2 union select 1,group_concat(column_name),3,4,5 from information_schema.columns <span class="built_in">where</span> table_name=‘表名’</span><br><span class="line">7.查内容 and 1=2 union select 1,group_concat(username,password) from admin</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -768,7 +767,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
