@@ -459,7 +459,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-06-09T17:14:40+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-06-09T17:46:43+08:00">
                 2020-06-09
               </time>
             
@@ -518,7 +518,7 @@
         
           
             <p>攻击机：Kali<br>靶机：Windows7<br>在测试前需要拿到靶机的公网ip地址<br>这里的靶机ip地址为192.168.1.106</p>
-<h3 id="测试靶机是否有永恒之蓝漏洞"><a href="#测试靶机是否有永恒之蓝漏洞" class="headerlink" title="测试靶机是否有永恒之蓝漏洞"></a>测试靶机是否有永恒之蓝漏洞</h3><h4 id="Nmap端口扫描"><a href="#Nmap端口扫描" class="headerlink" title="Nmap端口扫描"></a>Nmap端口扫描</h4><p>靶机需要满足开启139端口和445端口</p>
+<h3 id="测试靶机是否有永恒之蓝漏洞"><a href="#测试靶机是否有永恒之蓝漏洞" class="headerlink" title="测试靶机是否有永恒之蓝漏洞"></a>测试靶机是否有永恒之蓝漏洞</h3><p>靶机需要满足开启139端口和445端口，使用Nmap端口扫描</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1.106</span><br></pre></td></tr></table></figure>
 <p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_0.jpg" alt=""><br>靶机开启了139和445端口，就可以进行测试了<br>在Kali中打开Metasploit</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
