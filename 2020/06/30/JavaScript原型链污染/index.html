@@ -105,7 +105,7 @@
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js4.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js5.jpg">
 <meta property="article:published_time" content="2020-06-30T15:46:15.000Z">
-<meta property="article:modified_time" content="2020-07-01T04:39:33.254Z">
+<meta property="article:modified_time" content="2020-07-01T04:42:09.486Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js0.jpg">
@@ -340,7 +340,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-01T12:39:33+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-01T12:42:09+08:00">
                 2020-07-01
               </time>
             
@@ -403,7 +403,7 @@
 <p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js0.jpg" alt=""><br>这里对象p1继承了Persion的原型的属性myfunc<br>在javascript中的继承不同于面向对象编程中的继承，在javascript中是通过原型链__proto__来实现继承的</p>
 <h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js1.jpg" alt=""><br>对于Persion来说要访问它的原型，用Persion.prototype就可。但是用Persion实例化出来的对象p1无法通过该方法来访问原型，需要通过p1.__proto__来访问Persion的原型,从图中结果可以得出结论</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Persion.prototype===p1.__proto__</span><br></pre></td></tr></table></figure>
-<p>在对象p1中本身是没有myfunc的，那它是怎么找到该属性的呢，其实就是通过__proto__原型链来找的，也就是说先在自己身上找，如果找不到就向上访问它的原型链，在其原型链上继续找，如果还是找不到，继续向上，直到找到或者找到Object还是没找到就结束<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js2.jpg" alt=""><br>我在Object中添加了一个属性objfunc,当使用p1.objfunc时，他会先在自身找，发现找不到，然后通过p1._<em>proto__来在Persion上找，发现还是没找到，继续在Persion的原型链上找，也就是通过p1._<em>proto</em></em>.__proto__在Object上找，然后就找到了objfunc<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js3.jpg" alt=""><br>每个原型都有一个constructor属性，它是指向关联的构造函数<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js4.jpg" alt=""><br>构造函数、原型、实例对象之间关系如下图所示<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js5.jpg" alt=""></p>
+<p>在对象p1中本身是没有myfunc的，那它是怎么找到该属性的呢，其实就是通过__proto__原型链来找的，也就是说先在自己身上找，如果找不到就向上访问它的原型链，在其原型链上继续找，如果还是找不到，继续向上，直到找到或者找到Object还是没找到就结束<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js2.jpg" alt=""><br>我在Object中添加了一个属性objfunc,当使用p1.objfunc时，他会先在自身找，发现找不到，然后通过p1.__proto__来在Persion上找，发现还是没找到，继续在Persion的原型链上找，也就是通过p1.__proto__.__proto__在Object上找，然后就找到了objfunc<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js3.jpg" alt=""><br>每个原型都有一个constructor属性，它是指向关联的构造函数<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js4.jpg" alt=""><br>构造函数、原型、实例对象之间关系如下图所示<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js5.jpg" alt=""></p>
 
       
     </div>
