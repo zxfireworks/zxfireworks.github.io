@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="w1ndy">
 <meta property="og:description" content="MySql数据库1234567查询当前所有的数据库：show databases;创建一个新的数据库：create database DBName;选择DBName数据库：use DBName;进入DBName数据库后，查询该数据库中的所有表：show tables;显示users表的结构：describe users;    或者    show columns from users;单行注释有">
 <meta property="article:published_time" content="2020-03-02T14:41:08.000Z">
-<meta property="article:modified_time" content="2020-05-20T06:08:54.786Z">
+<meta property="article:modified_time" content="2020-07-01T04:17:47.603Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 
@@ -333,8 +333,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-20T14:08:54+08:00">
-                2020-05-20
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-01T12:17:47+08:00">
+                2020-07-01
               </time>
             
           </span>
@@ -390,6 +390,7 @@
 
       
         <h2 id="MySql数据库"><a href="#MySql数据库" class="headerlink" title="MySql数据库"></a>MySql数据库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">查询当前所有的数据库：show databases;</span><br><span class="line">创建一个新的数据库：create database DBName;</span><br><span class="line">选择DBName数据库：use DBName;</span><br><span class="line">进入DBName数据库后，查询该数据库中的所有表：show tables;</span><br><span class="line">显示users表的结构：describe users;    或者    show columns from users;</span><br><span class="line">单行注释有<span class="comment">#和--,在实际的操作中#一般用%23来代替，--用--+来代替。因为在URL中，如果在最后加上--，那么浏览器在发送请求的时候会把URL末尾的空格舍去，而用--+代替--，原因是+在URL被URL编码后会变成空格。</span></span><br><span class="line">group_concat() 字符串连接</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql数据库默认有一张名为：information_schema的数据库，主要查schema表和tables表，schema表是用来存储该用户创建的所有数据库的库名，tables是用来存储用户创建所有数据的库名和表名，字段分别为table_schema和table_name</span><br><span class="line">SCHEMA_NAME 表示数据库名称 </span><br><span class="line">table_schema 表示表所属的数据库名称</span><br><span class="line">table_name 表示表的名称</span><br></pre></td></tr></table></figure>
 <p>判断注入点：单引号，双引号，and 1=1，and 1=2</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">爆所有数据库名 </span><br><span class="line">(select group_concat(SCHEMA_NAME) from information_schema.schemata)</span><br></pre></td></tr></table></figure>
