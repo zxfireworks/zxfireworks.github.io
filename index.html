@@ -287,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9ELFI/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/30/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="w1ndy">
@@ -306,7 +306,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/02/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9ELFI/" itemprop="url">文件包含漏洞LFI</a></h1>
+                <a class="post-title-link" href="/2020/06/30/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93/" itemprop="url">JavaScript原型链污染</a></h1>
         
 
         <div class="post-meta">
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-02T14:36:55+08:00">
-                2020-04-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-30T23:46:15+08:00">
+                2020-06-30
               </time>
             
 
@@ -334,8 +334,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-23T17:17:13+08:00">
-                2020-05-23
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-01T11:58:25+08:00">
+                2020-07-01
               </time>
             
           </span>
@@ -391,15 +391,16 @@
 
       
         
-          <p>两个重要参数（php.ini文件中）<br>allow_url_fopen<br>allow_url_include<br>包含文件的内容只要符合PHP语法都能被当成php代码进行解析，无关后缀名</p>
-<h2 id="本地文件包含"><a href="#本地文件包含" class="headerlink" title="本地文件包含"></a>本地文件包含</h2><h3 id="配合日志文件"><a href="#配合日志文件" class="headerlink" title="配合日志文件"></a>配合日志文件</h3><p>?file=<?php @eval($_POST['shell'];)?><br>这条记录会被记录在日志文件中，但是被url编码了<br>用burpsuite抓包改回去就可以利用了</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/02/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9ELFI/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p><a href="https://www.bilibili.com/video/BV1At411t7Lu?from=search&seid=11463946534016996399" target="_blank" rel="noopener">JS中的原型和原型链</a></p>
+<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p>在JavaScript中，每个函数都有一个默认原型属性，也就是prototype，在使用该构造函数实例化对象时就会继承该原型中的属性和方法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">function</span> Persion(name,age) &#123;</span><br><span class="line">        this.name=<span class="string">"w1ndy"</span>;</span><br><span class="line">        this.age=20;</span><br><span class="line">    &#125;</span><br><span class="line">    var p1=new Persion();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js0.jpg" alt=""><br>这里对象p1继承了Persion的属性myfunc<br>在javascript中的继承不同于面向对象编程中的继承，在javascript中是通过原型链<strong>proto</strong>来实现继承的</p>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js1.jpg" alt=""><br>对于Persion来说要访问它的原型，用Persion.prototype就可。但是用Persion实例化出来的对象p1无法通过该方法来访问原型，需要通过p1.<strong>proto</strong>来访问Persion的原型,从图中结果可以得出结论</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Persion.prototype===p1.__proto__</span><br></pre></td></tr></table></figure>
+<p>在对象p1中本身是没有myfunc的，那它是怎么找到该属性的呢，其实就是通过<strong>proto</strong>原型链来找的，也就是说先在自己身上找，如果找不到就向上访问它的原型链，在其原型链上继续找，如果还是找不到，继续向上，直到找到或者找到Object还是没找到就结束<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js2.jpg" alt=""><br>我在Object中添加了一个属性objfunc,当使用p1.objfunc时，他会先在自身找，发现找不到，然后通过p1.<strong>proto</strong>来在Persion上找，发现还是没找到，继续在Persion的原型链上找，也就是通过p1.<strong>proto</strong>.<strong>proto</strong>在Object上找，然后就找到了objfunc<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js3.jpg" alt=""><br>每个原型都有一个constructor属性，它是指向关联的构造函数<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js4.jpg" alt=""><br>构造函数、原型、实例对象之间关系如下图所示<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js5.jpg" alt=""></p>
+
+          
         
       
     </div>
@@ -446,7 +447,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/01/ISCC-2020/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/28/%E5%9B%9E%E9%A6%96%E5%89%8D20%E5%B9%B4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="w1ndy">
@@ -465,7 +466,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/05/01/ISCC-2020/" itemprop="url">ISCC-2020</a></h1>
+                <a class="post-title-link" href="/2020/06/28/%E5%9B%9E%E9%A6%96%E5%89%8D20%E5%B9%B4/" itemprop="url">回首前20年</a></h1>
         
 
         <div class="post-meta">
@@ -477,8 +478,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-01T16:36:27+08:00">
-                2020-05-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-28T17:29:55+08:00">
+                2020-06-28
               </time>
             
 
@@ -493,8 +494,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-09T16:14:22+08:00">
-                2020-05-09
+              <time title="更新于" itemprop="dateModified" datetime="2020-06-28T18:42:54+08:00">
+                2020-06-28
               </time>
             
           </span>
@@ -512,8 +513,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF-Web/" itemprop="url" rel="index">
-                    <span itemprop="name">CTF-Web</span>
+                  <a href="/categories/%E5%BF%83%E7%81%B5%E4%B9%8B%E7%AA%97/" itemprop="url" rel="index">
+                    <span itemprop="name">心灵之窗</span>
                   </a>
                 </span>
 
@@ -550,14 +551,14 @@
 
       
         
-          <h3 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h3><h4 id="阿森的爱情-1"><a href="#阿森的爱情-1" class="headerlink" title="阿森的爱情-1"></a>阿森的爱情-1</h4><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ISCC-2020/web1.jpg" alt=""><br>测试了下SQL注入，没啥反应，源码也啥都没有<br>dirsearch直接扫，在readme.txt中发现flag</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/05/01/ISCC-2020/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>今天考完了期末，大二结束了，大学时光也已经过半，感觉自己什么也没有学到，一直在原地转圈，看不清楚眼前的路指向何方。有时候就会问自己那三个经典的问题，从哪里来？现在在哪？要到哪里去？停下来，是为了更好的出发。趁着这个暑假，搞清楚自己到底想要的是什么，以后如果去朝着这个方向努力和发展。今天考完试同学说他要在这个暑假开始准备考研了，他说以后想回他们省去当一个大学教师或者留校任教。我也和他谈了很多，这就意味着他需要博士毕业才行。我也想过，当一个大学老师也挺好的。去年刚从中科院信工所毕业的马宇祥老师也是河大计院毕业的，他也是开封人，在外求学多年最后还是回到了小时候的地方，而且一回来直接给了副教授职称，真的是既佩服又羡慕。今年我们学校招聘辅导员都要求博士学历了，更别提任教了，况且很多学校招老师还要看本科院校是不是名校，显然我们学校只是个普通的双一流高校，不在名校行列，在这方面不具备优势，需要更大的努力才行。<br>我现在经常想要不要读研，也就是解决要到哪里去，趁着暑假冷静下来思考一下未来的路。为了更好的规划以后，接下来分阶段的理清楚前20年都做了什么，对我的人生轨迹又有什么影响。</p>
+<h3 id="小学"><a href="#小学" class="headerlink" title="小学"></a>小学</h3><p>我的很多同学和朋友都不知道我小学发生了多大的逆转。小学特别贪玩，经常下午放学还没写作业就出去玩，天黑了才回家，老师经常让我请家长，学校好多老师都认识我爸妈了。四年级的时候，因为长时间的不写作业，被校长叫到办公室，打电话给我爸，让把我接回家，说是劝退，谁都知道九年义务教育，这是不可能的。但是这件事搞得爸妈很难受，回家我妈就把我暴打一顿。从那以后虽然偶尔还是不写作业，但是情况有了很大改变。从小就讨厌字多的东西，感觉很麻烦，所以语文和英语一直是我的挡脚石，反而数学一直是我的强项。小升初前，去参加我们县的一个私立初中的招生考试，还是自己太菜，没考上，去公里初中上学。</p>
+<h3 id="初中"><a href="#初中" class="headerlink" title="初中"></a>初中</h3><p>初一、初二感觉没啥影响我的发展轨迹的事，成绩平平，在初二升初三时成绩猛涨，初中结束时进入了我们县的县一中，这算是为我高考打下了坚实的基础</p>
+<h3 id="高中"><a href="#高中" class="headerlink" title="高中"></a>高中</h3><p>高一、高二依然是很平淡，当时我就发现，我属于慢热型的那种，需要一段时间来升温。高二升高三时成绩有了显著的提高，也是数学帮了我很大的忙，当时的英语成绩不忍直视，害。有了高一、高二的预加热，高三开始进入状态。遇到了一位很严格但又幽默风趣的英语老师，让我的英语成绩从两位数到三位数，英语不再拖后腿。高三除了成绩有所提高，还有一件事也是对我产生了很大影响，那就是谈恋爱，在此不多叙述，现在想想心里还是难受。高考发挥一半，进入了河大。</p>
+<h3 id="大学-未完"><a href="#大学-未完" class="headerlink" title="大学(未完)"></a>大学(未完)</h3><p>刚进入大学，一下子释放了，也是打游戏，但是并没有影响学习，虽然学习一般，只能保证不挂科。现在就很后悔大一没加入实验室，浪费了大好时光。大二进入了学校的信安实验室，在这里学到了很多，但是和别人的差距依然相当的大。趁着暑假好好提升一下自己的能力，多打一些比赛，多刷一些题，多总结经验。</p>
+
+          
         
       
     </div>
@@ -604,7 +605,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/03/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5SSTI/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="w1ndy">
@@ -623,7 +624,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/03/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5SSTI/" itemprop="url">服务端模板注入(SSTI)</a></h1>
+                <a class="post-title-link" href="/2020/06/22/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" itemprop="url">现代密码学期末复习</a></h1>
         
 
         <div class="post-meta">
@@ -635,8 +636,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-03T16:04:15+08:00">
-                2020-04-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-22T20:03:40+08:00">
+                2020-06-22
               </time>
             
 
@@ -651,8 +652,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-22T21:12:15+08:00">
-                2020-04-22
+              <time title="更新于" itemprop="dateModified" datetime="2020-06-26T19:06:19+08:00">
+                2020-06-26
               </time>
             
           </span>
@@ -670,8 +671,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF-Web/" itemprop="url" rel="index">
-                    <span itemprop="name">CTF-Web</span>
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">课程笔记</span>
                   </a>
                 </span>
 
@@ -708,14 +709,22 @@
 
       
         
-          <h3 id="护网杯-2018-easy-tornado"><a href="#护网杯-2018-easy-tornado" class="headerlink" title="[护网杯 2018]easy_tornado"></a>[护网杯 2018]easy_tornado</h3><p>一道关于python模板框架tornado的SSTI漏洞题</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/03/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5SSTI/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="第一章-引言"><a href="#第一章-引言" class="headerlink" title="第一章 (引言)"></a>第一章 (引言)</h3><h4 id="清楚信息安全专业学习密码学的原因"><a href="#清楚信息安全专业学习密码学的原因" class="headerlink" title="清楚信息安全专业学习密码学的原因"></a>清楚信息安全专业学习密码学的原因</h4><p>0、密码技术是信息安全的核心技术<br>1、密码技术已经广泛应用于通信保密、信息系统安全、网络安全、云计算安全、区块链安全等多个信息安全的重要领域中</p>
+<h3 id="第二章-流密码"><a href="#第二章-流密码" class="headerlink" title="第二章 (流密码)"></a>第二章 (流密码)</h3><h4 id="掌握流密码的基本思想"><a href="#掌握流密码的基本思想" class="headerlink" title="掌握流密码的基本思想"></a>掌握流密码的基本思想</h4><p>流密码的基本思想是利用密钥k产生一个密钥流z=z0z1…,并使用如下规则对明文串x=x0x1x2…加密：y=y0y1y2…=Ez0(x0)Ez1(x1)Ez2(x2)…。密钥流由密钥流发生器产生：zi=f(k,σi),这里σi是加密器中的记忆元件(存储器)在时刻i的状态,f是由密钥k和σi产生的函数</p>
+<h3 id="第三章-分组密码"><a href="#第三章-分组密码" class="headerlink" title="第三章 (分组密码)"></a>第三章 (分组密码)</h3><h4 id="理解分组密码的CBC工作模式，能够画出该模式的加密示意图"><a href="#理解分组密码的CBC工作模式，能够画出该模式的加密示意图" class="headerlink" title="理解分组密码的CBC工作模式，能够画出该模式的加密示意图"></a>理解分组密码的CBC工作模式，能够画出该模式的加密示意图</h4><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ClassNote/CBC.jpg" alt=""></p>
+<h4 id="能够根据给定的一个字节a-给定的AES仿射变换-和不可约多项式m-x-，求出字节a在AES中S盒字节代替变换的结果"><a href="#能够根据给定的一个字节a-给定的AES仿射变换-和不可约多项式m-x-，求出字节a在AES中S盒字节代替变换的结果" class="headerlink" title="能够根据给定的一个字节a,给定的AES仿射变换(*)和不可约多项式m(x)，求出字节a在AES中S盒字节代替变换的结果"></a>能够根据给定的一个字节a,给定的AES仿射变换(*)和不可约多项式m(x)，求出字节a在AES中S盒字节代替变换的结果</h4><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ClassNote/Sbox.jpg" alt=""><br>考试中求逆时，不需要使用欧几里得算法，直接一个一个试就行了(老师说给的逆很容易试出来)</p>
+<h3 id="第四章-公钥密码"><a href="#第四章-公钥密码" class="headerlink" title="第四章 (公钥密码)"></a>第四章 (公钥密码)</h3><h4 id="能够根据RSA算法进行加密与解密计算"><a href="#能够根据RSA算法进行加密与解密计算" class="headerlink" title="能够根据RSA算法进行加密与解密计算"></a>能够根据RSA算法进行加密与解密计算</h4><p>选两个保密的大素数p和q<br>计算n=p<em>q，φ(n)=(p-1)(q-1),其中φ(n)是n的欧拉函数值<br>选一整数e，满足1 &lt; e &lt; φ(n)，且gcd(φ(n),e)=1，这里的(e,n)就是公钥<br>计算d，满足d</em>e ≡ 1 mod(φ(n))，这里的(d,n)就是私钥<br>加密过程：对于明文m，c ≡ (m^e) mod(n)，c就是m加密后的密文<br>解密过程：m ≡ (c^d) mod(n)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a*b(mod q)=a(mod q) * b(mod q)</span><br></pre></td></tr></table></figure>
+<h3 id="第五章-数字签名"><a href="#第五章-数字签名" class="headerlink" title="第五章 (数字签名)"></a>第五章 (数字签名)</h3><h4 id="能够使用Elgamal数字签名体制，进行签名与验证计算"><a href="#能够使用Elgamal数字签名体制，进行签名与验证计算" class="headerlink" title="能够使用Elgamal数字签名体制，进行签名与验证计算"></a>能够使用Elgamal数字签名体制，进行签名与验证计算</h4><p>选取大素数p，生成元g，p、g公开<br>随机选取整数x，1 ≤ x ≤ p-2，计算y ≡ g^x mod(p)<br>公钥为y，私钥为x<br>签名算法：对于消息m，随机选取整数k，1 ≤ k ≤ p-2，计算r=g^k mod(p)，s=(H(m)-x<em>r)k^(-1) mod(p-1)<br>注意：这里的k^-1是k的逆，不是倒数,即k*k^-1 ≡ 1 mod(p-1)<br>m的签名为(r,s)，其中H为Hash函数，老师说考试直接用m来代替H(m)进行计算<br>验证算法：接收到消息m和签名(r,m)后，验证(y^r)</em>(r^s) ≡ g^H(m) mod(p)<br>如果成立则签名有效，反之签名无效</p>
+<h3 id="第六章-哈希函数"><a href="#第六章-哈希函数" class="headerlink" title="第六章 (哈希函数)"></a>第六章 (哈希函数)</h3><h4 id="理解弱单向函数与强单向函数的定义"><a href="#理解弱单向函数与强单向函数的定义" class="headerlink" title="理解弱单向函数与强单向函数的定义"></a>理解弱单向函数与强单向函数的定义</h4><p>单向函数：已知h,求H(x)=h的x在计算上是不可行的，这一性质称为函数的单向性<br>弱单向函数：已知x,找出y(y≠x)使得H(y)=H(x)在计算上是不可行的<br>强单向函数：找出任意两个不同的输入x、y,使得H(y)=H(x)在计算上是不可行的</p>
+<h3 id="第八章-密钥分配与密钥管理"><a href="#第八章-密钥分配与密钥管理" class="headerlink" title="第八章 (密钥分配与密钥管理)"></a>第八章 (密钥分配与密钥管理)</h3><h4 id="能够基于D-H密钥交换协议计算生成通信双方的共享密钥"><a href="#能够基于D-H密钥交换协议计算生成通信双方的共享密钥" class="headerlink" title="能够基于D-H密钥交换协议计算生成通信双方的共享密钥"></a>能够基于D-H密钥交换协议计算生成通信双方的共享密钥</h4><p><a href="https://zxfireworks.xyz/2020/02/26/%E5%AF%86%E7%A0%81%E5%AD%A6/" target="_blank" rel="noopener">https://zxfireworks.xyz/2020/02/26/%E5%AF%86%E7%A0%81%E5%AD%A6/</a></p>
+<h3 id="第九章-密码协议"><a href="#第九章-密码协议" class="headerlink" title="第九章 (密码协议)"></a>第九章 (密码协议)</h3><h4 id="了解密码协议的定义"><a href="#了解密码协议的定义" class="headerlink" title="了解密码协议的定义"></a>了解密码协议的定义</h4><p>密码协议是指利用密码工具实现与安全相关的协议或函数的计算</p>
+<h3 id="第十章-可证明安全"><a href="#第十章-可证明安全" class="headerlink" title="第十章 (可证明安全)"></a>第十章 (可证明安全)</h3><h4 id="了解可证明安全的思想"><a href="#了解可证明安全的思想" class="headerlink" title="了解可证明安全的思想"></a>了解可证明安全的思想</h4><p>利用概率论和计算复杂性理论，把对密码系统的安全性归约到已知的数学困难问题上。这个评估方法只是说明了这个密码算法的安全性与某个困难问题相关，没有完全证明问题本身的安全性，并给出它们的等价性证明</p>
+<h3 id="第十一章-密码学新方向"><a href="#第十一章-密码学新方向" class="headerlink" title="第十一章 (密码学新方向)"></a>第十一章 (密码学新方向)</h3><h4 id="能够知道5种密码学新方向或新技术"><a href="#能够知道5种密码学新方向或新技术" class="headerlink" title="能够知道5种密码学新方向或新技术"></a>能够知道5种密码学新方向或新技术</h4><p>0、身份基加密<br>1、属性基加密<br>2、全同态加密<br>3、后量子密码<br>4、DNA密码<br>5、混沌密码</p>
+<h3 id="综合"><a href="#综合" class="headerlink" title="综合"></a>综合</h3><h4 id="介绍一种安全应用场景，分析该安全场景应用了哪些密码技术，并简述如何保障了安全性"><a href="#介绍一种安全应用场景，分析该安全场景应用了哪些密码技术，并简述如何保障了安全性" class="headerlink" title="介绍一种安全应用场景，分析该安全场景应用了哪些密码技术，并简述如何保障了安全性"></a>介绍一种安全应用场景，分析该安全场景应用了哪些密码技术，并简述如何保障了安全性</h4><p>安全场景：银行系统中基于PKI的USB Key身份认证系统<br>密码技术：公钥密码体制、身份认证<br>基于PKI的”数字证书认证方式”可以有效地保证用户的身份安全和数据传输安全。在USBKey内用私钥将原文加密，与原文和数字证书一起打包通过网络传输，服务器端接收到后还原出数字证书，利用公钥解密，结果与原文校验，确定用户合法性。而数字证书存储在USBKey中可以保障数字证书无法被复制，所有密钥运算在USBKey中实现，用户密钥不在计算机内存出现也不在网络中传播，只有USBKey的持有人才能够对数字证书进行操作</p>
+
+          
         
       
     </div>
