@@ -104,8 +104,11 @@
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js3.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js4.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js5.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js6.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js8.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js7.jpg">
 <meta property="article:published_time" content="2020-06-30T15:46:15.000Z">
-<meta property="article:modified_time" content="2020-07-01T04:42:09.486Z">
+<meta property="article:modified_time" content="2020-07-02T13:13:01.750Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js0.jpg">
@@ -340,8 +343,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-01T12:42:09+08:00">
-                2020-07-01
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-02T21:13:01+08:00">
+                2020-07-02
               </time>
             
           </span>
@@ -404,6 +407,13 @@
 <h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js1.jpg" alt=""><br>对于Persion来说要访问它的原型，用Persion.prototype就可。但是用Persion实例化出来的对象p1无法通过该方法来访问原型，需要通过p1.__proto__来访问Persion的原型,从图中结果可以得出结论</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Persion.prototype===p1.__proto__</span><br></pre></td></tr></table></figure>
 <p>在对象p1中本身是没有myfunc的，那它是怎么找到该属性的呢，其实就是通过__proto__原型链来找的，也就是说先在自己身上找，如果找不到就向上访问它的原型链，在其原型链上继续找，如果还是找不到，继续向上，直到找到或者找到Object还是没找到就结束<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js2.jpg" alt=""><br>我在Object中添加了一个属性objfunc,当使用p1.objfunc时，他会先在自身找，发现找不到，然后通过p1.__proto__来在Persion上找，发现还是没找到，继续在Persion的原型链上找，也就是通过p1.__proto__.__proto__在Object上找，然后就找到了objfunc<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js3.jpg" alt=""><br>每个原型都有一个constructor属性，它是指向关联的构造函数<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js4.jpg" alt=""><br>构造函数、原型、实例对象之间关系如下图所示<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js5.jpg" alt=""></p>
+<h3 id="原型链污染"><a href="#原型链污染" class="headerlink" title="原型链污染"></a>原型链污染</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js6.jpg" alt=""><br>在上述例子中，a有一个len属性，b是空的，此时b访问len属性是访问不到的;执行a.__proto__.len=2之后，b就能访问到len属性了;<br>原因如下：<br>a.__proto__.len=2修改的是a的原型的属性，即Object的属性，而b的原型也是Object,从而b也能访问到len属性；如果能够控制并修改一个对象的原型，这将会影响所有和这个对象来自同一个类或祖父类的对象，这种攻击方式就是原型链污染。<br>原型链污染的发现场景：</p>
+<h4 id="对象merge"><a href="#对象merge" class="headerlink" title="对象merge"></a>对象merge</h4><p>需要控制一个键值对<br>将<strong>proto</strong>解析为键名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> merge(target,<span class="built_in">source</span>)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">let</span> key <span class="keyword">in</span> <span class="built_in">source</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(key <span class="keyword">in</span> target &amp;&amp; key <span class="keyword">in</span> <span class="built_in">source</span>)&#123;</span><br><span class="line">            merge(target[key],<span class="built_in">source</span>[key]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            target[key]=<span class="built_in">source</span>[key];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js8.jpg" alt=""><br>c.n2返回undefined，说明没有污染成功，这是因为这里的__proto__没有被解析为一个键名，而是被当作b的原型，所以需要使用JSON.parse()将__proto__解析为键名才能污染原型链。<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/jsProto/js7.jpg" alt=""><br>c.n2=2,污染成功了</p>
+<h4 id="对象clone"><a href="#对象clone" class="headerlink" title="对象clone"></a>对象clone</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>(obj)&#123;</span><br><span class="line">    <span class="built_in">return</span> merge(&#123;&#125;,obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="按路径定义属性"><a href="#按路径定义属性" class="headerlink" title="按路径定义属性"></a>按路径定义属性</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theFunction(obj,path,value)</span><br></pre></td></tr></table></figure>
+<p>如果path参数可控，就可以通过修改_<em>proto_</em>.value的值从而改变Object的属性，达到污染原型链的目的。</p>
 
       
     </div>
@@ -566,7 +576,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#原型"><span class="nav-text">原型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型链"><span class="nav-text">原型链</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#原型"><span class="nav-text">原型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型链"><span class="nav-text">原型链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型链污染"><span class="nav-text">原型链污染</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象merge"><span class="nav-text">对象merge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象clone"><span class="nav-text">对象clone</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按路径定义属性"><span class="nav-text">按路径定义属性</span></a></li></ol></li></ol></div>
             
 
           </div>
