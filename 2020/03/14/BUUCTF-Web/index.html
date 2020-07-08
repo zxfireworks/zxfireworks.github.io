@@ -163,8 +163,13 @@
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Upload/upload0.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Upload/upload1.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/ACTF_Upload/upload_0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_4.jpg">
 <meta property="article:published_time" content="2020-03-14T09:13:19.000Z">
-<meta property="article:modified_time" content="2020-07-07T03:16:43.885Z">
+<meta property="article:modified_time" content="2020-07-08T08:09:39.030Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://q63cs67co.bkt.clouddn.com/buuctf_login_1.PNG">
@@ -399,8 +404,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-07T11:16:43+08:00">
-                2020-07-07
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-08T16:09:39+08:00">
+                2020-07-08
               </time>
             
           </span>
@@ -585,7 +590,7 @@
 <p>在源码中就能发现flag</p>
 <h3 id="极客大挑战-2019-Upload"><a href="#极客大挑战-2019-Upload" class="headerlink" title="[极客大挑战 2019]Upload"></a>[极客大挑战 2019]Upload</h3><p>尝试上传包含<?php @eval($_POST["shell"]);?>的php文件，失败。修改后缀还是不行，burp抓包，修改一下MIME类型image/jpeg，还是不行，继续换后缀，发现phtml时返回了新信息<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Upload/upload0.jpg" alt=""><br>说明对文件内容进行了过滤，那就不能用php标签了，换成js<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Upload/upload1.jpg" alt=""><br>上传成功，蚁剑getshell<br>连上后在文件里发现php7、phps等后缀文件均可getshell,师傅们太强了<br>文件太多，不一一寻找flag,直接终端cat /flag</p>
 <h3 id="ACTF2020-新生赛-Upload"><a href="#ACTF2020-新生赛-Upload" class="headerlink" title="[ACTF2020 新生赛]Upload"></a>[ACTF2020 新生赛]Upload</h3><p>直接用上一个题的imageUpload.phtml文件上传，成功上传，返回了路径，直接getshell<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/ACTF_Upload/upload_0.jpg" alt=""></p>
-<h3 id="GKCTF2020-cve版签到"><a href="#GKCTF2020-cve版签到" class="headerlink" title="[GKCTF2020]cve版签到"></a>[GKCTF2020]cve版签到</h3><p>提示说cve-2020-7066，另一篇文章讲了该漏洞</p>
+<h3 id="GKCTF2020-cve版签到"><a href="#GKCTF2020-cve版签到" class="headerlink" title="[GKCTF2020]cve版签到"></a>[GKCTF2020]cve版签到</h3><p>提示说cve-2020-7066，另一篇文章讲了该漏洞<a href="https://zxfireworks.xyz/2020/07/07/CVE-2020-7066/" target="_blank" rel="noopener">https://zxfireworks.xyz/2020/07/07/CVE-2020-7066/</a><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_0.jpg" alt=""><br>点进去后，URL很特别，其他啥也没有<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_1.jpg" alt=""><br>用bp抓一下包<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_2.jpg" alt=""><br>提示使用localhost,刚开始还以为是修改X-Forwarded-For呢,测试了一下并不是，那就应该是修改URL中那个特别的参数<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_3.jpg" alt=""><br>又出现了新提示，Host必须以123结尾，将刚才的url=<a href="http://127.0.0.1修改为url=http://127.0.0.123,并没有什么反应" target="_blank" rel="noopener">http://127.0.0.1修改为url=http://127.0.0.123,并没有什么反应</a><br>文章开头说了，这个题目给了提示，而且在页面中有句话：You just view *.ctfhub.com<br>那是不是要求URL解析后只能为127.0.0.123，且还要get传参中的url是.ctfhub.com结尾，那这就可以利用该漏洞了<br>Payload:?url=<a href="http://127.0.0.123%00.ctfhub.com">http://127.0.0.123%00.ctfhub.com</a><br>这里没用\0是因为这是已经解析过了的<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_4.jpg" alt=""></p>
 
       
     </div>
