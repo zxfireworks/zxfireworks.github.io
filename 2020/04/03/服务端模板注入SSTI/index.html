@@ -107,6 +107,7 @@
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t6.PNG">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t7.PNG">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t8.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t9.jpg">
 <meta property="article:published_time" content="2020-04-03T08:04:15.000Z">
 <meta property="article:modified_time" content="2020-04-22T13:12:15.000Z">
 <meta property="article:author" content="w1ndy">
@@ -403,7 +404,7 @@
 <a id="more"></a>
 <p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t0.PNG" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t1.PNG" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t2.PNG" alt=""><br>看到渲染函数render，就能反应出这里可能存在SSTI<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t3.PNG" alt=""><br>filename应该就是/fllllllllllllag<br>此时的url为<a href="http://9d100937-275b-4b51-80bc-3a4e384f8d83.node3.buuoj.cn/file?filename=/hints.txt&amp;filehash=fa535effc38df8fb5ea22374d7564814" target="_blank" rel="noopener">http://9d100937-275b-4b51-80bc-3a4e384f8d83.node3.buuoj.cn/file?filename=/hints.txt&amp;filehash=fa535effc38df8fb5ea22374d7564814</a><br>md5(cookie_secret+md5(filename))的结果应该就是filehash的值，接下来就是要拿到cookie_secret的值<br>修改参数filename=/fllllllllllllag<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t4.PNG" alt=""><br>有回显，并且参数msg的值就是回显内容，这里可能存在SSTI漏洞，测试了一下<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t5.PNG" alt=""><br>返回ORZ,说明存在过滤<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t6.PNG" alt=""><br>测试1和2^3都正确回显，确定此处存在SSTI<br>在tornado模板中，存在一些可以访问的快速对象,这里用到的是handler.settings，handler 指向RequestHandler，而RequestHandler.settings又指向self.application.settings，所以handler.settings就指向RequestHandler.application.settings了<br>获取cookie_secret的payload:<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t7.PNG" alt=""><br>拿到了cookie_secret,接下来计算hash值md5(cookie_secret+md5(filename))=b3b51a763ef182a4f1066ce08df7b518<br>最终payload:?filename=/fllllllllllllag&amp;filehash=b3b51a763ef182a4f1066ce08df7b518<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t8.PNG" alt=""></p>
 <p>SSTI(服务端模板注入)是指服务端接收了用户的输入，将其作为 Web 应用模板内容的一部分，在进行目标编译渲染的过程中，执行了用户插入的恶意内容，因而可能导致了敏感信息泄露、代码执行、GetShell 等问题。</p>
-<p>主要框架<br>python：jinja2 mako tornado django<br>PHP：smarty twig<br>java：jade velocity</p>
+<p>主要框架<br>python：jinja2 mako tornado django<br>PHP：smarty twig<br>java：jade velocity<br>模板类型判断<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_tornado/easy_tornado/t9.jpg" alt=""></p>
 
       
     </div>
@@ -554,6 +555,40 @@
 
           
           
+
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <!-- modify icon to fire by szw -->
+                <i class="fa fa-history fa-" aria-hidden="true"></i>
+                近期文章
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                
+                  <li>
+                    <a href="/2020/07/07/CVE-2020-7066/" title="CVE-2020-7066" target="_blank">CVE-2020-7066</a>
+                  </li>
+          
+                  <li>
+                    <a href="/2020/06/30/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93/" title="JavaScript原型链污染" target="_blank">JavaScript原型链污染</a>
+                  </li>
+          
+                  <li>
+                    <a href="/2020/06/22/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="现代密码学期末复习" target="_blank">现代密码学期末复习</a>
+                  </li>
+          
+                  <li>
+                    <a href="/2020/06/09/EternalBlue/" title="EternalBlue" target="_blank">EternalBlue</a>
+                  </li>
+          
+                  <li>
+                    <a href="/2020/05/23/WHUCTF/" title="WHUCTF" target="_blank">WHUCTF</a>
+                  </li>
+          
+      </ul>
+    </div>
+     
 
           
 
