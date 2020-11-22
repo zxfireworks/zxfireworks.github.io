@@ -1829,7 +1829,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffdb74;
+  background: #5417cc;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3010,6 +3010,6 @@ body {
 .header-inner {
   opacity: 1;
 }
-.vcopy.txt-right {
+.vpower .txt-right {
   display: none;
 }
