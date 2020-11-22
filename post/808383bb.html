@@ -92,12 +92,12 @@
 
 
 
-<meta name="description" content="最近计算机网络课刚好学到了ARP协议，就借此机会初步探究一下ARP欺骗在实验之前先了解一下ARP相关知识">
+<meta name="description" content="最近计算机网络课刚好学到了ARP协议，就借此机会初步探究一下ARP欺骗在实验之前先了解一下ARP相关知识 0x00 什么是ARP协议&amp;emsp;&amp;emsp;ARP（Address Resolution Protocol，地址解析协议）是一个位于TCP&#x2F;IP协议栈中的网络层，负责将某个IP地址解析成对应的MAC地址。以太网（局域网）进行信息传输时，不是根据IP地址进行通信，因为IP地址是可变的，用于">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ARP欺骗">
 <meta property="og:url" content="http://www.zxfireworks.xyz/post/808383bb.html">
 <meta property="og:site_name" content="w1ndy">
-<meta property="og:description" content="最近计算机网络课刚好学到了ARP协议，就借此机会初步探究一下ARP欺骗在实验之前先了解一下ARP相关知识">
+<meta property="og:description" content="最近计算机网络课刚好学到了ARP协议，就借此机会初步探究一下ARP欺骗在实验之前先了解一下ARP相关知识 0x00 什么是ARP协议&amp;emsp;&amp;emsp;ARP（Address Resolution Protocol，地址解析协议）是一个位于TCP&#x2F;IP协议栈中的网络层，负责将某个IP地址解析成对应的MAC地址。以太网（局域网）进行信息传输时，不是根据IP地址进行通信，因为IP地址是可变的，用于">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ARP/1.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ARP/6.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ARP/2.jpg">
@@ -106,7 +106,7 @@
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ARP/5.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ARP/7.jpg">
 <meta property="article:published_time" content="2020-11-16T06:30:27.000Z">
-<meta property="article:modified_time" content="2020-11-22T12:03:43.947Z">
+<meta property="article:modified_time" content="2020-11-22T12:50:57.692Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ARP/1.jpg">
@@ -350,7 +350,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T20:03:43+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T20:50:57+08:00">
                 2020-11-22
               </time>
             
@@ -417,7 +417,6 @@
 
       
         <p>最近计算机网络课刚好学到了ARP协议，就借此机会初步探究一下ARP欺骗<br>在实验之前先了解一下ARP相关知识</p>
-<a id="more"></a>
 <h3 id="0x00-什么是ARP协议"><a href="#0x00-什么是ARP协议" class="headerlink" title="0x00 什么是ARP协议"></a>0x00 什么是ARP协议</h3><p>&emsp;&emsp;ARP（Address Resolution Protocol，地址解析协议）是一个位于TCP/IP协议栈中的网络层，负责将某个IP地址解析成对应的MAC地址。以太网（局域网）进行信息传输时，不是根据IP地址进行通信，因为IP地址是可变的，用于通信是不安全的。然而MAC地址是网卡的硬件地址，一般出厂后就具有唯一性。ARP协议就是将目标IP地址解析成MAC地址进行验证通信。</p>
 <h3 id="0x01-ARP通信过程"><a href="#0x01-ARP通信过程" class="headerlink" title="0x01 ARP通信过程"></a>0x01 ARP通信过程</h3><p>&emsp;&emsp;每台主机都会在自己的ARP高速缓存中建立一个映射表(生存时间10-20分钟)，用于表示IP地址到MAC地址的映射关系。<br>&emsp;&emsp;PC1想要和PC2通信，首先PC1会去自己的映射表中查询PC2的MAC地址，如果没查到，PC1就会在本局域网上广播发送一个ARP请求分组，分组主要内容为：我的IP地址是192.168.0.100,MAC地址是00-00-C0-15-AD-18,我想知道IP地址为192.168.0.101的主机(PC2)的MAC地址。<br>&emsp;&emsp;在本局域网上的所有主机都会收到该ARP请求分组，别的主机发现请求分组中要查询的IP和自己IP不一致，就会将该分组扔掉，当PC2发现请求分组中要查询的IP和自己一致时，就会收下该请求分组，并向PC1发送ARP响应分组，响应分组主要内容为：我的IP地址是192.168.0.101,MAC地址是08-00-2B-00-EE-0A。此处应注意，响应分组是单播，只会发给PC1，其它主机并不会接收到该分组。<br>PC1收到PC2的响应分组后，就会在其ARP高速缓存中写入PC2的IP地址到MAC地址的映射。</p>
 <h3 id="0x02-ARP协议安全漏洞"><a href="#0x02-ARP协议安全漏洞" class="headerlink" title="0x02 ARP协议安全漏洞"></a>0x02 ARP协议安全漏洞</h3><p>&emsp;&emsp;ARP欺骗的根源在于ARP应答处理机制，在ARP协议中规定，对于任何ARP应答都给予信任，没有主动被动确认机制（主动ARP指的是在主动发送ARP请求后在指定时间内收到ARP应答，在请求指定时间外学习的ARP应答都是被动的），因此为伪造ARP应答提供了可乘之机。欺骗者通过轮询各IP地址和MAC地址对应关系并无违规之处，协议规定了对于ARP请求要给予应答。<br>&emsp;&emsp;PC和网关被欺骗的直接根源在于被动学习了伪造的ARP应答，如何避免学习伪造ARP应答称为防止ARP欺骗的核心内容。<br>&emsp;&emsp;欺骗是分别针对网关和PC的，因为上网是双向流量，网关被欺骗下行数据无法发给PC，PC被欺骗上行数据无法发给网关，所以都会上不了网，上只有同时解决网关被欺骗和PC被欺骗，上网才能正常，有不少人误以为只在网关上防止就可以了，这是错误的。还很多时候有人采取重启网关的方式恢复上网，这是因为断电重启后PC、网关都要重新主动学习一次，主动学习是可以学习到正确的映射关系的，所以重启后上网恢复正常，但很有可能过了一段时间后又无法上网了，将网关断电并不是好解决方案。</p>
