@@ -343,8 +343,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-08-11T17:00:16+08:00">
-                2020-08-11
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T21:20:36+08:00">
+                2020-11-22
               </time>
             
           </span>
@@ -410,8 +410,11 @@
 
       
         
-          <p>做了很多道PHP反序列化的题目，还没遇到过这种，做完决定来总结一下<br><a href="https://zxfireworks.xyz/post/d3333ead.html" target="_blank" rel="noopener">PHP反序列化</a></p>
-<h3 id="利用-toString方法产生XSS"><a href="#利用-toString方法产生XSS" class="headerlink" title="利用__toString方法产生XSS"></a>利用__toString方法产生XSS</h3><p>下面分别对两种利用方法进行复现</p>
+          
+          做了很多道PHP反序列化的题目，还没遇到过这种，做完决定来总结一下PHP反序列化
+利用__toString方法产生XSS下面分别对两种利用方法进行复现0x00:Error(适用于PHP7版本)测试源码
+12345&lt;?php$a = $_GET['w1ndy'];$b = unserialize
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/post/7085eacc.html#more" rel="contents">
@@ -512,8 +515,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-08-06T20:21:42+08:00">
-                2020-08-06
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T21:21:59+08:00">
+                2020-11-22
               </time>
             
           </span>
@@ -579,8 +582,10 @@
 
       
         
-          <p>震网三代</p>
-<h3 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h3><p>windows 10<br>windwos RT 8.1<br>windows 8.1<br>windows 7<br>windows server 2016<br>windows server 2012 R2<br>windows server 2012<br>windows server 2008 R2<br>windows server 2008</p>
+          
+          震网三代
+影响版本windows 10windwos RT 8.1windows 8.1windows 7windows server 2016windows server 2012 R2windows server 2012windows server 2008 R2windows server 
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/post/d4ac486b.html#more" rel="contents">
@@ -681,8 +686,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-08-05T15:04:52+08:00">
-                2020-08-05
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T21:19:25+08:00">
+                2020-11-22
               </time>
             
           </span>
@@ -748,8 +753,10 @@
 
       
         
-          <p>最近刷题碰到了好几个考察XXE漏洞利用的，想着总结一下常用解题姿势</p>
-<h3 id="有回显"><a href="#有回显" class="headerlink" title="有回显"></a>有回显</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$dom</span> = new DOMDocument();</span><br><span class="line"><span class="variable">$dom</span>-&gt;loadXML(<span class="variable">$xmlfile</span>, LIBXML_NOENT | LIBXML_DTDLOAD); </span><br><span class="line"><span class="variable">$test</span> = simplexml_import_dom(<span class="variable">$dom</span>);</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$test</span>;</span><br><span class="line">highlight_file(__FILE__);</span><br></pre></td></tr></table></figure>
+          
+          最近刷题碰到了好几个考察XXE漏洞利用的，想着总结一下常用解题姿势
+有回显12345$dom = new DOMDocument();$dom-&gt;loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD); $test = simplexml_import
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/post/f7708bc5.html#more" rel="contents">
@@ -794,7 +801,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/">&lt;prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/3/">next&gt;</a>
+    <a class="extend prev" rel="prev" href="/">&lt;prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/">next&gt;</a>
   </nav>
 
 
@@ -844,7 +851,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

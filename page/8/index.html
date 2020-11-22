@@ -343,8 +343,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-02T23:21:02+08:00">
-                2020-07-02
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T21:23:22+08:00">
+                2020-11-22
               </time>
             
           </span>
@@ -410,8 +410,10 @@
 
       
         
-          <p>两个重要参数（php.ini文件中）<br>allow_url_fopen<br>allow_url_include<br>包含文件的内容只要符合PHP语法都能被当成php代码进行解析，无关后缀名</p>
-<h2 id="本地文件包含"><a href="#本地文件包含" class="headerlink" title="本地文件包含"></a>本地文件包含</h2><h3 id="配合日志文件"><a href="#配合日志文件" class="headerlink" title="配合日志文件"></a>配合日志文件</h3><p>?file=<?php @eval($_POST['shell'];)?><br>这条记录会被记录在日志文件中，但是被url编码了<br>用burpsuite抓包改回去就可以利用了</p>
+          
+          两个重要参数（php.ini文件中）allow_url_fopenallow_url_include包含文件的内容只要符合PHP语法都能被当成php代码进行解析，无关后缀名
+本地文件包含配合日志文件?file=这条记录会被记录在日志文件中，但是被url编码了用burpsuite抓包改回去就可以利用了
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/post/undefined.html#more" rel="contents">
@@ -512,8 +514,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T00:22:21+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T21:23:57+08:00">
+                2020-11-22
               </time>
             
           </span>
@@ -579,8 +581,11 @@
 
       
         
-          <h3 id="PHP2"><a href="#PHP2" class="headerlink" title="PHP2"></a>PHP2</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Can you anthenticate to this website?</span><br></pre></td></tr></table></figure>
-<p>扫目录没结果，index.php也没结果<br>访问index.phps</p>
+          
+          PHP21Can you anthenticate to this website?
+扫目录没结果，index.php也没结果访问index.phps
+12345678910111213&lt;?phpif("admin"===$_GET[id]) &#123;  echo("&lt;p&gt;no
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/post/undefined.html#more" rel="contents">
@@ -681,8 +686,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-25T13:19:10+08:00">
-                2020-04-25
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T21:22:29+08:00">
+                2020-11-22
               </time>
             
           </span>
@@ -748,8 +753,10 @@
 
       
         
-          <h3 id="备份是个好习惯"><a href="#备份是个好习惯" class="headerlink" title="备份是个好习惯"></a>备份是个好习惯</h3><p>题目提到备份文件，即index.php.bak<br>访问一下，下载下来后</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">/**</span><br><span class="line"> * Created by PhpStorm.</span><br><span class="line"> * User: Norse</span><br><span class="line"> * Date: 2017/8/6</span><br><span class="line"> * Time: 20:22</span><br><span class="line">*/</span><br><span class="line">include_once <span class="string">"flag.php"</span>;</span><br><span class="line">ini_set(<span class="string">"display_errors"</span>, 0);</span><br><span class="line"><span class="variable">$str</span> = strstr(<span class="variable">$_SERVER</span>[<span class="string">'REQUEST_URI'</span>], <span class="string">'?'</span>);</span><br><span class="line"><span class="variable">$str</span> = substr(<span class="variable">$str</span>,1);</span><br><span class="line"><span class="variable">$str</span> = str_replace(<span class="string">'key'</span>,<span class="string">''</span>,<span class="variable">$str</span>);</span><br><span class="line">parse_str(<span class="variable">$str</span>);</span><br><span class="line"><span class="built_in">echo</span> md5(<span class="variable">$key1</span>);</span><br><span class="line"><span class="built_in">echo</span> md5(<span class="variable">$key2</span>);</span><br><span class="line"><span class="keyword">if</span>(md5(<span class="variable">$key1</span>) == md5(<span class="variable">$key2</span>) &amp;&amp; <span class="variable">$key1</span> !== <span class="variable">$key2</span>)&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>.<span class="string">"取得flag"</span>;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+          
+          备份是个好习惯题目提到备份文件，即index.php.bak访问一下，下载下来后
+12345678910111213141516171819&lt;?php/** * Created by PhpStorm. * User: Norse * Date: 2017/8/6 * Time: 20:22*
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/post/undefined.html#more" rel="contents">
@@ -794,7 +801,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/">&lt;prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/9/">next&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/7/">&lt;prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/9/">next&gt;</a>
   </nav>
 
 
@@ -844,7 +851,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

