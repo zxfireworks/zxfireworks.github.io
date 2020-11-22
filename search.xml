@@ -20,7 +20,7 @@
 <h3 id="ARP攻击防御"><a href="#ARP攻击防御" class="headerlink" title="ARP攻击防御"></a>ARP攻击防御</h3><p>想要避免被ARP欺骗，即不能被随便修改自己的映射表，可以将网关的MAC地址和IP地址绑定，这样攻击者人就无法欺骗主机，即无法达到修改映射表的目的了。</p>
 ]]></content>
       <categories>
-        <category>漏洞复现</category>
+        <category>局域网安全</category>
       </categories>
   </entry>
   <entry>
@@ -43,7 +43,7 @@
 <h3 id="DNS劫持防御"><a href="#DNS劫持防御" class="headerlink" title="DNS劫持防御"></a>DNS劫持防御</h3><p>尽量使用公共DNS服务器<br>定期检查DN设置是否已修改<br>使用复杂的密码重置路由器的默认密码，即不要使用弱口令<br>使用DNS注册器时使用双因素身份验证，及时修补路由器漏洞<br>远离不受信任的网站，避免在此类网站上下载文件<br>如果已被感染，建议删除HOSTS文件的内容并重置Hosts文件</p>
 ]]></content>
       <categories>
-        <category>漏洞复现</category>
+        <category>局域网安全</category>
       </categories>
   </entry>
   <entry>
