@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="DNS(Domain Name Server，域名服务器)是进行域名(domain name)和与之相对应的IP地址 (IP address)转换的服务器。DNS中保存了一张域名和与之相对应的IP地址的表，以解析消息的域名。当我们在通过网址访问网站时，并不是根据网址中的域名来寻找要请求的服务器，而是会将域名解析为IP地址，根据IP地址来寻找对应服务器。">
+<meta name="description" content="&amp;emsp;&amp;emsp;DNS(Domain Name Server，域名服务器)是进行域名(domain name)和与之相对应的IP地址 (IP address)转换的服务器。DNS中保存了一张域名和与之相对应的IP地址的表，以解析消息的域名。当我们在通过网址访问网站时，并不是根据网址中的域名来寻找要请求的服务器，而是会将域名解析为IP地址，根据IP地址来寻找对应服务器。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DNS劫持">
 <meta property="og:url" content="http://www.zxfireworks.xyz/post/cc0e11b5.html">
 <meta property="og:site_name" content="w1ndy">
-<meta property="og:description" content="DNS(Domain Name Server，域名服务器)是进行域名(domain name)和与之相对应的IP地址 (IP address)转换的服务器。DNS中保存了一张域名和与之相对应的IP地址的表，以解析消息的域名。当我们在通过网址访问网站时，并不是根据网址中的域名来寻找要请求的服务器，而是会将域名解析为IP地址，根据IP地址来寻找对应服务器。">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;DNS(Domain Name Server，域名服务器)是进行域名(domain name)和与之相对应的IP地址 (IP address)转换的服务器。DNS中保存了一张域名和与之相对应的IP地址的表，以解析消息的域名。当我们在通过网址访问网站时，并不是根据网址中的域名来寻找要请求的服务器，而是会将域名解析为IP地址，根据IP地址来寻找对应服务器。">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/DNS/1.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/DNS/3.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/DNS/2.jpg">
 <meta property="article:published_time" content="2020-11-16T06:30:14.000Z">
-<meta property="article:modified_time" content="2020-11-22T11:42:38.984Z">
+<meta property="article:modified_time" content="2020-11-22T12:01:35.138Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/DNS/1.jpg">
@@ -346,7 +346,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T19:42:38+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T20:01:35+08:00">
                 2020-11-22
               </time>
             
@@ -402,10 +402,10 @@
       
 
       
-        <p>DNS(Domain Name Server，域名服务器)是进行域名(domain name)和与之相对应的IP地址 (IP address)转换的服务器。DNS中保存了一张域名和与之相对应的IP地址的表，以解析消息的域名。<br>当我们在通过网址访问网站时，并不是根据网址中的域名来寻找要请求的服务器，而是会将域名解析为IP地址，根据IP地址来寻找对应服务器。</p>
+        <p>&emsp;&emsp;DNS(Domain Name Server，域名服务器)是进行域名(domain name)和与之相对应的IP地址 (IP address)转换的服务器。DNS中保存了一张域名和与之相对应的IP地址的表，以解析消息的域名。<br>当我们在通过网址访问网站时，并不是根据网址中的域名来寻找要请求的服务器，而是会将域名解析为IP地址，根据IP地址来寻找对应服务器。</p>
 <a id="more"></a>
-<h3 id="0x00-访问网站流程"><a href="#0x00-访问网站流程" class="headerlink" title="0x00 访问网站流程"></a>0x00 访问网站流程</h3><p>在浏览器地址栏输入一个网址时，计算机就会带着该网址中的域名部分去本地计算机的hosts文件中查询该域名对应的IP,如果找到了，则直接访问该IP,如果没找到，则进一步去远程的DNS服务器上找对应域名的IP,找到后访问该IP.</p>
-<h3 id="0x01-DNS劫持原理"><a href="#0x01-DNS劫持原理" class="headerlink" title="0x01 DNS劫持原理"></a>0x01 DNS劫持原理</h3><p>攻击者控制了你的网关或者冒充了你的网关(路由器、交换机、ISP),即先进行了ARP欺骗。当你发送了一个查找域名的IP的请求时，被攻击者拦截，并且返回给你了一个攻击者指定网站的IP,你的浏览器机会把这个IP当作你请求的域名的IP,这时你看到的页面就是攻击者想让你看到的那个页面，常用于钓鱼网站。</p>
+<h3 id="0x00-访问网站流程"><a href="#0x00-访问网站流程" class="headerlink" title="0x00 访问网站流程"></a>0x00 访问网站流程</h3><p>&emsp;&emsp;在浏览器地址栏输入一个网址时，计算机就会带着该网址中的域名部分去本地计算机的hosts文件中查询该域名对应的IP,如果找到了，则直接访问该IP,如果没找到，则进一步去远程的DNS服务器上找对应域名的IP,找到后访问该IP.</p>
+<h3 id="0x01-DNS劫持原理"><a href="#0x01-DNS劫持原理" class="headerlink" title="0x01 DNS劫持原理"></a>0x01 DNS劫持原理</h3><p>&emsp;&emsp;攻击者控制了你的网关或者冒充了你的网关(路由器、交换机、ISP),即先进行了ARP欺骗。当你发送了一个查找域名的IP的请求时，被攻击者拦截，并且返回给你了一个攻击者指定网站的IP,你的浏览器机会把这个IP当作你请求的域名的IP,这时你看到的页面就是攻击者想让你看到的那个页面，常用于钓鱼网站。</p>
 <h3 id="0x02-DNS劫持实验"><a href="#0x02-DNS劫持实验" class="headerlink" title="0x02 DNS劫持实验"></a>0x02 DNS劫持实验</h3><h4 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h4><p>攻击机：kali    IP地址：192.168.0.108<br>受害机：Windows10 IP地址：192.168.0.109<br>服务器：Windows+Phpstudy搭建测试网站 IP地址：192.168.0.101<br>网关：192.168.0.1<br>工具：Ettercap</p>
 <p>攻击前ping百度<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/DNS/1.jpg" alt=""><br>在kali中起一个Apache服务作为钓鱼网站</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service apache2 start</span><br></pre></td></tr></table></figure>
@@ -416,7 +416,7 @@
 <p>发起攻击</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ettercap -Tq -i eth0 -M arp:remote -P dns_spoof /192.168.0.109// /192.168.0.1//</span><br></pre></td></tr></table></figure>
 <p>受害者访问新浪网<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/DNS/3.jpg" alt=""><br>受害者ping百度<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/DNS/2.jpg" alt=""><br>攻击成功，实验到此结束</p>
-<h3 id="DNS劫持防御"><a href="#DNS劫持防御" class="headerlink" title="DNS劫持防御"></a>DNS劫持防御</h3><p>尽量使用公共DNS服务器<br>定期检查DN设置是否已修改<br>使用复杂的密码重置路由器的默认密码，即不要使用弱口令<br>使用DNS注册器时使用双因素身份验证，及时修补路由器漏洞<br>远离不受信任的网站，避免在此类网站上下载文件<br>如果已被感染，建议删除HOSTS文件的内容并重置Hosts文件</p>
+<h3 id="0x03-DNS劫持防御"><a href="#0x03-DNS劫持防御" class="headerlink" title="0x03 DNS劫持防御"></a>0x03 DNS劫持防御</h3><p>尽量使用公共DNS服务器<br>定期检查DN设置是否已修改<br>使用复杂的密码重置路由器的默认密码，即不要使用弱口令<br>使用DNS注册器时使用双因素身份验证，及时修补路由器漏洞<br>远离不受信任的网站，避免在此类网站上下载文件<br>如果已被感染，建议删除HOSTS文件的内容并重置Hosts文件</p>
 
       
     </div>
@@ -580,7 +580,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-访问网站流程"><span class="nav-text">0x00 访问网站流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-DNS劫持原理"><span class="nav-text">0x01 DNS劫持原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-DNS劫持实验"><span class="nav-text">0x02 DNS劫持实验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实验环境"><span class="nav-text">实验环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kali进行攻击"><span class="nav-text">kali进行攻击</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS劫持防御"><span class="nav-text">DNS劫持防御</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-访问网站流程"><span class="nav-text">0x00 访问网站流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-DNS劫持原理"><span class="nav-text">0x01 DNS劫持原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-DNS劫持实验"><span class="nav-text">0x02 DNS劫持实验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实验环境"><span class="nav-text">实验环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kali进行攻击"><span class="nav-text">kali进行攻击</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-DNS劫持防御"><span class="nav-text">0x03 DNS劫持防御</span></a></li></ol></div>
             
 
           </div>
