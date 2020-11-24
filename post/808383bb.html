@@ -105,8 +105,9 @@
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ARP/3.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ARP/5.jpg">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ARP/7.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/test/raw/master/Pic/1.png">
 <meta property="article:published_time" content="2020-11-16T06:30:27.000Z">
-<meta property="article:modified_time" content="2020-11-22T12:50:57.692Z">
+<meta property="article:modified_time" content="2020-11-24T09:33:33.598Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ARP/1.jpg">
@@ -350,8 +351,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-11-22T20:50:57+08:00">
-                2020-11-22
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-24T17:33:33+08:00">
+                2020-11-24
               </time>
             
           </span>
@@ -429,7 +430,7 @@
 <p>再次测试网络情况<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ARP/5.jpg" alt=""></p>
 <p>停止攻击等待一段时间后，查询受害者的映射表<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ARP/7.jpg" alt=""><br>映射表恢复正常，网络正常</p>
 <h3 id="0x05-ARP攻击防御"><a href="#0x05-ARP攻击防御" class="headerlink" title="0x05 ARP攻击防御"></a>0x05 ARP攻击防御</h3><h4 id="网关防御"><a href="#网关防御" class="headerlink" title="网关防御"></a>网关防御</h4><p>&emsp;&emsp;授权ARP，授权ARP的原理是摒弃ARP，而是通过DHCP方式来学习各个IP地址和MAC地址的映射关系，端口启动授权ARP后，ARP学习功能自动关闭。其优点是部署方便，只要网关LAN口启动DHCP服务和授权ARP即可，缺点是所有内网PC必须采用DHCP方式获取地址，否则无法上网，对于地址静态设置的内部服务器就不方便了。<br>&emsp;&emsp;静态ARP，先通过主动请求或者手动检查每一台PC的IP、MAC地址的映射，即获得一份正确的映射列表，然后通过命令在网关中逐一添加表项，如果收集完整可以在LAN口中关闭ARP学习功能，达到更好效果。优点是可以支持内部PC手工配置地址如内部服务器，缺点也是很明显的，收集工作比较繁杂（华三网关支持自主扫描功能可以简化该工作），PC地址修改后表项失效（因此无法支持DHCP模式），新增加PC后需要添加新的表项。</p>
-<h4 id="PC防御"><a href="#PC防御" class="headerlink" title="PC防御"></a>PC防御</h4><p>&emsp;&emsp;PC的任务是访问一些常用地址，如网关，内部服务器，那么PC上也配置这些常用地址的静态ARR就能防止平常上网服务中断，PC有一个缺点是配置静态ARP后无法保存，重启后需要重新配置。注：window PC通过命令行中arp –s 192.168.0.1 00-01-00-01-00-01方式进行静态绑定。</p>
+<h4 id="PC防御"><a href="#PC防御" class="headerlink" title="PC防御"></a>PC防御</h4><p>&emsp;&emsp;PC的任务是访问一些常用地址，如网关，内部服务器，那么PC上也配置这些常用地址的静态ARR就能防止平常上网服务中断，PC有一个缺点是配置静态ARP后无法保存，重启后需要重新配置。注：window PC通过命令行中arp –s 192.168.0.1 00-01-00-01-00-01方式进行静态绑定。<br><img src="https://gitee.com/zxfireworks/test/raw/master/Pic/1.png" alt=""></p>
 
       
     </div>
