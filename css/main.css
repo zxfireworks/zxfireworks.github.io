@@ -1829,7 +1829,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #fcbe3e;
+  background: #93ac87;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3037,4 +3037,5 @@ body {
 }
 .beian {
   text-decoration: none;
+  color: #555;
 }
