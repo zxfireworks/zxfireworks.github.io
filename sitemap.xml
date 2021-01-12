@@ -135,13 +135,6 @@
   </url>
   
   <url>
-    <loc>http://www.zxfireworks.xyz/post/abb54922.html</loc>
-    
-    <lastmod>2020-11-24</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.zxfireworks.xyz/post/cf64b99a.html</loc>
     
     <lastmod>2020-11-24</lastmod>
@@ -279,14 +272,14 @@
 
   
   <url>
-    <loc>http://www.zxfireworks.xyz/categories/CTF-Web-WriteUp/</loc>
+    <loc>http://www.zxfireworks.xyz/categories/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%AE%89%E5%85%A8/</loc>
     <lastmod>2021-01-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://www.zxfireworks.xyz/categories/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%AE%89%E5%85%A8/</loc>
+    <loc>http://www.zxfireworks.xyz/categories/CTF-Web-WriteUp/</loc>
     <lastmod>2021-01-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -315,13 +308,6 @@
   
   <url>
     <loc>http://www.zxfireworks.xyz/categories/Docker/</loc>
-    <lastmod>2021-01-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.zxfireworks.xyz/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2021-01-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
