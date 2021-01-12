@@ -1,70 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>网络安全技术及应用</title>
-    <url>/post/6f2afbf7.html</url>
-    <content><![CDATA[<p>本文仅记录了作者需要的内容</p>
-<h3 id="Part0"><a href="#Part0" class="headerlink" title="Part0"></a>Part0</h3><ul>
-<li>什么是网络安全及五个维度<br>网络安全指利用网络技术、管理和控制等措施，保证网络系统和信息的<strong>保密性、完整性、可用性、可控性和可审查性</strong>受到保护。</li>
-<li>网络安全涉及的内容<br>实体安全、系统安全、运行安全、应用安全、管理安全<br>网络安全包括网络系统的安全和网络信息的安全</li>
-<li>网络安全保障<br>网络安全策略、网络安全政策和标准、网络安全管理、网络安全运作、网络安全技术</li>
-<li>网络加密方法<br>链路加密、结点对结点加密、端对端加密</li>
-<li>数据存储加密方法<br>利用系统本身的加密功能加密、密码加密法、通过密钥加密</li>
-<li>数据备份方式<br>全量备份、增量备份、差异备份</li>
-<li>系统恢复<br>断开网络、备份、入侵分析</li>
-<li>嗅探器功能</li>
-<li>计算机病毒主要特征<br>传播性、隐蔽性、潜伏性、触发及控制性、影响破坏性、多态及不可预见性<h3 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h3></li>
-<li>黑客攻击的几个过程</li>
-</ul>
-<ol>
-<li>隐藏IP：隐藏黑客IP，即隐藏黑客计算机真正的地理位置不被发现</li>
-<li>踩点扫描：对目标进行信息搜集，通过扫描工具寻找目标存在的漏洞</li>
-<li>获得控制权：获取目标的管理权限</li>
-<li>种植后门：利用目标主机程序漏洞进入系统后安装后门程序，以便不被发现的再次进入系统</li>
-<li>隐身退出：入侵完毕后清除登录日志和系统日志</li>
-</ol>
-<ul>
-<li>VPN实现技术及技术特点<br>VPN：虚拟专用网络，利用Internet等公共网络基础设施，通过隧道技术，为用户提供的与专用网络具有相同通信功能的安全数据通道</li>
-</ul>
-<ol>
-<li>实现技术：隧道技术、加解密技术、密钥管理技术身份认证技术</li>
-<li>技术特点：安全性高、费用低廉、管理便利、灵活性强、服务质量佳</li>
-</ol>
-<ul>
-<li>防火墙</li>
-</ul>
-<ol>
-<li>防火墙：位于多个网络之间，通过执行访问控制策略保护网络安全的系统</li>
-<li>部署位置：网络边界</li>
-<li>功能：建立一个集中的监视器、隔绝内外网络，保护内部网络、强化网络安全策略、有效记录和审计内外网络之间的活动</li>
-<li>防御SYN Flood攻击<br>应用代理型：客户端想要与服务器建立TCP连接，需要先与代理防火墙进行三次握手，完成后再由防火墙与服务器进行三次握手，完成后再进行一个TCP连接的三次握手。显然所有报文都通过防火墙转发，未同防火墙建立TCP连接的就无法与服务器建立连接，起到了隔离保护的作用。<br>包过滤型：工作于IP层或IP层之下，对于外来的数据报文，它起到一个过滤的作用。当数据包合法时，它就直接转发给服务器，起到的是转发作用。<br>除了上面两种，还有三种防护方式：SYN网关、被动式SYN网关、SYN中继</li>
-</ol>
-<ul>
-<li>网络中物理层安全防护<br>保护网络设备、设施及其他媒体免遭地震、水灾、火灾、有害气体和其他环境事故破坏<br>5防：防火、防盗、防静电、防雷击、防电磁泄漏</li>
-<li>计算机病毒及其危害<br>计算机病毒：编制或者在计算机程序中插入破坏计算机功能或毁坏数据，影响计算机使用，并能够自我复制的一组计算机指令或者程序代码</li>
-</ul>
-<ol>
-<li>破坏系统、文件和数据</li>
-<li>窃取机密文件和信息</li>
-<li>造成网络堵塞和瘫痪</li>
-<li>消耗内存、磁盘空间和系统资源</li>
-<li>计算机运行缓慢</li>
-<li>对用户造成心理压力</li>
-</ol>
-<ul>
-<li>介绍一种病毒</li>
-<li>拖库撞库<br>拖库：黑客盗取了网站的数据库<br>撞库：黑客用拖库获得的用户名和密码在其它网站批量尝试登陆，进而盗取更有价值的东西</li>
-<li>5G安全问题<br>低时延、高带宽、高可靠性<h3 id="Part2"><a href="#Part2" class="headerlink" title="Part2"></a>Part2</h3></li>
-<li>RSA<br>已知p,q<br>计算欧拉函数φ(n) = (p-1)(q-1)<br>选择一个e,满足e∈(1,φ(n))且(e,φ(n))=1,这样得到了公钥(e,n)<br>e*d ≡ 1 mod(φ(n))，得到私钥(d,n)<br>假设明文为m,密文为c<br>加密过程：c = m^e mod(n)<br>解密过程：m = c^d mod(n)</li>
-<li>数字签名及签名验证过程<br>A向B发送消息m</li>
-</ul>
-<ol>
-<li>A对消息m进行hash运算得到H(m)A,并用自己的私钥PrA对H(m)A进行加密得到签名，并将签名附在消息m后面，然后一并发给B</li>
-<li>B收到A发来的数据后，先将签名分离出来，然后对收到的消息使用与A相同的hash函数进行运算得到H(m)B,利用A的公钥PuA将A的签名解密得到H(m)A,将H(m)A与H(m)B比较，从而验证该签名的合法性</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>ARP欺骗</title>
     <url>/post/808383bb.html</url>
     <content><![CDATA[<p>最近计算机网络课刚好学到了ARP协议，就借此机会初步探究一下ARP欺骗<br>在实验之前先了解一下ARP相关知识</p>
@@ -390,27 +326,6 @@
 ]]></content>
       <categories>
         <category>CTF-Web</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>现代密码学期末复习</title>
-    <url>/post/856fec06.html</url>
-    <content><![CDATA[<h3 id="第一章-引言"><a href="#第一章-引言" class="headerlink" title="第一章 (引言)"></a>第一章 (引言)</h3><h4 id="清楚信息安全专业学习密码学的原因"><a href="#清楚信息安全专业学习密码学的原因" class="headerlink" title="清楚信息安全专业学习密码学的原因"></a>清楚信息安全专业学习密码学的原因</h4><p>0、密码技术是信息安全的核心技术<br>1、密码技术已经广泛应用于通信保密、信息系统安全、网络安全、云计算安全、区块链安全等多个信息安全的重要领域中</p>
-<h3 id="第二章-流密码"><a href="#第二章-流密码" class="headerlink" title="第二章 (流密码)"></a>第二章 (流密码)</h3><h4 id="掌握流密码的基本思想"><a href="#掌握流密码的基本思想" class="headerlink" title="掌握流密码的基本思想"></a>掌握流密码的基本思想</h4><p>流密码的基本思想是利用密钥k产生一个密钥流z=z0z1…,并使用如下规则对明文串x=x0x1x2…加密：y=y0y1y2…=Ez0(x0)Ez1(x1)Ez2(x2)…。密钥流由密钥流发生器产生：zi=f(k,σi),这里σi是加密器中的记忆元件(存储器)在时刻i的状态,f是由密钥k和σi产生的函数</p>
-<h3 id="第三章-分组密码"><a href="#第三章-分组密码" class="headerlink" title="第三章 (分组密码)"></a>第三章 (分组密码)</h3><h4 id="理解分组密码的CBC工作模式，能够画出该模式的加密示意图"><a href="#理解分组密码的CBC工作模式，能够画出该模式的加密示意图" class="headerlink" title="理解分组密码的CBC工作模式，能够画出该模式的加密示意图"></a>理解分组密码的CBC工作模式，能够画出该模式的加密示意图</h4><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ClassNote/CBC.jpg" alt=""></p>
-<h4 id="能够根据给定的一个字节a-给定的AES仿射变换-和不可约多项式m-x-，求出字节a在AES中S盒字节代替变换的结果"><a href="#能够根据给定的一个字节a-给定的AES仿射变换-和不可约多项式m-x-，求出字节a在AES中S盒字节代替变换的结果" class="headerlink" title="能够根据给定的一个字节a,给定的AES仿射变换(*)和不可约多项式m(x)，求出字节a在AES中S盒字节代替变换的结果"></a>能够根据给定的一个字节a,给定的AES仿射变换(*)和不可约多项式m(x)，求出字节a在AES中S盒字节代替变换的结果</h4><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ClassNote/Sbox.jpg" alt=""><br>考试中求逆时，不需要使用欧几里得算法，直接一个一个试就行了(老师说给的逆很容易试出来)</p>
-<h3 id="第四章-公钥密码"><a href="#第四章-公钥密码" class="headerlink" title="第四章 (公钥密码)"></a>第四章 (公钥密码)</h3><h4 id="能够根据RSA算法进行加密与解密计算"><a href="#能够根据RSA算法进行加密与解密计算" class="headerlink" title="能够根据RSA算法进行加密与解密计算"></a>能够根据RSA算法进行加密与解密计算</h4><p>选两个保密的大素数p和q<br>计算n=p<em>q，φ(n)=(p-1)(q-1),其中φ(n)是n的欧拉函数值<br>选一整数e，满足1 &lt; e &lt; φ(n)，且gcd(φ(n),e)=1，这里的(e,n)就是公钥<br>计算d，满足d</em>e ≡ 1 mod(φ(n))，这里的(d,n)就是私钥<br>加密过程：对于明文m，c ≡ (m^e) mod(n)，c就是m加密后的密文<br>解密过程：m ≡ (c^d) mod(n)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">a*b(mod q)=a(mod q) * b(mod q)</span><br></pre></td></tr></table></figure>
-<h3 id="第五章-数字签名"><a href="#第五章-数字签名" class="headerlink" title="第五章 (数字签名)"></a>第五章 (数字签名)</h3><h4 id="能够使用Elgamal数字签名体制，进行签名与验证计算"><a href="#能够使用Elgamal数字签名体制，进行签名与验证计算" class="headerlink" title="能够使用Elgamal数字签名体制，进行签名与验证计算"></a>能够使用Elgamal数字签名体制，进行签名与验证计算</h4><p>选取大素数p，生成元g，p、g公开<br>随机选取整数x，1 ≤ x ≤ p-2，计算y ≡ g^x mod(p)<br>公钥为y，私钥为x<br>签名算法：对于消息m，随机选取整数k，1 ≤ k ≤ p-2，计算r=g^k mod(p)，s=(H(m)-x<em>r)k^(-1) mod(p-1)<br>注意：这里的k^-1是k的逆，不是倒数,即k*k^-1 ≡ 1 mod(p-1)<br>m的签名为(r,s)，其中H为Hash函数，老师说考试直接用m来代替H(m)进行计算<br>验证算法：接收到消息m和签名(r,m)后，验证(y^r)</em>(r^s) ≡ g^H(m) mod(p)<br>如果成立则签名有效，反之签名无效</p>
-<h3 id="第六章-哈希函数"><a href="#第六章-哈希函数" class="headerlink" title="第六章 (哈希函数)"></a>第六章 (哈希函数)</h3><h4 id="理解弱单向函数与强单向函数的定义"><a href="#理解弱单向函数与强单向函数的定义" class="headerlink" title="理解弱单向函数与强单向函数的定义"></a>理解弱单向函数与强单向函数的定义</h4><p>单向函数：已知h,求H(x)=h的x在计算上是不可行的，这一性质称为函数的单向性<br>弱单向函数：已知x,找出y(y≠x)使得H(y)=H(x)在计算上是不可行的<br>强单向函数：找出任意两个不同的输入x、y,使得H(y)=H(x)在计算上是不可行的</p>
-<h3 id="第八章-密钥分配与密钥管理"><a href="#第八章-密钥分配与密钥管理" class="headerlink" title="第八章 (密钥分配与密钥管理)"></a>第八章 (密钥分配与密钥管理)</h3><h4 id="能够基于D-H密钥交换协议计算生成通信双方的共享密钥"><a href="#能够基于D-H密钥交换协议计算生成通信双方的共享密钥" class="headerlink" title="能够基于D-H密钥交换协议计算生成通信双方的共享密钥"></a>能够基于D-H密钥交换协议计算生成通信双方的共享密钥</h4><p><a href="https://zxfireworks.xyz/2020/02/26/%E5%AF%86%E7%A0%81%E5%AD%A6/" target="_blank" rel="noopener">https://zxfireworks.xyz/2020/02/26/%E5%AF%86%E7%A0%81%E5%AD%A6/</a></p>
-<h3 id="第九章-密码协议"><a href="#第九章-密码协议" class="headerlink" title="第九章 (密码协议)"></a>第九章 (密码协议)</h3><h4 id="了解密码协议的定义"><a href="#了解密码协议的定义" class="headerlink" title="了解密码协议的定义"></a>了解密码协议的定义</h4><p>密码协议是指利用密码工具实现与安全相关的协议或函数的计算</p>
-<h3 id="第十章-可证明安全"><a href="#第十章-可证明安全" class="headerlink" title="第十章 (可证明安全)"></a>第十章 (可证明安全)</h3><h4 id="了解可证明安全的思想"><a href="#了解可证明安全的思想" class="headerlink" title="了解可证明安全的思想"></a>了解可证明安全的思想</h4><p>利用概率论和计算复杂性理论，把对密码系统的安全性归约到已知的数学困难问题上。这个评估方法只是说明了这个密码算法的安全性与某个困难问题相关，没有完全证明问题本身的安全性，并给出它们的等价性证明</p>
-<h3 id="第十一章-密码学新方向"><a href="#第十一章-密码学新方向" class="headerlink" title="第十一章 (密码学新方向)"></a>第十一章 (密码学新方向)</h3><h4 id="能够知道5种密码学新方向或新技术"><a href="#能够知道5种密码学新方向或新技术" class="headerlink" title="能够知道5种密码学新方向或新技术"></a>能够知道5种密码学新方向或新技术</h4><p>0、身份基加密<br>1、属性基加密<br>2、全同态加密<br>3、后量子密码<br>4、DNA密码<br>5、混沌密码</p>
-<h3 id="综合"><a href="#综合" class="headerlink" title="综合"></a>综合</h3><h4 id="介绍一种安全应用场景，分析该安全场景应用了哪些密码技术，并简述如何保障了安全性"><a href="#介绍一种安全应用场景，分析该安全场景应用了哪些密码技术，并简述如何保障了安全性" class="headerlink" title="介绍一种安全应用场景，分析该安全场景应用了哪些密码技术，并简述如何保障了安全性"></a>介绍一种安全应用场景，分析该安全场景应用了哪些密码技术，并简述如何保障了安全性</h4><p>安全场景：银行系统中基于PKI的USB Key身份认证系统<br>密码技术：公钥密码体制、身份认证<br>基于PKI的”数字证书认证方式”可以有效地保证用户的身份安全和数据传输安全。在USBKey内用私钥将原文加密，与原文和数字证书一起打包通过网络传输，服务器端接收到后还原出数字证书，利用公钥解密，结果与原文校验，确定用户合法性。而数字证书存储在USBKey中可以保障数字证书无法被复制，所有密钥运算在USBKey中实现，用户密钥不在计算机内存出现也不在网络中传播，只有USBKey的持有人才能够对数字证书进行操作</p>
-]]></content>
-      <categories>
-        <category>课程笔记</category>
       </categories>
   </entry>
   <entry>
@@ -1123,39 +1038,6 @@
 ]]></content>
       <categories>
         <category>Web安全攻防-渗透测试</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>信息安全数学基础</title>
-    <url>/post/5aada4e4.html</url>
-    <content><![CDATA[<h2 id="一次同余式求解"><a href="#一次同余式求解" class="headerlink" title="一次同余式求解"></a>一次同余式求解</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"ax ≡ b (mod m )"</span>)</span><br><span class="line">a=<span class="built_in">eval</span>(input(<span class="string">"请输入a:"</span>))</span><br><span class="line">b=<span class="built_in">eval</span>(input(<span class="string">"请输入b:"</span>))</span><br><span class="line">m=<span class="built_in">eval</span>(input(<span class="string">"请输入m:"</span>))</span><br><span class="line"><span class="comment"># 判断同余式是否有解(a,m)=1</span></span><br><span class="line">a1,b1=a,m</span><br><span class="line"><span class="keyword">while</span> True:</span><br><span class="line">    s=a1%b1  </span><br><span class="line">    <span class="keyword">if</span> s==0:</span><br><span class="line">        <span class="built_in">break</span></span><br><span class="line">    a1=b1     </span><br><span class="line">    b1=s</span><br><span class="line"><span class="comment">#求出ax ≡ 1 (mod m )特解 x' = SpecialAnswer (mod m )</span></span><br><span class="line"><span class="keyword">if</span>(b1==1):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(1,m):</span><br><span class="line">        <span class="keyword">if</span>((a*i)%m==1):</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"特解为x' ≡ &#123;&#125; (mod &#123;&#125; )"</span>.format(i,m))</span><br><span class="line">            SpecialAnswer=i</span><br><span class="line">            <span class="built_in">break</span></span><br><span class="line">    AllAnswer=(b*i)%m</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"同余式的所有解为x ≡ &#123;&#125;(mod &#123;&#125; )"</span>.format(AllAnswer,m))</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"同余式没有解！"</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="普通解法"><a href="#普通解法" class="headerlink" title="普通解法"></a>普通解法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">127 x ≡ 833 (mod 1012)</span><br><span class="line">①判断是否有解</span><br><span class="line">(127,1012)=1,则(127,1012)|833,则有解</span><br><span class="line">②求同余式127 x ≡ 1 (mod 1012)的特解(遍历1012的剩余系)</span><br><span class="line">x0<span class="string">'=255(mod 1012)</span></span><br><span class="line"><span class="string">③求原同余式的特解</span></span><br><span class="line"><span class="string">x0=833*x0'</span>≡907 (mod 1012)</span><br><span class="line">所有解：x≡907 (mod 1012)</span><br></pre></td></tr></table></figure>
-<h3 id="Euler定理解法"><a href="#Euler定理解法" class="headerlink" title="Euler定理解法"></a>Euler定理解法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">5  x≡ 3 (mod 14)</span><br><span class="line">判断是否满足Eluer定理：(5,14)=1,满足</span><br><span class="line">由Euler定理可得：5^ψ(14)≡1 (mod 14)</span><br><span class="line">则构造出了解：5*(5^(ψ(14)-1))*3≡ 3 (mod 14)</span><br><span class="line">则x=(5^(ψ(14)-1))*3≡9 (mod 14)</span><br></pre></td></tr></table></figure>
-<h3 id="转换为同余式方程组解法-中国剩余定理"><a href="#转换为同余式方程组解法-中国剩余定理" class="headerlink" title="转换为同余式方程组解法(中国剩余定理)"></a>转换为同余式方程组解法(中国剩余定理)</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">17 x ≡229 (mod 1540)</span><br><span class="line">分解1540=4*5*7*11</span><br><span class="line">原同余式方程可化为同余式方程组</span><br><span class="line">17 x ≡1 (mod 4)              x ≡1 (mod 4)     </span><br><span class="line">17 x ≡4 (mod 5)       ==&gt;    x ≡2 (mod 5)</span><br><span class="line">17 x ≡5 (mod 7)              x ≡4 (mod 7)</span><br><span class="line">17 x ≡9 (mod 11)             x ≡7 (mod 11)</span><br><span class="line">注：其中17 x ≡1 (mod 4)中的 1 是由229 mod 4得到的</span><br><span class="line">m1=1        m2=2        m3=4        m4=7</span><br><span class="line">M1=m2*m3*m4         M2=m1*m3*m4         M3=m1*m2*m4         M4=m1*m2*m3</span><br><span class="line">M1<span class="string">'*M1 ≡1 (mod m1)  ==&gt;  M1'</span>=1</span><br><span class="line">M2<span class="string">'*M2 ≡1 (mod m2)  ==&gt;  M2'</span>=2</span><br><span class="line">M3<span class="string">'*M3 ≡1 (MOD m3)  ==&gt;  M3'</span>=5</span><br><span class="line">M4<span class="string">'*M4 ≡1 (MOD m4)  ==&gt;  M4'</span>=7</span><br><span class="line">该同余式方程的解 x = b1*M1<span class="string">'*M1 + b2*M2'</span>*M2 + b3*M3<span class="string">'*M3 + b4*M4'</span>*M4 ≡557 (MOD 1540)</span><br></pre></td></tr></table></figure>
-<h2 id="最大公因数和最小公倍数"><a href="#最大公因数和最小公倍数" class="headerlink" title="最大公因数和最小公倍数"></a>最大公因数和最小公倍数</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"first integer &gt; second integer"</span>)</span><br><span class="line">str1=input(<span class="string">"input the first integer:"</span>)</span><br><span class="line">str2=input(<span class="string">"input the second integer:"</span>)</span><br><span class="line">x=int(str1) <span class="comment">#169</span></span><br><span class="line">y=int(str2) <span class="comment">#121</span></span><br><span class="line">a,b=x,y</span><br><span class="line"><span class="keyword">while</span> True:</span><br><span class="line">    s=x%y   <span class="comment">#48,25,23,2,1,0</span></span><br><span class="line">    <span class="keyword">if</span> s==0:</span><br><span class="line">        <span class="built_in">break</span></span><br><span class="line">    x=y     <span class="comment">#121,48,25,23,2</span></span><br><span class="line">    y=s     <span class="comment">#48,25,23,2,1</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"最大公因数是:"</span>,y)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"最小公倍数是：&#123;:.0f&#125;"</span>.format((a*b)/y))</span><br></pre></td></tr></table></figure>
-<h2 id="二次同余式与平方剩余"><a href="#二次同余式与平方剩余" class="headerlink" title="二次同余式与平方剩余"></a>二次同余式与平方剩余</h2><h3 id="求平方剩余-二次剩余"><a href="#求平方剩余-二次剩余" class="headerlink" title="求平方剩余(二次剩余)"></a>求平方剩余(二次剩余)</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">x^2 ≡ a (mod m),其中m是正整数，且(a,m)=1</span><br><span class="line">如果该同余式有解，则a就是模m的平方剩余，否则是平方非剩余(二次非剩余)</span><br><span class="line">求模 7 的平方剩余</span><br><span class="line">即满足x^2 ≡ a (mod 7)有解的a,x∈（7的剩余系）</span><br><span class="line">a           x</span><br><span class="line">1           1,6</span><br><span class="line">2           3,4</span><br><span class="line">3           无解</span><br><span class="line">4           2,5</span><br><span class="line">5           无解</span><br><span class="line">6           无解</span><br><span class="line">所以模7的平方剩余为1,2,4,平方非剩余为3,5,6</span><br></pre></td></tr></table></figure>
-<h3 id="求满足方程E：y-2-x-3-3x-1-mod-7-的所有点"><a href="#求满足方程E：y-2-x-3-3x-1-mod-7-的所有点" class="headerlink" title="求满足方程E：y^2 = x^3 - 3x + 1 (mod 7)的所有点"></a>求满足方程E：y^2 = x^3 - 3x + 1 (mod 7)的所有点</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">对x = 0,1,2,3,4,5,6分别求出y</span><br><span class="line">x=0             y^2≡1 (mod 7)               y≡1,6 (mod 7)</span><br><span class="line">x=1             y^2≡6 (mod 7)               无解</span><br><span class="line">x=2             y^2≡3 (mod 7)               无解</span><br><span class="line">x=3             y^2≡5 (mod 7)               无解</span><br><span class="line">x=4             y^2≡4 (mod 7)               y≡2,5 (mod 7)</span><br><span class="line">x=5             y^2≡6 (mod 7)               无解</span><br><span class="line">x=6             y^2≡5 (mod 7)               无解</span><br><span class="line">满足方程的点为(0,1),(0,6),(4,2),(4,5),共4个点</span><br></pre></td></tr></table></figure>
-<h3 id="求解同余式x-2-≡-39-mod-105-中国剩余定理"><a href="#求解同余式x-2-≡-39-mod-105-中国剩余定理" class="headerlink" title="求解同余式x^2 ≡ 39 (mod 105) (中国剩余定理)"></a>求解同余式x^2 ≡ 39 (mod 105) (中国剩余定理)</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">105=3*5*7</span><br><span class="line">化为方程组</span><br><span class="line">x^2 ≡ 0 (mod 3)             x = x1 ≡ 0 (mod 3)</span><br><span class="line">x^2 ≡ 4 (mod 5)     ==&gt;     x = x2 ≡ ±2 (mod 5)</span><br><span class="line">x^2 ≡ 4 (mod 7)             x = x3 ≡ ±2 (mod 7)</span><br><span class="line">b1=0        b2=±2       b3=±2</span><br><span class="line">m1=3        m2=5        m3=7</span><br><span class="line">M1=35       M2=21       M3=15</span><br><span class="line">M1<span class="string">'*M1 ≡ 1 (mod 3)          M1'</span>=2</span><br><span class="line">M2<span class="string">'*M2 ≡ 1 (mod 5)  ==&gt;     M2'</span>=1</span><br><span class="line">M3<span class="string">'*M3 ≡ 1 (MOD 7)          M3'</span>=1</span><br><span class="line">x=70*b1 + 21*b2 + 15*b3</span><br><span class="line">将b1,b2,b3带入</span><br><span class="line">x=70*0 + 21*2 + 15*2 ≡ 72 (mod 105)</span><br><span class="line">x=70*0 + 21*2 + 15*(-2) ≡ 12 (mod 105)</span><br><span class="line">x=70*0 + 21*(-2) + 15*2 = -12 ≡ 93 (mod 105)</span><br><span class="line">x=70*0 + 21*(-2) + 15*(-2) = -72 ≡ 33 (mod 105)</span><br></pre></td></tr></table></figure>
-<h2 id="模重复平计算法-b-n-mod-m"><a href="#模重复平计算法-b-n-mod-m" class="headerlink" title="模重复平计算法 b^n (mod m)"></a>模重复平计算法 b^n (mod m)</h2><p>312^13 (mod 667)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">设m=667,b=312,令a=1</span><br><span class="line">将13写成二进制：13=2^0 + 2^2 + 2^3 (1101)</span><br><span class="line">n0=1    ---     a0=a*(b^n0)≡312 (mod 667)        ---     b1≡b^2≡629 (mod 667)</span><br><span class="line">n1=0    ---     a1=a0*(b1^n1)≡312 (mod 667)         ---     b2≡b1^2≡110 (mod 667)</span><br><span class="line">n2=1    ---     a2=a1*(b2^n2)≡303 (mod 667)      ---     b3≡b2^2≡94 (mod 667)</span><br><span class="line">n3=1    ---     a3=a2*(b3^n3)≡468 (mod 667)      </span><br><span class="line">计算出312^13 ≡ 468 (mod 667)</span><br><span class="line">写成表格为</span><br><span class="line">i       ni      ai      bi</span><br><span class="line">0       1       312     312</span><br><span class="line">1       0       312     629</span><br><span class="line">2       1       303     110</span><br><span class="line">3       1       468     94</span><br></pre></td></tr></table></figure>
-<h2 id="欧拉判别条件"><a href="#欧拉判别条件" class="headerlink" title="欧拉判别条件"></a>欧拉判别条件</h2><p>x^2 ≡ a (mod p)<br>设p是奇素数，(a,p)=1<br>a是p的平方剩余充要条件：a^((p-1)/2) ≡ 1 (mod p)<br>a是p的平方非剩余充要条件：a^((p-1)/2) ≡ -1 (mod p)<br>当a时p的平方剩余时，该同余式恰有二解</p>
-<h3 id="判断137是否为模227平方剩余"><a href="#判断137是否为模227平方剩余" class="headerlink" title="判断137是否为模227平方剩余"></a>判断137是否为模227平方剩余</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">227是奇素数，且(137,227)=1</span><br><span class="line">根据欧拉判别条件,只需计算137^((227-1)/2) (mod 227)，即137^113 (mod 227)</span><br><span class="line">运用模重复平方计算法，设m=227,b=137,a=1</span><br><span class="line">将113化为二进制：113=2^0 + 2^4 + 2^5 + 2^6  (1110001)</span><br><span class="line">n0=1    ---     a0=a*(b^n0)≡137 (mod 227)       ---     b1=b^2≡155 (mod 227)</span><br><span class="line">n1=0    ---     a1=a0*(b1^n1)≡137 (mod 227)     ---     b2=b1^2≡190 (mod 227)</span><br><span class="line">n2=0    ---     a2=a1*(b2^n2)≡137 (mod 227)     ---     b3=b2^2≡7 (mod 227)</span><br><span class="line">n3=0    ---     a3=a2*(b3^n3)≡137 (mod 227)     ---     b4=b3^2≡49 (mod 227)</span><br><span class="line">n4=1    ---     a4=a3*(b4^n4)≡130 (mod 227)     ---     b5=b4^2≡131 (mod 227)</span><br><span class="line">n5=1    ---     a5=a4*(b5^n5)≡5 (mod 227)       ---     b6=b5^2≡136 (mod 227)</span><br><span class="line">n6=1    ---     a6=a5*(b6^n6)≡226 (mod 227)≡-1 (mod 227)</span><br><span class="line">所以137是227的平方非剩余</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">设p是奇素数，(a1,p)=1,(a2,p)=1</span><br><span class="line">如果a1,a2都是模p的平方剩余，则a1*a2是模p的平方剩余</span><br><span class="line">如果a1,a2都是模p的平方非剩余，则a1*a2是模p的平方剩余</span><br><span class="line">如果a1是模p的平方剩余，a2是模p的平方非剩余，则a1*a2是模p的平方非剩余</span><br></pre></td></tr></table></figure>
-<h2 id="模为奇素数的平方剩余与平方非剩余-判断是否有解"><a href="#模为奇素数的平方剩余与平方非剩余-判断是否有解" class="headerlink" title="模为奇素数的平方剩余与平方非剩余(判断是否有解)"></a>模为奇素数的平方剩余与平方非剩余(判断是否有解)</h2><p>p为奇素数，x^2 ≡ a (mod p),(a,p)=1</p>
-<h3 id="欧拉判别条件-1"><a href="#欧拉判别条件-1" class="headerlink" title="欧拉判别条件"></a>欧拉判别条件</h3><p>若a^((p-1)/2) ≡ 1 (mod p),则a是模p的平方剩余<br>若a^((p-1)/2) ≡ -1 (mod p),则a是模p的平方非剩余</p>
-<h3 id="勒让得符号"><a href="#勒让得符号" class="headerlink" title="勒让得符号"></a>勒让得符号</h3><p>(a/p)=1     —-        a是模p的平方剩余<br>(a/p)=-1    —-        a是模p的平方非剩余<br>(a/p)=0     —-        p|a<br>勒让得符号的性质<br>((a+p)/p)=(a/p)<br>(ab/p)=(a/p)(b/p)<br>若(a,p)=1,则(a^2/p)=1<br>若a ≡ b (mod p),则(a/p)=(b/p)<br>(-1/p)=1    —-        若p ≡ 1 (mod 4)<br>(-1/p)=-1   —-        若p ≡ 3 (mod 4)<br>高斯引理</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(a/p)=(-1)^m,其中m是a*1,a*2,...,a*((p-1)/2)中模p的最小正剩余大于p/2的个数</span><br></pre></td></tr></table></figure>
-<p>(2/p)=(-1)^((p^2-1)/8) = 1      若p ≡ ±1 (mod 8)<br>(2/p)=(-1)^((p^2-1)/8) = -1     若p ≡ ±3 (mod 8)</p>
-<p>求x^2 ≡ -2 (mod 67)解的个数<br>(-2/67)=(-1/67)(2/67)<br>其中 (-1/67)=-1,(2/67)=-1<br>所以(-2/67)=1<br>同余式有二解</p>
-<h3 id="二次互反律"><a href="#二次互反律" class="headerlink" title="二次互反律"></a>二次互反律</h3><p>若p,q都是互素奇素数，则(q/p)=<a href="p/q">(-1)^((p-1)/2)((q-1)/2</a></p>
-<p>求x^2 ≡ 7 (mod 227)解的个数<br>(7/227)=<a href="227/2">(-1)^((227-1)/2)((7-1)/2)</a>=(5/7)=<a href="7/5">(-1)^((7-1)/2)((5-1)/2)</a>=(2/5)=-1<br>无解</p>
-<h3 id="模p平方根"><a href="#模p平方根" class="headerlink" title="模p平方根"></a>模p平方根</h3><p>若p是形为4k+3的素数，如果同余式x^2 ≡ a (mod p)有解，则解为x= ±a^((p+1)/4) (mod p)</p>
-<h3 id="模m平方根"><a href="#模m平方根" class="headerlink" title="模m平方根"></a>模m平方根</h3><p>m为合数，x^2 ≡ a (mod m),(a,m)=1</p>
-<p>x^2 ≡ a (mod 2^α),(a,2)=1,α&gt;0<br>设α&gt;1,则同余式有解的必要条件是<br>1&gt;当α=2时，a ≡ 1 (mod 4)<br>2&gt;当α≥3时，a ≡ 1 (mod 8)<br>若1&gt;或2&gt;成立则有解，当α=2时，有2解，当α≥3时，有4解</p>
-<h3 id="x-2-y-2-p"><a href="#x-2-y-2-p" class="headerlink" title="x^2 + y^2 =p"></a>x^2 + y^2 =p</h3><p>设p是素数，则x^2 + y^2 =p有解的充分必要条件是 p=2 或 -1为模p的平方剩余，即p=2 或 p=4k+1</p>
-<h2 id="指数"><a href="#指数" class="headerlink" title="指数"></a>指数</h2>]]></content>
-      <categories>
-        <category>课程笔记</category>
       </categories>
   </entry>
   <entry>
