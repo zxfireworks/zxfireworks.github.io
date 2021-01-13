@@ -2,7 +2,7 @@ var OriginTitle = document.title;
 var titleTime;
 document.addEventListener('visibilitychange', function () {
     if (document.hidden) {
-        $('[rel="icon"]').attr('href', "/img/TEP.ico");
+        $('[rel="icon"]').attr('href', "http://www.zxfireworks.xyz/images/header.jpg");
         document.title = '╭(°A°`)╮ 页面崩溃啦 ~';
         clearTimeout(titleTime);
     }
