@@ -21,7 +21,11 @@
 <script type="math/tex; mode=display">x_i = \frac{x_i-\mu_i}{S_i}</script><p>其中μ<sub>i</sub>为均值，S<sub>i</sub>为标准差</p>
 <h3 id="正规方程-Normal-equation"><a href="#正规方程-Normal-equation" class="headerlink" title="正规方程(Normal equation)"></a>正规方程(Normal equation)</h3><p>正规方程可求出最优的θ值</p>
 <script type="math/tex; mode=display">\theta = (X^TX)^{-1}X^Ty</script><p>设有m个训练样本(x<sup>(1)</sup>,y<sup>(1)</sup>),⋯,(x<sup>(m)</sup>,y<sup>(m)</sup>)和n个特征变量</p>
-<script type="math/tex; mode=display">x^{(i)} = \begin{bmatrix} x{_0}^{(i)} \\ x{_1}^{(i)} \\ \vdots \\ x{_n}^{(i)} \end{bmatrix}</script><script type="math/tex; mode=display">X = \begin{bmatrix} (x^{(1)})^T \\ (x^{(2)})^T \\ \vdots \\ (x^{(m)})^T \end{bmatrix}</script><script type="math/tex; mode=display">y = \begin{bmatrix} y^{(1)} \\ y^{(2)} \\ \vdots \\ y^{(m)} \end{bmatrix}</script>]]></content>
+<script type="math/tex; mode=display">x^{(i)} = \begin{bmatrix} x{_0}^{(i)} \\ x{_1}^{(i)} \\ \vdots \\ x{_n}^{(i)} \end{bmatrix}</script><script type="math/tex; mode=display">X = \begin{bmatrix} (x^{(1)})^T \\ (x^{(2)})^T \\ \vdots \\ (x^{(m)})^T \end{bmatrix}</script><script type="math/tex; mode=display">y = \begin{bmatrix} y^{(1)} \\ y^{(2)} \\ \vdots \\ y^{(m)} \end{bmatrix}</script><h4 id="矩阵不可逆"><a href="#矩阵不可逆" class="headerlink" title="矩阵不可逆"></a>矩阵不可逆</h4><ul>
+<li>冗余特征<br>选取的某些特征线性相关</li>
+<li>特征过多(m ≤ n)<br>此时可选择去掉一些特征，或者使用正规化方法<h3 id="梯度下降法-VS-正规方程"><a href="#梯度下降法-VS-正规方程" class="headerlink" title="梯度下降法 VS 正规方程"></a>梯度下降法 VS 正规方程</h3>m个训练样本，n个特征变量<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ML/LinearRegression/GD_NE.jpg" alt=""></li>
+</ul>
+]]></content>
       <categories>
         <category>ML</category>
       </categories>
