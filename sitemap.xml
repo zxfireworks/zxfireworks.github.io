@@ -2,13 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.zxfireworks.xyz/post/8914263e.html</loc>
-    
-    <lastmod>2021-04-27</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.zxfireworks.xyz/post/8ec027d1.html</loc>
     
     <lastmod>2021-04-27</lastmod>
@@ -293,14 +286,14 @@
 
   
   <url>
-    <loc>http://www.zxfireworks.xyz/categories/CTF-Web-WriteUp/</loc>
+    <loc>http://www.zxfireworks.xyz/categories/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%AE%89%E5%85%A8/</loc>
     <lastmod>2021-04-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://www.zxfireworks.xyz/categories/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%AE%89%E5%85%A8/</loc>
+    <loc>http://www.zxfireworks.xyz/categories/CTF-Web-WriteUp/</loc>
     <lastmod>2021-04-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -328,14 +321,14 @@
   </url>
   
   <url>
-    <loc>http://www.zxfireworks.xyz/categories/ML/</loc>
+    <loc>http://www.zxfireworks.xyz/categories/Docker/</loc>
     <lastmod>2021-04-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://www.zxfireworks.xyz/categories/Docker/</loc>
+    <loc>http://www.zxfireworks.xyz/categories/ML/</loc>
     <lastmod>2021-04-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
