@@ -570,7 +570,7 @@
         
           
           两个重要参数（php.ini文件中）allow_url_fopenallow_url_include包含文件的内容只要符合PHP语法都能被当成php代码进行解析，无关后缀名
-本地文件包含配合日志文件?file=这条记录会被记录在日志文件中，但是被url编码了用burpsuite抓包改回去就可以利用了
+本地文件包含配合日志文件?file=&lt;?php @eval($_POST[‘shell’];)?&gt;这条记录会被记录
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -731,8 +731,7 @@
         
           
           PHP21Can you anthenticate to this website?
-扫目录没结果，index.php也没结果访问index.phps
-12345678910111213&lt;?phpif("admin"===$_GET[id]) &#123;  echo("&lt;p&gt;no
+扫目录没结果，index.php也没结果访问index.phps12345678910111213&lt;?phpif("admin"===$_GET[id]) &#123;  echo("&lt;p&gt;not
           ...
           <!--noindex-->
           <div class="post-button text-center">

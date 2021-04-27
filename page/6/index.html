@@ -569,8 +569,7 @@
       
         
           
-          Web应用有时需要调用一些可以执行系统命令的函数常用的PHP命令执行函数：system、exec、shell_exec、passthru、popen、proc_popen等当用户能够控制这些函数中的参数时，就可以将恶意系统命令拼接到正常命令中，从而造成命令执行攻击，即命令执行漏洞
-123;     
+          Web应用有时需要调用一些可以执行系统命令的函数常用的PHP命令执行函数：system、exec、shell_exec、passthru、popen、proc_popen等当用户能够控制这些函数中的参数时，就可以将恶意系统命令拼接到正常命令中，从而造成命令执行攻击，即命令执行漏洞123;      
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -730,10 +729,7 @@
       
         
           
-          由于eval()函数允许执行任意php代码，这就会造成远程代码执行
-1eval($_GET['shell']);
-即一句话木马，就可以getshell了
-12$_GET['shell']=system('ls /');eval($_GET['shell']);等同于eval(system('ls /
+          由于eval()函数允许执行任意php代码，这就会造成远程代码执行1eval($_GET['shell']);即一句话木马，就可以getshell了12$_GET['shell']=system('ls /');eval($_GET['shell']);等同于eval(system('ls /'))
           ...
           <!--noindex-->
           <div class="post-button text-center">

