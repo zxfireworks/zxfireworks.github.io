@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Linear-Regression</title>
+    <url>/post/8ec027d1.html</url>
+    <content><![CDATA[<h3 id="假设函数-Hypothesis"><a href="#假设函数-Hypothesis" class="headerlink" title="假设函数(Hypothesis)"></a>假设函数(Hypothesis)</h3><p>$$h(x) = \theta {_0} + \theta {_1} x$$<br>假设函数用于拟合真实的线性关系</p>
+<h3 id="代价函数-Cost-Function"><a href="#代价函数-Cost-Function" class="headerlink" title="代价函数(Cost Function)"></a>代价函数(Cost Function)</h3><p>$$J(\theta {<em>0},\theta{_1}) = \frac{1}{2m} \sum</em>{i=1}^{m}(h{_\theta}(x{^{^{(i)}}})-y{^{(i)}}){^2}$$<br>m为训练集的样本容量，代价函数用于描述预测值（代价函数输出）与真实值（训练样本）之间的误差，代价函数也称平方误差代价函数，代价函数常用于线性回归问题</p>
+<h3 id="目标函数-Goal"><a href="#目标函数-Goal" class="headerlink" title="目标函数(Goal)"></a>目标函数(Goal)</h3><p>$$minimizeJ(\theta {_0},\theta{_1})$$<br>不断调整θ<sub>0</sub>和θ<sub>1</sub>，从而逼近最小的代价函数，即会得到较为贴近真实线性关系的假设函数</p>
+<h3 id="梯度下降法-Gradient-Descent"><a href="#梯度下降法-Gradient-Descent" class="headerlink" title="梯度下降法(Gradient Descent)"></a>梯度下降法(Gradient Descent)</h3><p>在线性回归中用于最小化代价函数<br>repeat until convergence{<br>$$\theta {_j} := \theta {_j}-\alpha \frac{\partial}{\partial{\theta {_j}}}J(\theta {_0},\theta{_1})\quad (simultaneously \quad update \quad j=0 \quad and \quad j=1)$$<br>}<br>在该算法中，必须同步更新θ<sub>0</sub>和θ<sub>1</sub></p>
+<h4 id="系数α"><a href="#系数α" class="headerlink" title="系数α"></a>系数α</h4><p>α为学习效率，它控制着以多大的幅度来更新参数θ<sub>j</sub><br>α的选择十分重要。如果α太小，梯度下降会变得很慢；如果α太大，梯度下降会越过最小值，可能导致无法收敛，甚至发散；如果α已经处于代价函数局部最低点，此时偏导数项为0，θ<sub>j</sub>就不会改变了，即停止在局部最优解<br>即使α是固定的，梯度下降也可以收敛到局部最小值，这是因为随着梯度下降，偏导数项逐渐减小，而α固定，整体也是减小的。偏导数项最后趋近于0，由于α是有界值，无穷小乘有界值依然是无穷小，所以后一项也趋近于0，即收敛到了局部最小值</p>
+<h4 id="偏导数项"><a href="#偏导数项" class="headerlink" title="偏导数项"></a>偏导数项</h4><p>$$\frac{\partial}{\partial{\theta {<em>j}}}J(\theta {_0},\theta{_1})=\frac{\partial}{\partial{\theta {_j}}}\frac{1}{2m} \sum</em>{i=1}^{m}(h{<em>\theta}(x{^{^{(i)}}})-y{^{(i)}}){^2}$$<br>$$\frac{\partial}{\partial{\theta {_0}}}J(\theta {_0},\theta{_1})=\frac{1}{m} \sum</em>{i=1}^{m}(h{<em>\theta}(x{^{^{(i)}}})-y{^{(i)}})$$<br>$$\frac{\partial}{\partial{\theta {_0}}}J(\theta {_1},\theta{_1})=\frac{1}{m} \sum</em>{i=1}^{m}(h{_\theta}(x{^{^{(i)}}})-y{^{(i)}}) \cdot x{^{(i)}}$$</p>
+<h4 id="Gradient-descient-algorithm"><a href="#Gradient-descient-algorithm" class="headerlink" title="Gradient descient algorithm"></a>Gradient descient algorithm</h4><p>repeat until convergence{<br>$$\theta {<em>0} := \theta {_0}-\alpha\frac{1}{m} \sum</em>{i=1}^{m}(h{<em>\theta}(x{^{^{(i)}}})-y{^{(i)}})$$<br>$$\theta {_1} := \theta {_1}-\alpha\frac{1}{m} \sum</em>{i=1}^{m}(h{_\theta}(x{^{^{(i)}}})-y{^{(i)}}) \cdot x{^{(i)}}$$<br>}</p>
+<p>线性回归的代价函数没有局部最优解，只有全局最优解</p>
+]]></content>
+      <categories>
+        <category>ML</category>
+      </categories>
+  </entry>
+  <entry>
     <title>剪切板劫持</title>
     <url>/post/5989b0e5.html</url>
     <content><![CDATA[<p>最近一直在康高数，今天下午做题时感觉直接被按在地上摩擦，就想着去放空一下大脑(划一会儿水)。然后就去逛了下某网站，发现了个有趣的东西-剪切板劫持，看完这我再也不说自己精通CV大法了(wtcl,wuwuwu~)。大致攻击流程是用户在网页中复制文本时，触发了脚本，该脚本修改了剪切板的内容，如果不注意所复制的内容，很容易造成恶意代码执行，下面就举个小栗子来说明吧。<br>页面展示内容如下<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/CV/1.jpg" alt=""><br>对文本进行复制，然后将复制的内容粘贴进命令行<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/CV/3.jpg" alt=""><br>看似和网页上展示的一样，其实已经执行了恶意代码<br>可以查看源码进一步了解<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/CV/2.jpg" alt=""><br>可以发现剪切板的内容被替换了，再看命令是否执行了<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/CV/4.jpg" alt=""><br>显然已经执行成功了<br>这里在替换的命令中使用换行符，从而在粘贴进命令行时直接快速执行，一闪而过，正常情况下大都不会注意到这一点<br>平时在网上找教程时，直接疯狂CV的方式也是存在一定的风险的，害</p>
