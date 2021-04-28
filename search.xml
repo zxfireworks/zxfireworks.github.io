@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Logistic-Regression</title>
+    <url>/post/3414eb33.html</url>
+    <content><![CDATA[<p>逻辑回归算法是一种分类算法，不是回归算法<br>逻辑回归算法可用于寻找决策边界</p>
+<h3 id="sigmoid-function-logistic-function"><a href="#sigmoid-function-logistic-function" class="headerlink" title="sigmoid function(logistic function)"></a>sigmoid function(logistic function)</h3><script type="math/tex; mode=display">h_\theta(x) = g(\theta^Tx)</script><script type="math/tex; mode=display">g(z) = \frac{1}{1+e^{-z}}</script><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ML/LogisticRegression/g(x" alt="">.jpg)</p>
+<h3 id="决策边界-Decision-boundary"><a href="#决策边界-Decision-boundary" class="headerlink" title="决策边界(Decision boundary)"></a>决策边界(Decision boundary)</h3><p>决策边界不是训练集的属性，而是假设本身及其参数的属性。这是因为只要给定了参数向量θ，就确定了决策边界。而数据集是用来拟合参数θ</p>
+<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><p>训练集：</p>
+<script type="math/tex; mode=display">\{ (x^{(1)},y^{(1)}), (x^{(2)},y^{(2)}),\cdots,(x^{(m)},y^{(m)})\}</script><p>特征变量：</p>
+<script type="math/tex; mode=display">x\in \begin{bmatrix} x^0 \\ x^1 \\ \vdots \\ x^n \end{bmatrix}, \quad x^0=1,y\in\{0,1\}</script><script type="math/tex; mode=display">h_\theta(x) = \frac{1}{1+e{^{-\theta^Tx}}}</script><script type="math/tex; mode=display">Cost(h_\theta(x),y) = \begin{cases} -log(h_\theta(x)),& \text{if y = 1}\\-log(1-h_\theta(x)),& \text{if y = 0} \end{cases}</script>]]></content>
+      <categories>
+        <category>ML</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Linear-Regression</title>
     <url>/post/8ec027d1.html</url>
     <content><![CDATA[<h3 id="假设函数-Hypothesis"><a href="#假设函数-Hypothesis" class="headerlink" title="假设函数(Hypothesis)"></a>假设函数(Hypothesis)</h3><script type="math/tex; mode=display">h(x) = \theta {_0} + \theta {_1} x</script><p>假设函数用于拟合真实的线性关系</p>
