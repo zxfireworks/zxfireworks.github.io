@@ -92,15 +92,16 @@
 
 
 
-<meta name="description" content="逻辑回归算法是一种分类算法，不是回归算法逻辑回归算法可用于寻找决策边界 sigmoid function(logistic function)h_\theta(x) &#x3D; g(\theta^Tx)g(z) &#x3D; \frac{1}{1+e^{-z}} 决策边界(Decision boundary)决策边界不是训练集的属性，而是假设本身及其参数的属性。这是因为只要给定了参数向量θ，就确定了决策边界。而数据">
+<meta name="description" content="逻辑回归算法是一种分类算法，不是回归算法逻辑回归算法可用于寻找决策边界 h_\theta(x) &#x3D; g(\theta^Tx)训练集： \{ (x^{(1)},y^{(1)}), (x^{(2)},y^{(2)}),\cdots,(x^{(m)},y^{(m)})\}特征变量： x\in \begin{bmatrix} x^0 \\ x^1 \\ \vdots \\ x^n \end{bmatrix">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logistic-Regression">
 <meta property="og:url" content="http://www.zxfireworks.xyz/post/3414eb33.html">
 <meta property="og:site_name" content="w1ndy">
-<meta property="og:description" content="逻辑回归算法是一种分类算法，不是回归算法逻辑回归算法可用于寻找决策边界 sigmoid function(logistic function)h_\theta(x) &#x3D; g(\theta^Tx)g(z) &#x3D; \frac{1}{1+e^{-z}} 决策边界(Decision boundary)决策边界不是训练集的属性，而是假设本身及其参数的属性。这是因为只要给定了参数向量θ，就确定了决策边界。而数据">
+<meta property="og:description" content="逻辑回归算法是一种分类算法，不是回归算法逻辑回归算法可用于寻找决策边界 h_\theta(x) &#x3D; g(\theta^Tx)训练集： \{ (x^{(1)},y^{(1)}), (x^{(2)},y^{(2)}),\cdots,(x^{(m)},y^{(m)})\}特征变量： x\in \begin{bmatrix} x^0 \\ x^1 \\ \vdots \\ x^n \end{bmatrix">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ML/LogisticRegression/gx.jpg">
+<meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ML/LogisticRegression/one_vs_all1.jpg">
 <meta property="article:published_time" content="2021-04-27T15:03:56.000Z">
-<meta property="article:modified_time" content="2021-04-28T01:54:22.723Z">
+<meta property="article:modified_time" content="2021-04-28T06:03:38.880Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ML/LogisticRegression/gx.jpg">
@@ -352,7 +353,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-04-28T09:54:22+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2021-04-28T14:03:38+08:00">
                 2021-04-28
               </time>
             
@@ -409,11 +410,16 @@
 
       
         <p>逻辑回归算法是一种分类算法，不是回归算法<br>逻辑回归算法可用于寻找决策边界</p>
-<h3 id="sigmoid-function-logistic-function"><a href="#sigmoid-function-logistic-function" class="headerlink" title="sigmoid function(logistic function)"></a>sigmoid function(logistic function)</h3><script type="math/tex; mode=display">h_\theta(x) = g(\theta^Tx)</script><script type="math/tex; mode=display">g(z) = \frac{1}{1+e^{-z}}</script><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ML/LogisticRegression/gx.jpg" alt=""></p>
-<h3 id="决策边界-Decision-boundary"><a href="#决策边界-Decision-boundary" class="headerlink" title="决策边界(Decision boundary)"></a>决策边界(Decision boundary)</h3><p>决策边界不是训练集的属性，而是假设本身及其参数的属性。这是因为只要给定了参数向量θ，就确定了决策边界。而数据集是用来拟合参数θ</p>
-<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><p>训练集：</p>
+<script type="math/tex; mode=display">h_\theta(x) = g(\theta^Tx)</script><p>训练集：</p>
 <script type="math/tex; mode=display">\{ (x^{(1)},y^{(1)}), (x^{(2)},y^{(2)}),\cdots,(x^{(m)},y^{(m)})\}</script><p>特征变量：</p>
-<script type="math/tex; mode=display">x\in \begin{bmatrix} x^0 \\ x^1 \\ \vdots \\ x^n \end{bmatrix}, \quad x^0=1,y\in\{0,1\}</script><script type="math/tex; mode=display">h_\theta(x) = \frac{1}{1+e{^{-\theta^Tx}}}</script><script type="math/tex; mode=display">Cost(h_\theta(x),y) = \begin{cases} -log(h_\theta(x)),& \text{if y = 1}\\-log(1-h_\theta(x)),& \text{if y = 0} \end{cases}</script>
+<script type="math/tex; mode=display">x\in \begin{bmatrix} x^0 \\ x^1 \\ \vdots \\ x^n \end{bmatrix}, \quad x^0=1,y\in\{0,1\}</script><h3 id="假设函数"><a href="#假设函数" class="headerlink" title="假设函数"></a>假设函数</h3><script type="math/tex; mode=display">h_\theta(x) = \frac{1}{1+e{^{-\theta^Tx}}}=P\{y=1|x;\theta\}</script><h3 id="Sigmoid-function-Logistic-function"><a href="#Sigmoid-function-Logistic-function" class="headerlink" title="Sigmoid function(Logistic function)"></a>Sigmoid function(Logistic function)</h3><script type="math/tex; mode=display">g(z) = \frac{1}{1+e^{-z}}</script><p><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ML/LogisticRegression/gx.jpg" alt=""></p>
+<h3 id="决策边界-Decision-boundary"><a href="#决策边界-Decision-boundary" class="headerlink" title="决策边界(Decision boundary)"></a>决策边界(Decision boundary)</h3><p>h(x)=0.5<br>决策边界不是训练集的属性，而是假设本身及其参数的属性。这是因为只要给定了参数向量θ，就确定了决策边界。而数据集是用来拟合参数θ</p>
+<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><script type="math/tex; mode=display">J(\theta) = \frac{1}{m}\sum_{i=1}^{m}Cost(h_\theta(x^{(i)}),y^{(i)})</script><script type="math/tex; mode=display">Cost(h_\theta(x),y) = \begin{cases} -log(h_\theta(x)),& \text{if y = 1}\\-log(1-h_\theta(x)),& \text{if y = 0} \end{cases}</script><p>将Cost函数写的更加紧凑：</p>
+<script type="math/tex; mode=display">Cost(h_\theta(x),y) = -ylog(h_\theta(x))-(1-y)log(1-h_\theta(x))</script><script type="math/tex; mode=display">J(\theta) = \frac{1}{m}\sum_{i=1}^{m}Cost(h_\theta(x^{(i)}),y^{(i)})=-\frac{1}{m}[\sum_{i=1}^{m}y^{(i)}logh_\theta(x^{(i)})+(1-y^{(i)})log(1-h_\theta(x^{(i)}))]</script><h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3><p>寻找 min<sub>θ</sub> J(θ)<br>Repeat{</p>
+<script type="math/tex; mode=display">\theta {_j} := \theta {_j}-\alpha \sum_{i=1}^{m}(h{_\theta}(x{^{^{(i)}}})-y{^{(i)}}) \cdot x_j{^{(i)}} \quad (simultaneously \quad update \quad all \quad \theta_j)</script><p>}</p>
+<h3 id="多分类-Multiclass-classification"><a href="#多分类-Multiclass-classification" class="headerlink" title="多分类(Multiclass classification)"></a>多分类(Multiclass classification)</h3><h4 id="One-vs-all"><a href="#One-vs-all" class="headerlink" title="One-vs-all"></a>One-vs-all</h4><p>为每一个类 i 训练一个逻辑回归分类器 h<sub>θ</sub><sup>(i)</sup>(x)来预测y=i的概率<br>对于一个新的输入x，先进行预测，然后选择概率最大的类 i,即max h<sub>θ</sub><sup>(i)</sup>(x) ，也就是预测结果<br>将多个类中的一个类标记为正向类(y=1),其余的类全部标记为负向类；<br>然后再选择另一个类标记为正向类(y=2),其余的类全部标记为负向类；<br>依此类推，可得到如下模型:</p>
+<script type="math/tex; mode=display">h_\theta^{(i)}(x) = P\{y=i|x;\theta\} \quad(i=1,2,\cdots)</script><p>图例：<br><img src="https://gitee.com/zxfireworks/BlogPic/raw/master/ML/LogisticRegression/one_vs_all1.jpg" alt=""><br>需要构建三个分类器，每个分类器针对一种情况进行训练</p>
+
       
     </div>
     
@@ -574,7 +580,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid-function-logistic-function"><span class="nav-text">sigmoid function(logistic function)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策边界-Decision-boundary"><span class="nav-text">决策边界(Decision boundary)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代价函数"><span class="nav-text">代价函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#假设函数"><span class="nav-text">假设函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sigmoid-function-Logistic-function"><span class="nav-text">Sigmoid function(Logistic function)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策边界-Decision-boundary"><span class="nav-text">决策边界(Decision boundary)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代价函数"><span class="nav-text">代价函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降"><span class="nav-text">梯度下降</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多分类-Multiclass-classification"><span class="nav-text">多分类(Multiclass classification)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#One-vs-all"><span class="nav-text">One-vs-all</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

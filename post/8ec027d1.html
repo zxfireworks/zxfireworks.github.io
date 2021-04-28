@@ -100,7 +100,7 @@
 <meta property="og:description" content="假设函数(Hypothesis)h(x) &#x3D; \theta {_0} + \theta {_1} x假设函数用于拟合真实的线性关系 代价函数(Cost Function)J(\theta {_0},\theta{_1}) &#x3D; \frac{1}{2m} \sum_{i&#x3D;1}^{m}(h{_\theta}(x{^{^{(i)}}})-y{^{(i)}}){^2}m为训练集的样本容量，代价函数用于描述预">
 <meta property="og:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ML/LinearRegression/GD_NE.jpg">
 <meta property="article:published_time" content="2021-04-26T14:42:08.000Z">
-<meta property="article:modified_time" content="2021-04-27T14:39:02.632Z">
+<meta property="article:modified_time" content="2021-04-28T05:15:38.725Z">
 <meta property="article:author" content="w1ndy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/zxfireworks/BlogPic/raw/master/ML/LinearRegression/GD_NE.jpg">
@@ -352,8 +352,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-04-27T22:39:02+08:00">
-                2021-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2021-04-28T13:15:38+08:00">
+                2021-04-28
               </time>
             
           </span>
@@ -412,7 +412,7 @@
 <h3 id="梯度下降法-Gradient-Descent"><a href="#梯度下降法-Gradient-Descent" class="headerlink" title="梯度下降法(Gradient Descent)"></a>梯度下降法(Gradient Descent)</h3><p>在线性回归中用于最小化代价函数<br>repeat until convergence{</p>
 <script type="math/tex; mode=display">\theta {_j} := \theta {_j}-\alpha \frac{\partial}{\partial{\theta {_j}}}J(\theta {_0},\theta{_1})\quad (simultaneously \quad update \quad j=0 \quad and \quad j=1)</script><p>}<br>在该算法中，必须同步更新θ<sub>0</sub>和θ<sub>1</sub></p>
 <h4 id="学习率α"><a href="#学习率α" class="headerlink" title="学习率α"></a>学习率α</h4><p>α为学习率，它控制着以多大的幅度来更新参数θ<sub>j</sub>，α的选择十分重要，如果α太小，梯度下降会变得很慢；如果α太大，梯度下降会越过最小值，可能导致无法收敛，甚至发散；如果α已经处于代价函数局部最低点，此时偏导数项为0，θ<sub>j</sub>就不会改变了，即停止在局部最优解<br>即使α是固定的，梯度下降也可以收敛到局部最小值，这是因为随着梯度下降，偏导数项逐渐减小，而α固定，整体也是减小的。偏导数项最后趋近于0，由于α是有界值，无穷小乘有界值依然是无穷小，所以后一项也趋近于0，即收敛到了局部最小值</p>
-<h4 id="偏导数项"><a href="#偏导数项" class="headerlink" title="偏导数项"></a>偏导数项</h4><script type="math/tex; mode=display">\frac{\partial}{\partial{\theta {_j}}}J(\theta {_0},\theta{_1})=\frac{\partial}{\partial{\theta {_j}}}\frac{1}{2m} \sum_{i=1}^{m}(h{_\theta}(x{^{^{(i)}}})-y{^{(i)}}){^2}</script><script type="math/tex; mode=display">\frac{\partial}{\partial{\theta {_0}}}J(\theta {_0},\theta{_1})=\frac{1}{m} \sum_{i=1}^{m}(h{_\theta}(x{^{^{(i)}}})-y{^{(i)}})</script><script type="math/tex; mode=display">\frac{\partial}{\partial{\theta {_0}}}J(\theta {_1},\theta{_1})=\frac{1}{m} \sum_{i=1}^{m}(h{_\theta}(x{^{^{(i)}}})-y{^{(i)}}) \cdot x{^{(i)}}</script><h4 id="Gradient-descent-algorithm"><a href="#Gradient-descent-algorithm" class="headerlink" title="Gradient descent algorithm"></a>Gradient descent algorithm</h4><p>repeat until convergence{</p>
+<h4 id="偏导数项"><a href="#偏导数项" class="headerlink" title="偏导数项"></a>偏导数项</h4><script type="math/tex; mode=display">\frac{\partial}{\partial{\theta {_j}}}J(\theta {_0},\theta{_1})=\frac{\partial}{\partial{\theta {_j}}}\frac{1}{2m} \sum_{i=1}^{m}(h{_\theta}(x{^{^{(i)}}})-y{^{(i)}}){^2}</script><script type="math/tex; mode=display">\frac{\partial}{\partial{\theta {_0}}}J(\theta {_0},\theta{_1})=\frac{1}{m} \sum_{i=1}^{m}(h{_\theta}(x{^{^{(i)}}})-y{^{(i)}})</script><script type="math/tex; mode=display">\frac{\partial}{\partial{\theta {_1}}}J(\theta {_1},\theta{_1})=\frac{1}{m} \sum_{i=1}^{m}(h{_\theta}(x{^{^{(i)}}})-y{^{(i)}}) \cdot x{^{(i)}}</script><h4 id="Gradient-descent-algorithm"><a href="#Gradient-descent-algorithm" class="headerlink" title="Gradient descent algorithm"></a>Gradient descent algorithm</h4><p>repeat until convergence{</p>
 <script type="math/tex; mode=display">\theta {_0} := \theta {_0}-\alpha\frac{1}{m} \sum_{i=1}^{m}(h{_\theta}(x{^{^{(i)}}})-y{^{(i)}})</script><script type="math/tex; mode=display">\theta {_1} := \theta {_1}-\alpha\frac{1}{m} \sum_{i=1}^{m}(h{_\theta}(x{^{^{(i)}}})-y{^{(i)}}) \cdot x{^{(i)}}</script><p>}</p>
 <p>线性回归的代价函数没有局部最优解，只有全局最优解</p>
 <h3 id="多元线性回归-Multivariate-linear-regression"><a href="#多元线性回归-Multivariate-linear-regression" class="headerlink" title="多元线性回归(Multivariate linear regression)"></a>多元线性回归(Multivariate linear regression)</h3><h4 id="假设函数"><a href="#假设函数" class="headerlink" title="假设函数"></a>假设函数</h4><script type="math/tex; mode=display">h(x) = \theta {_0}x{_0} + \theta {_1}x{_1} + \theta {_2}x{_2} + \cdots+ \theta {_n}x{_n}</script><p>定义x<sub>0</sub>=1</p>
